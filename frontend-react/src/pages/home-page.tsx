@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+
 function HomePage() {
+
+    const checkRefreshDB = async () => {
+        const response = await fetch("http://localhost:8800/");
+        const checkRefresh = await response.json();
+        console.log("refresh: ", checkRefresh)
+    }
+
+    useEffect(() => {
+        checkRefreshDB();
+    }, []);
 
     return (
         <>
