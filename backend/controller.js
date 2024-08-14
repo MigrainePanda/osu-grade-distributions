@@ -33,8 +33,13 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/yearsTerms", (req, res) => {
-  helper.handleRetrieve(query.getAllYearsWithTerms(), req, res);
+app.get("/years", (req, res) => {
+  helper.handleRetrieve(query.getAllYears(), req, res);
+});
+
+app.get("/terms", (req, res) => {
+  const year = req.query['year'];
+  helper.handleRetrieve(query.getAllTermsByYear(year), req, res);
 });
 
 app.get("/subjects", (req, res) => {

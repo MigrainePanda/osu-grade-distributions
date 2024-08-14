@@ -6,7 +6,7 @@ export type InformationType = {
   subjectName: string
   setSubjectName: (c: string) => void
   year: string
-  setYear(string)
+  setYear: (c: string) => void
   term: string
   setTerm: (c: string) => void
 }

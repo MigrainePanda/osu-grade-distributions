@@ -1,0 +1,19 @@
+.top-selectors {
+    display: flex;
+    justify-content: center;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.select-component-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.select-component {
+    width: 30%;
+}
