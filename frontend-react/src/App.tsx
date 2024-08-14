@@ -12,10 +12,10 @@ import { InformationContext } from "./components/contexts/CourseContext.tsx"
 
 function App() {
 
-  const [courseName, setCourseName] = useState<string>("None");
-  const [subjectName, setSubjectName] = useState<string>("None");
-  const [year, setYear] = useState<string>("All");
-  const [term, setTerm] = useState<string>("N/A");
+  const [courseName, setCourseName] = useState<string>("");
+  const [subjectName, setSubjectName] = useState<string>("");
+  const [year, setYear] = useState<string>("");
+  const [term, setTerm] = useState<string>("");
 
   const props = {
     courseName, 

@@ -13,30 +13,32 @@ function TermSelector() {
     const [value, setValue] = useState<ValueType>([]);
     const { year, setTerm } = useContext(InformationContext);
 
-    async function loadOptions() {
-        if (year === "All") {
-            const options = [{ label: "N/A", value: "N/A" }];
-            setValue(options[0]);
-            setOptions(options);
-            return;
-        }
-
-        const newURL = URL + `?year=${year}`
-        const termsResp = await fetch(newURL);
-        const terms = await termsResp.json();
-        
-        let formattedTerms = termNumToName(terms);
-        formattedTerms = formattedTerms.map((term) => {
-            return { label: term['termName'], value: term['term'] }
-        })
-        formattedTerms.unshift({ label: "All", value: "All" });
-        setValue(formattedTerms[0]);
-        setOptions(formattedTerms);
-    }
-
     useEffect(() => {
+        async function loadOptions() {
+            if (year === "") {
+                return;
+            }
+            if (year === "All") {
+                const options = [{ label: "N/A", value: "N/A" }];
+                setValue(options[0]);
+                setOptions(options);
+                return;
+            }
+            
+            const newURL = URL + `?year=${year}`
+            const termsResp = await fetch(newURL);
+            const terms = await termsResp.json();
+            
+            let formattedTerms = termNumToName(terms);
+            formattedTerms = formattedTerms.map((term) => {
+                return { label: term['termName'], value: term['term'] }
+            })
+            formattedTerms.unshift({ label: "All", value: "All" });
+            setValue(formattedTerms[0]);
+            setOptions(formattedTerms);
+        }
         loadOptions();
-    }, [year])
+    }, [year]);
 
     const handleChange = (option) => {
         console.log("term updated ", option)
@@ -56,6 +58,7 @@ function TermSelector() {
                         options={options} 
                         value={value}
                         onChange={option => handleChange(option)}
+                        placeholder="Loading..."
                         isSearchable
                     />
                 </div>

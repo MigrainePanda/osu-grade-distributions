@@ -19,6 +19,7 @@ function YearSelector() {
             return { label: year['year'], value: year['year'] }
         });
         formattedYears.unshift({ label: "All", value: "All" });
+        setYear(formattedYears[0]["value"]);
         setValue(formattedYears[0]);
         setOptions(formattedYears);
         console.log("years ", formattedYears);
@@ -26,7 +27,7 @@ function YearSelector() {
 
     useEffect(() => {
         loadOptions();
-    }, [])
+    }, []);
 
     const handleChange = (option) => {
         console.log("year updated ", option)
@@ -46,6 +47,7 @@ function YearSelector() {
                         options={options} 
                         value={value}
                         onChange={option => handleChange(option)}
+                        placeholder="Loading..."
                         isSearchable
                     />
                 </div>
