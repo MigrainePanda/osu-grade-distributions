@@ -1,44 +1,12 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import Select from "react-select";
-
-import { InformationContext } from "../contexts/CourseContext.tsx";
+import { CurrInfoContext } from "../contexts/CurrInfoContext.tsx";
 import { OptionsType, ValueType } from "./SelectorTypes.tsx";
-import { termNumToName } from "../../utils/conversions.tsx";
-
-
-const URL = import.meta.env.VITE_BACKEND_URL + "/terms";
 
 function TermSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { year, setTerm } = useContext(InformationContext);
-
-    useEffect(() => {
-        async function loadOptions() {
-            if (year === "") {
-                return;
-            }
-            if (year === "All") {
-                const options = [{ label: "N/A", value: "N/A" }];
-                setValue(options[0]);
-                setOptions(options);
-                return;
-            }
-            
-            const newURL = URL + `?year=${year}`
-            const termsResp = await fetch(newURL);
-            const terms = await termsResp.json();
-            
-            let formattedTerms = termNumToName(terms);
-            formattedTerms = formattedTerms.map((term) => {
-                return { label: term['termName'], value: term['term'] }
-            })
-            formattedTerms.unshift({ label: "All", value: "All" });
-            setValue(formattedTerms[0]);
-            setOptions(formattedTerms);
-        }
-        loadOptions();
-    }, [year]);
+    const { setTerm } = useContext(CurrInfoContext);
 
     const handleChange = (option) => {
         console.log("term updated ", option)
