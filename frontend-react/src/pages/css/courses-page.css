@@ -10,3 +10,29 @@
 .image-loading-container {
     margin-top: 50px;
 }
+
+.export-button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 1.2em;
+}
+
+.export-button-wrapper a, .export-button-wrapper button {
+    font-weight: 500;
+    color: black;
+    text-decoration: inherit;
+}
+
+.export-button-wrapper a:hover, .export-button-wrapper button:hover {
+    color: #646cff;
+}
+
+.export-button {
+    background: rgba(228, 228, 228, 0.5);
+    padding: 15px 20px 15px 20px; 
+    border-radius: 15px;
+    border: 0;
+    font-size: 1.5rem;
+    margin: 10px;
+}

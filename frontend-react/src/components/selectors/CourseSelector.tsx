@@ -28,8 +28,23 @@ function CourseSelector() {
         }
         const uniqueCourses = new Set<string>();
 
+        if (term !== "All" && year === "All") {
+            allCourses.filter((course) => {
+                const isSubject = course['subject'] === subjectName;
+                const isTerm = course['term'] === term;
+                const isUnique = uniqueCourses.has(course['short']);
+                if (isSubject && isTerm && !isUnique) {
+                    uniqueCourses.add(course['short']);
+                    return true;
+                }
+                return false;
+            });
+            addOptions(uniqueCourses);
+            return;
+        }
+
         // subject, term
-        if (term !== "N/A" && term !== "All") {
+        if (term !== "All") {
             allCourses.filter((course) => {
                 const isSubject = course['subject'] === subjectName;
                 const isYear = course['year'] === year;

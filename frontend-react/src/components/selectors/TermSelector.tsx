@@ -14,14 +14,18 @@ function TermSelector() {
     const { allTerms } = useContext(AllInfoContext);
 
     useEffect(() => {
-        if (allTerms.length === 0) {
-            return;
-        }
         const filtered = allTerms.filter((term) => {
             if (term['year'] === year) return term;
         });
+        // year = All
         if (filtered.length === 0) {
-            const noOption = [{ label: "N/A", value: "N/A" }];
+            const noOption = [
+                { label: "All", value: "All" },
+                { label: "Summer", value: "00" },
+                { label: "Fall", value: "01" },
+                { label: "Winter", value: "02" },
+                { label: "Spring", value: "03" },
+            ];
             setTerm(noOption[0]['value']);
             setValue(noOption[0]);
             setOptions(noOption);
@@ -38,8 +42,8 @@ function TermSelector() {
     }, [year, allTerms, setTerm]);
 
     const handleChange = (option) => {
-        console.log("term updated ", option)
-        setTerm(option["value"])
+        console.log("term updated ", option);
+        setTerm(option["value"]);
         setValue(option);
     };
 

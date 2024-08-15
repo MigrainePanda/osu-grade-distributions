@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../components/contexts/CurrInfoContext.tsx";
 
@@ -46,7 +47,18 @@ function CoursesPage() {
 
     useEffect(() => {
         let arr: Array<object> = [];
-        if (term !== "N/A" && term !== "All") {
+        // term only
+        if (term !== "All" && year === "All") {
+            arr = allCourses.filter((course) => {
+                if (courseName === course['short'] && term === course['term']) {
+                    return true;
+                }
+                return false;
+            });
+            setCoursesArr(arr)
+        }
+        // term and year
+        else if (term !== "All") {
             arr = allCourses.filter((course) => {
                 if (courseName === course['short'] && 
                     year === course['year'] &&
@@ -57,43 +69,51 @@ function CoursesPage() {
             });
             setCoursesArr(arr)
         }
+        // year only
         else if (year !== "" && year !== "All") {
             arr = allCourses.filter((course) => {
-                if (courseName === course['short'] && 
-                    year === course['year']) {
-                        return true;
-                    }
+                if (courseName === course['short'] && year === course['year']) {
+                    return true;
+                }
                 return false;
             });
             setCoursesArr(arr)
         }
+        // no filters
         else {
             arr = allCourses.filter((course) => {
                 if (courseName === course['short']) {
-                        return true;
-                    }
+                    return true;
+                }
                 return false;
             });
             setCoursesArr(arr);
         }
     }, [allCourses, courseName, year, term]);
 
+    if (!fetched) {
+        return (
+            <>
+                <h1 className="center-text">Course Selector</h1>
+                <div className="center-div image-loading-container">
+                    <LoadingSpinner />
+                </div>
+            </>
+        );
+    }
+
     return (
         <>
             <h1 className="center-text">Course Selector</h1>
-            {fetched ? <SelectorController /> : <LoadingSpinner />}
-            {courseName !== "" 
-                ? 
-                    <div className="center-div">
-                        <div className="image-container">
-                            <PlotGrades courses={coursesArr} />
-                        </div>
-                    </div>
-                : 
-                    <div className="center-div image-loading-container">
-                        <LoadingSpinner />
-                    </div>
-            }
+            <SelectorController />
+            <div className="center-div">
+                <div className="image-container">
+                    <PlotGrades courses={coursesArr} />
+                </div>
+            </div>
+            <div className="export-button-wrapper">
+                <NavLink className="export-button" to={"/export"}>Export</NavLink>
+            </div>
         </>
     )
 }

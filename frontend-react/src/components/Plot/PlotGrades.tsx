@@ -35,13 +35,6 @@ function PlotGrades( { courses } ) {
 
     const options = {
         indexAxis: "y" as const,
-        // scales: {
-        //     x: {
-        //         ticks: {
-        //             stepSize: 1
-        //         }
-        //     }
-        // },
         responsive: true,
         plugins: {
             legend: {
@@ -50,6 +43,9 @@ function PlotGrades( { courses } ) {
             title: {
                 display: true,
                 text: `Grade Distribution of ${displayedTotalStudents} students`,
+                font: {
+                    size: 15
+                }
             },
         },
     }
