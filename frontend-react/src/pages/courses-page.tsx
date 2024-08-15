@@ -1,12 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx"
 
 import SelectorController from "../components/selectors/SelectorController.tsx";
+import LoadingSpinner from "../components/LoadingSpinner.tsx";
 
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
 function CoursesPage() {
+    const [loaded, setLoaded] = useState<boolean>(false);
     const { setAllYears, setAllTerms, setAllSubjects, setAllCourses } = useContext(AllInfoContext);
     
     useEffect(() => {
@@ -30,6 +32,8 @@ function CoursesPage() {
             const courses = await coursesResponse.json();
             setAllCourses(courses);
             // console.log("Courses received.", courses);
+
+            setLoaded(true);
         })
 
         loadPage();
@@ -38,7 +42,7 @@ function CoursesPage() {
     return (
         <>
             <h1 className="center-text">Course Selector</h1>
-            <SelectorController />
+            {loaded ? <SelectorController /> : <LoadingSpinner />}
         </>
     )
 }
