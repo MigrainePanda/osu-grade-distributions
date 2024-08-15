@@ -6,37 +6,31 @@ import { AllInfoContext } from "../contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../contexts/CurrInfoContext.tsx";
 import { OptionsType, ValueType } from "./SelectorTypes.tsx";
 
-
-function YearSelector() {
+function SubjectSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { setYear } = useContext(CurrInfoContext);
-    const { allYears } = useContext(AllInfoContext);
+    const { setSubjectName } = useContext(CurrInfoContext);
+    const { allSubjects } = useContext(AllInfoContext);
 
     useEffect(() => {
-        if (allYears.length === 0) {
-            return;
-        }
-        const yearOptions = allYears.map((year) => {
-            return { label: year['year'], value: year['year'] }
+        console.log("all ", allSubjects)
+        const filtered = allSubjects.map((subject) => {
+            return { label: subject['short'], value: subject['short'] }
         });
-        yearOptions.unshift({ label: "All", value: "All" });
-        setYear(yearOptions[0]["value"]);
-        setValue(yearOptions[0]);
-        setOptions(yearOptions);
-    }, [allYears, setYear]);
+        setOptions(filtered)
+    }, [allSubjects]);
 
     const handleChange = (option) => {
-        console.log("year updated ", option)
-        setYear(option['value']);
+        console.log("subject updated ", option);
+        setSubjectName(option['value']);
         setValue(option);
-    };
+    }
 
-    return (
+    return(
         <>
-            <div className="select-container year-container">
+            <div className="select-container">
                 <div className="select-label-info">
-                    <h3 className="center-text">Year</h3>
+                    <h3 className="center-text">Subject</h3>
                     <Tooltip message={"Hello"} />
                 </div>
                 <div className="select-component-wrapper">
@@ -45,13 +39,13 @@ function YearSelector() {
                         options={options} 
                         value={value}
                         onChange={option => handleChange(option)}
-                        placeholder="Loading..."
+                        placeholder="Select..."
                         isSearchable
                     />
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default YearSelector;
+export default SubjectSelector;

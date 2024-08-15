@@ -106,7 +106,7 @@ const getAllTermsByYear = async (year) => {
 }
 
 const getAllSubjects = async () => {
-  const query = `SELECT * FROM subjects`;
+  const query = `SELECT * FROM subjects ORDER BY short`;
   return new Promise((resolve, reject) => {
     db.query(query, (err, res) => {
       if (err) reject(err);
