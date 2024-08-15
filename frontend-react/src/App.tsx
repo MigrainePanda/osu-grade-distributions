@@ -1,4 +1,9 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CurrInfoContext } from "./components/contexts/CurrInfoContext.tsx";
+import { AllInfoContext } from "./components/contexts/AllInfoContext.tsx";
+import { registerCharts } from "./components/Plot/registerCharts.tsx";
+registerCharts();
 
 import HomePage from "./pages/home-page.tsx";
 import CoursesPage from "./pages/courses-page.tsx";
@@ -7,9 +12,6 @@ import ExportPage from "./pages/export-page.tsx";
 import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 
-import { useState } from "react";
-import { CurrInfoContext } from "./components/contexts/CurrInfoContext.tsx";
-import { AllInfoContext } from "./components/contexts/AllInfoContext.tsx";
 
 function App() {
 
@@ -33,16 +35,19 @@ function App() {
   const [subjectName, setSubjectName] = useState<string>("");
   const [year, setYear] = useState<string>("");
   const [term, setTerm] = useState<string>("");
+  const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
 
   const currProp = {
     year,
     term,
     courseName, 
     subjectName,
+    coursesArr,
     setYear,
     setTerm,
     setCourseName,
     setSubjectName,
+    setCoursesArr,
   }
 
   return (

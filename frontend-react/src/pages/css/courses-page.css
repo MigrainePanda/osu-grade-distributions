@@ -1,0 +1,12 @@
+.image-container {
+    max-width: 50%;
+    width: 50%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px;
+}
+
+.image-loading-container {
+    margin-top: 50px;
+}

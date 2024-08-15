@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from "react";
-import Select from "react-select";
-
-import Tooltip from "../Tooltip/Tooltip.tsx";
 import { AllInfoContext } from "../contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../contexts/CurrInfoContext.tsx";
 import { OptionsType, ValueType } from "./SelectorTypes.tsx";
+
+import Select from "react-select";
+import Tooltip from "../Tooltip/Tooltip.tsx";
 
 function CourseSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
@@ -19,8 +19,6 @@ function CourseSelector() {
             return { label: course, value: course }
         })
         setOptions(formatted);
-        console.log(formatted)
-        console.log(formatted.length)
     }
 
     useEffect(() => {
@@ -32,7 +30,6 @@ function CourseSelector() {
 
         // subject, term
         if (term !== "N/A" && term !== "All") {
-            console.log("subject term")
             allCourses.filter((course) => {
                 const isSubject = course['subject'] === subjectName;
                 const isYear = course['year'] === year;
@@ -50,7 +47,6 @@ function CourseSelector() {
 
         // subject, year
         if (year !== "" && year !== "All") {
-            console.log("subject year")
             allCourses.filter((course) => {
                 const isSubject = course['subject'] === subjectName;
                 const isYear = course['year'] === year;
@@ -66,7 +62,6 @@ function CourseSelector() {
         }
 
         // just subject
-        console.log("subject")
         allCourses.filter((course) => {
             const isSubject = course['subject'] === subjectName;
             const isUnique = uniqueCourses.has(course['short']);

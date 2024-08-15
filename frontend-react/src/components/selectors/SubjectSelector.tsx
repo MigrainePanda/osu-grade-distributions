@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from "react";
-import Select from "react-select";
-
-import Tooltip from "../Tooltip/Tooltip.tsx";
 import { AllInfoContext } from "../contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../contexts/CurrInfoContext.tsx";
 import { OptionsType, ValueType } from "./SelectorTypes.tsx";
+
+import Select from "react-select";
+import Tooltip from "../Tooltip/Tooltip.tsx";
 
 function SubjectSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
