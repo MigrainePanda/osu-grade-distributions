@@ -85,6 +85,16 @@ const getAllYears = async () => {
   });
 }
 
+const getAllTerms = async () => {
+  const query = `SELECT DISTINCT year, term FROM courses ORDER BY year+0, term+0`;
+  return new Promise((resolve, reject) => {
+    db.query(query, (err, res) => {
+      if (err) reject(err);
+      resolve(res);
+    });
+  });
+}
+
 const getAllTermsByYear = async (year) => {
   const query = `SELECT DISTINCT year, term FROM courses WHERE year="${year}" ORDER BY year+0, term+0`;
   return new Promise((resolve, reject) => {
@@ -121,6 +131,7 @@ export {
   addSubjectData, 
   addCourseData, 
   getAllYears, 
+  getAllTerms,
   getAllTermsByYear,
   getAllSubjects, 
   getAllCourses

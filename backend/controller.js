@@ -38,8 +38,7 @@ app.get("/years", (req, res) => {
 });
 
 app.get("/terms", (req, res) => {
-  const year = req.query['year'];
-  helper.handleRetrieve(query.getAllTermsByYear(year), req, res);
+  helper.handleRetrieve(query.getAllTerms(), req, res);
 });
 
 app.get("/subjects", (req, res) => {

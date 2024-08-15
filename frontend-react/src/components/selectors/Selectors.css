@@ -4,9 +4,7 @@
 }
 
 .select-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    width: 10%;
 }
 
 .select-component-wrapper {
@@ -15,5 +13,18 @@
 }
 
 .select-component {
-    width: 30%;
+    width: 100%;
+}
+
+.year-container {
+    margin-right: 50px;
+}
+
+.term-container {
+    margin-left: 50px;
+}
+
+.yearTerm-info {
+    display: flex;
+    justify-content: center;
 }
