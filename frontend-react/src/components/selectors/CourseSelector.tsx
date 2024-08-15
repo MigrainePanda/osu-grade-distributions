@@ -6,22 +6,34 @@ import { AllInfoContext } from "../contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../contexts/CurrInfoContext.tsx";
 import { OptionsType, ValueType } from "./SelectorTypes.tsx";
 
-function SubjectSelector() {
+function CourseSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { setSubjectName } = useContext(CurrInfoContext);
-    const { allSubjects } = useContext(AllInfoContext);
+    const { subjectName, setCourseName } = useContext(CurrInfoContext);
+    const { allCourses } = useContext(AllInfoContext);
 
     useEffect(() => {
-        const formatted = allSubjects.map((subject) => {
-            return { label: subject['short'], value: subject['short'] }
+        const uniqueCourses = new Set<string>();
+        allCourses.filter((course) => {
+            const subject = course['subject'] === subjectName;
+            const unique = uniqueCourses.has(course['short']);
+            if (subject && !unique) {
+                uniqueCourses.add(course['short']);
+                return true;
+            }
+            return false;
         });
+        const filtered = Array.from(uniqueCourses);
+        const sorted = filtered.sort();
+        const formatted = sorted.map((course) => {
+            return { label: course, value: course }
+        })
         setOptions(formatted)
-    }, [allSubjects]);
+    }, [allCourses, subjectName]);
 
     const handleChange = (option) => {
-        console.log("subject updated ", option);
-        setSubjectName(option['value']);
+        console.log("course updated ", option);
+        setCourseName(option['value']);
         setValue(option);
     }
 
@@ -29,7 +41,7 @@ function SubjectSelector() {
         <>
             <div className="select-container">
                 <div className="select-label-info">
-                    <h3 className="center-text">Subject</h3>
+                    <h3 className="center-text">Course</h3>
                     <Tooltip message={"Hello"} />
                 </div>
                 <div className="select-component-wrapper">
@@ -47,4 +59,4 @@ function SubjectSelector() {
     );
 }
 
-export default SubjectSelector;
+export default CourseSelector;

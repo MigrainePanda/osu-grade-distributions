@@ -6,6 +6,6 @@ function termNumToName(str) {
       "03": "Spring"
     }
     return numToName[str];
-  }
+}
   
-  export { termNumToName };
+export { termNumToName };
