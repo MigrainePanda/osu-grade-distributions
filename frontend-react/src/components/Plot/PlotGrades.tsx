@@ -48,6 +48,20 @@ function PlotGrades( { courses } ) {
                 }
             },
         },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Number of students"
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: "Grade"
+                }
+            }
+        }
     }
 
     const data = {
@@ -55,9 +69,35 @@ function PlotGrades( { courses } ) {
         datasets: [
             {
                 data: courseData,
-                backgroundColor: "rgba(75, 192, 192)",
-                borderColor: "rgb(75, 192, 192)",
-                borderWidth: 1,
+                backgroundColor: [
+                    "rgba(0, 186, 19, 0.6)",
+                    "rgba(51, 199, 15, 0.6)", 
+                    "rgba(102, 212, 11, 0.6)", 
+                    "rgba(153, 225, 8, 0.6)", 
+                    "rgba(204, 238, 4, 0.6)", 
+                    "rgba(228, 224, 0, 0.6)", 
+                    "rgba(255, 231, 0, 0.6)", 
+                    "rgba(255, 201, 0, 0.6)", 
+                    "rgba(255, 185, 0, 0.6)", 
+                    "rgba(255, 151, 0, 0.6)", 
+                    "rgba(255, 100, 0, 0.6)", 
+                    "rgba(255, 0, 0, 0.6)",
+                ],
+                borderColor: [
+                    "rgba(0, 186, 19, 1)",
+                    "rgba(51, 199, 15, 1)", 
+                    "rgba(102, 212, 11, 1)", 
+                    "rgba(153, 225, 8, 1)", 
+                    "rgba(204, 238, 4, 1)", 
+                    "rgba(228, 224, 0, 1)", 
+                    "rgba(255, 231, 0, 1)", 
+                    "rgba(255, 201, 0, 1)", 
+                    "rgba(255, 185, 0, 1)", 
+                    "rgba(255, 151, 0, 1)", 
+                    "rgba(255, 100, 0, 1)", 
+                    "rgba(255, 0, 0, 1)",
+                ],
+                borderWidth: 2,
             },
         ],
     }

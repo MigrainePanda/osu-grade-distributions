@@ -89,6 +89,11 @@ function CourseSelector() {
         addOptions(uniqueCourses);
     }, [allCourses, subjectName, year, term]);
 
+    useEffect(() => {
+        setCourseName("");
+        setValue([]);
+    }, [subjectName, setCourseName]);
+
     const handleChange = (option) => {
         console.log("course updated ", option);
         setCourseName(option['value']);

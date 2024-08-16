@@ -1,5 +1,12 @@
+:root {
+    --header-background: #ededed;
+}
+
 header {
     margin-top: 25px;
+    position: sticky;
+    top: 25px;
+    z-index: 99;
 }
 
 .navbar-container {

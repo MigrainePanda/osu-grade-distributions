@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../components/contexts/CurrInfoContext.tsx";
 
@@ -8,6 +7,7 @@ import LoadingSpinner from "../components/LoadingSpinner.tsx";
 import PlotGrades from "../components/Plot/PlotGrades.tsx";
 
 import "./css/courses-page.css";
+import BackToTop from "../components/BackToTop.tsx";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -106,14 +106,18 @@ function CoursesPage() {
         <>
             <h1 className="center-text">Course Selector</h1>
             <SelectorController />
+
+            {/* class information */}
+
             <div className="center-div">
                 <div className="image-container">
                     <PlotGrades courses={coursesArr} />
                 </div>
             </div>
-            <div className="export-button-wrapper">
-                <NavLink className="export-button" to={"/export"}>Export</NavLink>
-            </div>
+
+            {/* plot other information */}
+
+            <BackToTop />
         </>
     )
 }
