@@ -2,12 +2,14 @@ import { useState, useContext, useEffect } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../components/contexts/CurrInfoContext.tsx";
 
-import SelectorController from "../components/selectors/SelectorController.tsx";
 import LoadingSpinner from "../components/LoadingSpinner.tsx";
+import SelectorController from "../components/selectors/SelectorController.tsx";
+import CourseDescription from "../components/CourseDescription.tsx";
 import PlotGrades from "../components/Plot/PlotGrades.tsx";
+import PlotAvgGPA from "../components/Plot/PlotAvgGPA.tsx";
+import BackToTop from "../components/BackToTop.tsx";
 
 import "./css/courses-page.css";
-import BackToTop from "../components/BackToTop.tsx";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -105,9 +107,11 @@ function CoursesPage() {
     return (
         <>
             <h1 className="center-text">Course Selector</h1>
-            <SelectorController />
+            <div className="selectors-container">
+                <SelectorController />
+            </div>
 
-            {/* class information */}
+            <CourseDescription courses={coursesArr} />
 
             <div className="center-div">
                 <div className="image-container">
@@ -115,7 +119,11 @@ function CoursesPage() {
                 </div>
             </div>
 
-            {/* plot other information */}
+            <div className="center-div">
+                <div className="image-container">
+                    <PlotAvgGPA courses={coursesArr} />
+                </div>
+            </div>
 
             <BackToTop />
         </>

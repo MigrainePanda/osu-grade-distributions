@@ -1,3 +1,9 @@
+.selectors-container {
+    border-radius: 15px;
+    border: solid 2px var(--header-background);
+    padding-bottom: 30px;
+}
+
 .image-container {
     max-width: 65%;
     width: 100%;

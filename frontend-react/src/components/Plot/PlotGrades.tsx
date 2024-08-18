@@ -97,7 +97,7 @@ function PlotGrades( { courses } ) {
                     "rgba(255, 100, 0, 1)", 
                     "rgba(255, 0, 0, 1)",
                 ],
-                borderWidth: 2,
+                borderWidth: 3,
             },
         ],
     }
