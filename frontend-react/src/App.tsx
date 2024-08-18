@@ -15,16 +15,19 @@ import Footer from "./components/Footer/Footer.tsx";
 
 function App() {
 
+  const [isUpdated, setIsUpdated] = useState<boolean>(false);
   const [allCourses, setAllCourses] = useState<Array<object>>([]);
   const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
   const [allYears, setAllYears] = useState<Array<object>>([]);
   const [allTerms, setAllTerms] = useState<Array<object>>([]);
 
   const allProp = {
+    isUpdated,
     allYears,
     allTerms,
     allCourses,
     allSubjects,
+    setIsUpdated,
     setAllYears,
     setAllTerms,
     setAllCourses,

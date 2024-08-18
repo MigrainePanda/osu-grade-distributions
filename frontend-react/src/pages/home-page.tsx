@@ -1,16 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 
 function HomePage() {
 
-    const checkRefreshDB = async () => {
-        const response = await fetch("http://localhost:8800/");
-        const checkRefresh = await response.json();
-        console.log("refresh: ", checkRefresh)
-    }
+    const { isUpdated, setIsUpdated } = useContext(AllInfoContext);
 
     useEffect(() => {
-        checkRefreshDB();
-    }, []);
+        const checkRefreshDB = async () => {
+            const response = await fetch("http://localhost:8800/");
+            const checkRefresh = await response.json();
+            console.log("refresh: ", checkRefresh);
+            setIsUpdated(true);
+        }
+
+        if (!isUpdated) {
+            checkRefreshDB();
+        }
+    }, [isUpdated, setIsUpdated]);
 
     return (
         <>
