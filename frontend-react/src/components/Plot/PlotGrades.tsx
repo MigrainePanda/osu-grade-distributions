@@ -1,7 +1,7 @@
 import { Bar } from "react-chartjs-2";
 
 function PlotGrades( { courses } ) {
-    const possibleGrades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"];
+    const possibleGrades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", "W"];
     const labels = possibleGrades;
     const courseData: Array<number> = [];
     let displayedTotalStudents = 0;
@@ -82,6 +82,7 @@ function PlotGrades( { courses } ) {
                     "rgba(255, 151, 0, 0.6)", 
                     "rgba(255, 100, 0, 0.6)", 
                     "rgba(255, 0, 0, 0.6)",
+                    "rgba(0, 0, 0, 0.3)",
                 ],
                 borderColor: [
                     "rgba(0, 186, 19, 1)",
@@ -96,6 +97,7 @@ function PlotGrades( { courses } ) {
                     "rgba(255, 151, 0, 1)", 
                     "rgba(255, 100, 0, 1)", 
                     "rgba(255, 0, 0, 1)",
+                    "rgba(9, 0, 0, 0.5)",
                 ],
                 borderWidth: 3,
             },

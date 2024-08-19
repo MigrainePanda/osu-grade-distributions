@@ -2,7 +2,7 @@ import fs from 'fs';
 import readline from 'readline';
 import * as query from "./query.js";
 
-const POSSIBLE_GRADES = {"A": 1, "A-": 1, "B+": 1, "B": 1, "B-": 1, "C+": 1, "C": 1, "C-": 1, "D+": 1, "D": 1, "D-": 1, "F": 1};
+const POSSIBLE_GRADES = {"A": 1, "A-": 1, "B+": 1, "B": 1, "B-": 1, "C+": 1, "C": 1, "C-": 1, "D+": 1, "D": 1, "D-": 1, "F": 1, "W": 1};
 const CSV_PATH = "data";
 
 function handleGeneralQuery(func, req, res, successStr) {

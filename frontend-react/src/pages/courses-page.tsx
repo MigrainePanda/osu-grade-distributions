@@ -40,7 +40,7 @@ function CoursesPage() {
             const coursesResponse = await fetch(URL + "/courses");
             const courses = await coursesResponse.json();
             setAllCourses(courses);
-            // console.log("Courses received.", courses);
+            console.log("Courses received.", courses);
 
             setFetched(true);
         })

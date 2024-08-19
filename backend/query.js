@@ -41,8 +41,8 @@ const addCourseData = async (course, year, term) => {
   course["Subject"] = course["Course"].substring(0, course["Course"].indexOf(" "));
 
   const columns = `(short, subject, year, term, student_total, credit_hours, grade_pts, gpa_hours, gpa, last_updated, grade_data)`;
-  const str = "?, ".repeat((columns.match(/,/g) || []).length+1);
-  const numValues = str.substring(0, str.length-2);
+  const numValues = "?, ".repeat((columns.match(/,/g) || []).length+1);
+  const valuesStr = numValues.substring(0, numValues.length-2);
 
   let gradeData = {};
   for (const key of Object.keys(course)) {
@@ -52,7 +52,8 @@ const addCourseData = async (course, year, term) => {
   }
   gradeData = JSON.stringify(gradeData);
 
-  const query = `INSERT IGNORE INTO courses ${columns} VALUES (${numValues})`;
+  // const query = `UPDATE courses SET grade_data='${gradeData}' WHERE (short="${course["Course"]}" AND year="${year}" AND term="${term}")`;
+  const query = `INSERT IGNORE INTO courses ${columns} VALUES (${valuesStr})`;
   const values = [
     course["Course"],
     course["Subject"],
