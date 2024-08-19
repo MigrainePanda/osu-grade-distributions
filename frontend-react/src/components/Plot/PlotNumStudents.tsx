@@ -1,7 +1,7 @@
 import { Line } from "react-chartjs-2";
 import { termNumToName } from "../../utils/conversions";
 
-function PlotAvgGPA( { courses } ) {
+function PlotNumStudents( { courses } ) {
 
     const labels: Array<string> = [];
     const courseData: Array<number> = [];
@@ -9,9 +9,9 @@ function PlotAvgGPA( { courses } ) {
     for (const course of courses) {
         const term = termNumToName(course['term']);
         const year = course['year'];
-        const gpa = course['gpa'];
+        const student_total = course['student_total'];
         labels.push(`${term}, ${year}`);
-        courseData.push(gpa);
+        courseData.push(student_total);
     }
 
     const options = {
@@ -23,7 +23,7 @@ function PlotAvgGPA( { courses } ) {
             },
             title: {
                 display: true,
-                text: `Average GPA per Term`,
+                text: `Number of Students per Term`,
                 font: {
                     size: 15
                 }
@@ -41,12 +41,11 @@ function PlotAvgGPA( { courses } ) {
             y: {
                 title: {
                     display: true,
-                    text: "Average GPA"
+                    text: "Number of Students"
                 },
-                max: 4.00,
                 min: 0,
                 ticks: {
-                    stepSize: 0.5,
+                    stepSize: 100,
                 },
             }
         }
@@ -74,4 +73,4 @@ function PlotAvgGPA( { courses } ) {
     );
 }
 
-export default PlotAvgGPA;
+export default PlotNumStudents;

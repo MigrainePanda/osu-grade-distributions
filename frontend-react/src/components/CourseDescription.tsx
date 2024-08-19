@@ -3,7 +3,7 @@
 function CourseDescription( { courses } ) {
 
     if (courses.length === 0) {
-        return <p className="center-text">There is no data associated with the chosen attributes.</p>;
+        return <p className="center-text">There is no data associated with the current selections.</p>;
     }
 
     console.log(courses)

@@ -7,6 +7,7 @@ import SelectorController from "../components/selectors/SelectorController.tsx";
 import CourseDescription from "../components/CourseDescription.tsx";
 import PlotGrades from "../components/Plot/PlotGrades.tsx";
 import PlotAvgGPA from "../components/Plot/PlotAvgGPA.tsx";
+import PlotNumStudents from "../components/Plot/PlotNumStudents.tsx";
 import BackToTop from "../components/BackToTop.tsx";
 
 import "./css/courses-page.css";
@@ -122,6 +123,12 @@ function CoursesPage() {
             <div className="center-div">
                 <div className="image-container">
                     <PlotAvgGPA courses={coursesArr} />
+                </div>
+            </div>
+
+            <div className="center-div">
+                <div className="image-container">
+                    <PlotNumStudents courses={coursesArr} />
                 </div>
             </div>
 
