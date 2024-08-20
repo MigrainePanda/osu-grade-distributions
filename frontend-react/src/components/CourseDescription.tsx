@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 function CourseDescription( { courses } ) {
 
@@ -32,6 +32,10 @@ function CourseDescription( { courses } ) {
             <p className="center-text">Average GPA: {displayedAvgGPA}</p>
         </>
     );
+}
+
+CourseDescription.propTypes = {
+    courses: PropTypes.array
 }
 
 export default CourseDescription;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Bar } from "react-chartjs-2";
 
 function PlotGrades( { courses } ) {
@@ -110,6 +111,10 @@ function PlotGrades( { courses } ) {
         </>
     );
 
+}
+
+PlotGrades.propTypes = {
+    courses: PropTypes.array
 }
 
 export default PlotGrades;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Line } from "react-chartjs-2";
 import { termNumToName } from "../../utils/conversions";
 
@@ -87,6 +88,10 @@ function PlotPassRate( { courses } ) {
             <Line options={options} data={data} />
         </>
     );
+}
+
+PlotPassRate.propTypes = {
+    courses: PropTypes.array
 }
 
 export default PlotPassRate;
