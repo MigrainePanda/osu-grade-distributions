@@ -1,17 +1,31 @@
 import { Line } from "react-chartjs-2";
 import { termNumToName } from "../../utils/conversions";
 
-function PlotNumStudents( { courses } ) {
+function PlotPassRate( { courses } ) {
 
+    // const engrPassingGrades = [];
+    const passingGrades = ["A", "A-", "B+", "B", "B-", "C+", "C"];
     const labels: Array<string> = [];
     const courseData: Array<number> = [];
 
     for (const course of courses) {
         const term = termNumToName(course['term']);
         const year = course['year'];
-        const studentTotal = course['student_total'];
+
+        const gradeData = JSON.parse(course['grade_data']);
+        let passRate = 0;
+        for (const grade of passingGrades) {
+            if (gradeData[grade] !== undefined) {
+                passRate += Number(gradeData[grade]);
+            }
+        }
+        
         labels.push(`${term}, ${year}`);
-        courseData.push(studentTotal);
+        if (passRate === 0) {
+            courseData.push(NaN);
+            continue;
+        }
+        courseData.push(passRate);
     }
 
     const options = {
@@ -23,7 +37,7 @@ function PlotNumStudents( { courses } ) {
             },
             title: {
                 display: true,
-                text: `Number of Students per Term`,
+                text: `Pass Rate per Term`,
                 font: {
                     size: 15
                 }
@@ -41,11 +55,12 @@ function PlotNumStudents( { courses } ) {
             y: {
                 title: {
                     display: true,
-                    text: "Number of Students"
+                    text: "Percentage"
                 },
                 min: 0,
+                max: 100,
                 ticks: {
-                    stepSize: 100,
+                    stepSize: 10,
                 },
             }
         }
@@ -57,11 +72,12 @@ function PlotNumStudents( { courses } ) {
             {
                 data: courseData,
                 backgroundColor: [
-                    "rgba(0, 50, 50, 1)"
+                    "rgba(0, 150, 0, 0.3)"
                 ],
                 borderColor: [
-                    "rgba(0, 0, 150, 1)"
-                ]
+                    "rgba(0, 200, 0, 1)"
+                ],
+                fill: true,
             },
         ],
     }
@@ -73,4 +89,4 @@ function PlotNumStudents( { courses } ) {
     );
 }
 
-export default PlotNumStudents;
+export default PlotPassRate;

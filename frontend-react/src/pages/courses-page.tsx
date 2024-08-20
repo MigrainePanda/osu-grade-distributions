@@ -6,6 +6,7 @@ import LoadingSpinner from "../components/LoadingSpinner.tsx";
 import SelectorController from "../components/selectors/SelectorController.tsx";
 import CourseDescription from "../components/CourseDescription.tsx";
 import PlotGrades from "../components/Plot/PlotGrades.tsx";
+import PlotPassRate from "../components/Plot/PlotPassRate.tsx";
 import PlotAvgGPA from "../components/Plot/PlotAvgGPA.tsx";
 import PlotNumStudents from "../components/Plot/PlotNumStudents.tsx";
 import BackToTop from "../components/BackToTop.tsx";
@@ -40,7 +41,7 @@ function CoursesPage() {
             const coursesResponse = await fetch(URL + "/courses");
             const courses = await coursesResponse.json();
             setAllCourses(courses);
-            console.log("Courses received.", courses);
+            // console.log("Courses received.", courses);
 
             setFetched(true);
         })
@@ -117,6 +118,12 @@ function CoursesPage() {
             <div className="center-div">
                 <div className="image-container">
                     <PlotGrades courses={coursesArr} />
+                </div>
+            </div>
+
+            <div className="center-div">
+                <div className="image-container">
+                    <PlotPassRate courses={coursesArr} />
                 </div>
             </div>
 
