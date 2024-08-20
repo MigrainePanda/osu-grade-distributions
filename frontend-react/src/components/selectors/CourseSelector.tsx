@@ -105,7 +105,7 @@ function CourseSelector() {
             <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Course</h3>
-                    <Tooltip message={"Hello"} />
+                    <Tooltip message={"Course number to indicate a specific course within that academic subject"} />
                 </div>
                 <div className="select-component-wrapper">
                     <Select 

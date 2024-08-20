@@ -21,11 +21,10 @@ function Header(  ) {
         <>
             <header className="navbar-container">
                 <div className="navbar-wrapper">
-                    <NavLink className="navbar-brand" to="/" onClick={() => handleClick(-1)}>OSU Grade Distributions</NavLink>
+                    <NavLink className="navbar-brand" to="/" onClick={() => handleClick(0)}>OSU Grade Distributions</NavLink>
                     <nav className="navbar-menu">
-                        <NavLink className="navbar-menu-items" to="/courses" onClick={() => handleClick(0)}>Courses</NavLink>
-                        <NavLink className="navbar-menu-items" to="/export" onClick={() => handleClick(1)}>Export</NavLink>
-                        <NavLink className="navbar-menu-items" to="/about" onClick={() => handleClick(2)}>About</NavLink>
+                        <NavLink className="navbar-menu-items" to="/" onClick={() => handleClick(0)}>Home</NavLink>
+                        <NavLink className="navbar-menu-items" to="/courses" onClick={() => handleClick(1)}>Courses</NavLink>
                     </nav>
                 </div>
             </header>

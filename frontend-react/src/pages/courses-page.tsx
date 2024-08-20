@@ -16,9 +16,17 @@ import "./css/courses-page.css";
 const URL = import.meta.env.VITE_BACKEND_URL;
 
 function CoursesPage() {
-    const [fetched, setFetched] = useState<boolean>(false);
+    
     const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
-    const { setAllYears, setAllTerms, setAllSubjects, setAllCourses, allCourses } = useContext(AllInfoContext);
+    const { 
+        setAllYears, 
+        setAllTerms, 
+        setAllSubjects, 
+        setAllCourses, 
+        allCourses,
+        isFetched, 
+        setIsFetched,
+    } = useContext(AllInfoContext);
     const { courseName, year, term } = useContext(CurrInfoContext);
     
     useEffect(() => {
@@ -43,11 +51,14 @@ function CoursesPage() {
             setAllCourses(courses);
             // console.log("Courses received.", courses);
 
-            setFetched(true);
-        })
+            console.log("Years, terms, subjects, courses fetched.")
+            setIsFetched(true);
+        });
 
-        loadPage();
-    }, [setAllYears, setAllTerms, setAllSubjects, setAllCourses]);
+        if (!isFetched) {
+            loadPage();
+        }
+    }, [isFetched, setIsFetched, setAllYears, setAllTerms, setAllSubjects, setAllCourses]);
 
     useEffect(() => {
         let arr: Array<object> = [];
@@ -95,7 +106,7 @@ function CoursesPage() {
         }
     }, [allCourses, courseName, year, term]);
 
-    if (!fetched) {
+    if (!isFetched) {
         return (
             <>
                 <h1 className="center-text">Course Selector</h1>

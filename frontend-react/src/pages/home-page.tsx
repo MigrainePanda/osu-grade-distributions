@@ -1,13 +1,15 @@
 import { useEffect, useContext } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 
+const URL = import.meta.env.VITE_BACKEND_URL;
+
 function HomePage() {
 
     const { isUpdated, setIsUpdated } = useContext(AllInfoContext);
 
     useEffect(() => {
         const checkRefreshDB = async () => {
-            const response = await fetch("http://localhost:8800/");
+            const response = await fetch(URL);
             const checkRefresh = await response.json();
             console.log("refresh: ", checkRefresh);
             setIsUpdated(true);

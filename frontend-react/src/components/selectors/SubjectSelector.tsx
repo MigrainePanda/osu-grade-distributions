@@ -30,7 +30,7 @@ function SubjectSelector() {
             <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Subject</h3>
-                    <Tooltip message={"Hello"} />
+                    <Tooltip message={"An abbreviation that indicates the academic subject area"} />
                 </div>
                 <div className="select-component-wrapper">
                     <Select 

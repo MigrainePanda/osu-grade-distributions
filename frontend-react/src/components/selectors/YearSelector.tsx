@@ -37,7 +37,7 @@ function YearSelector() {
             <div className="select-container year-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Year</h3>
-                    <Tooltip message={"Hello"} />
+                    <Tooltip message={"The calendar year of which to filter data by"} />
                 </div>
                 <div className="select-component-wrapper">
                     <Select 

@@ -7,7 +7,6 @@ registerCharts();
 
 import HomePage from "./pages/home-page.tsx";
 import CoursesPage from "./pages/courses-page.tsx";
-import ExportPage from "./pages/export-page.tsx";
 
 import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
@@ -16,6 +15,7 @@ import Footer from "./components/Footer/Footer.tsx";
 function App() {
 
   const [isUpdated, setIsUpdated] = useState<boolean>(false);
+  const [isFetched, setIsFetched] = useState<boolean>(false);
   const [allCourses, setAllCourses] = useState<Array<object>>([]);
   const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
   const [allYears, setAllYears] = useState<Array<object>>([]);
@@ -23,11 +23,13 @@ function App() {
 
   const allProp = {
     isUpdated,
+    isFetched,
     allYears,
     allTerms,
     allCourses,
     allSubjects,
     setIsUpdated,
+    setIsFetched,
     setAllYears,
     setAllTerms,
     setAllCourses,
@@ -63,7 +65,6 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/export" element={<ExportPage />} />
             </Routes>
             <Footer />
           </BrowserRouter>
