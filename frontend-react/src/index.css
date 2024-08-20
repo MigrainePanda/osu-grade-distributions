@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+html {
+    height: 99%;
+    --beaver-orange: rgb(215 63 9);
+}
+
 body {
+    min-height: 99%;
     font-size: 20px;
     font-family: 'Open Sans', sans-serif; 
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .center-text {
@@ -12,4 +24,8 @@ body {
 .center-div {
     display: flex;
     justify-content: center;
+}
+
+h1 {
+    color: var(--beaver-orange);
 }

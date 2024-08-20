@@ -1,9 +1,10 @@
 footer {
+    background-color: var(--header-background);
+    border-radius: 15px;
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 25px;
-    background-color: var(--header-background);
-    border-radius: 15px;
+    bottom: 10px;
 }
 
 footer p {
