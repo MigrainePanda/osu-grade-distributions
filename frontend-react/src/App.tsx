@@ -7,6 +7,8 @@ registerCharts();
 
 import HomePage from "./pages/home-page.tsx";
 import CoursesPage from "./pages/courses-page.tsx";
+import ContactPage from "./pages/contact-page.tsx";
+import AboutPage from "./pages/about-page.tsx";
 
 import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
@@ -65,6 +67,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about" element={<AboutPage />} />
             </Routes>
             <Footer />
           </BrowserRouter>

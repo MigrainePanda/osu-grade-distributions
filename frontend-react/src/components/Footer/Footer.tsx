@@ -17,14 +17,13 @@ function Footer() {
                             <div className="footer-bottom-column">
                                 <p className="footer-bottom-column-title">Support</p>
                                 <div className="footer-bottom-column-items">
-                                    <NavLink to="/">Contact Me</NavLink>
+                                    <NavLink to="/contact">Contact Me</NavLink>
                                 </div>
                             </div>
                             <div className="footer-bottom-column">
                                 <p className="footer-bottom-column-title">About</p>
                                 <div className="footer-bottom-column-items">
-                                    <NavLink to="/">About Me</NavLink>
-                                    <NavLink to="/">Terms and Service</NavLink>
+                                    <NavLink to="/about">About Me</NavLink>
                                 </div>
                             </div>
                         </div>
