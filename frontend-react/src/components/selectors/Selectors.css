@@ -1,5 +1,14 @@
+.selectors-container {
+    width: 90%;
+    border: solid 2px var(--header-background);
+    border-radius: 15px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .select-container {
-    width: 10%;
+    width: 15%;
 }
 
 .select-component-wrapper {
@@ -9,14 +18,6 @@
 
 .select-component {
     width: 100%;
-}
-
-.year-container {
-    margin-right: 50px;
-}
-
-.term-container {
-    margin-left: 50px;
 }
 
 .select-label-info {

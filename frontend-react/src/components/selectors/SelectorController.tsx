@@ -9,17 +9,11 @@ function SelectorController() {
 
     return (
         <>
-            <div className="center-div">
+            <div className="selectors-container">
+                <SubjectSelector />
+                <CourseSelector />
                 <YearSelector />
                 <TermSelector />
-            </div>
-
-            <div className="center-div">
-                <SubjectSelector />
-            </div>
-
-            <div className="center-div">
-                <CourseSelector />
             </div>
         </>
     )

@@ -26,10 +26,10 @@ function CourseDescription( { courses } ) {
 
     return (
         <>
-            <h4 className="center-text">Course Information</h4>
-            <p className="center-text">Data Range: {yearRange}</p>
-            <p className="center-text">Credit Hours: {credits}</p>
-            <p className="center-text">Average GPA: {displayedAvgGPA}</p>
+            <h4>Course Information</h4>
+            <p>Data Range: {yearRange}</p>
+            <p>Credit Hours: {credits}</p>
+            <p>Average GPA: {displayedAvgGPA}</p>
         </>
     );
 }

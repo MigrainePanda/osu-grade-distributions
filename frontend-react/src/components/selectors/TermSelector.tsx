@@ -49,7 +49,7 @@ function TermSelector() {
 
     return (
         <>
-            <div className="select-container term-container">
+            <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Term</h3>
                     <Tooltip message={"The term of which to filter data by (Summer, Fall, Winter, Spring)"} />

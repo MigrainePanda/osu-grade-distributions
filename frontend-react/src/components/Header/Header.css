@@ -17,16 +17,24 @@
 .navbar-wrapper a {
     text-decoration: inherit;
 }
-.navbar-wrapper a:hover {
-    color: black;
+
+.navbar-menu a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--beaver-orange);
     /* color: #646cff; */
 }
 
 .navbar-brand, .navbar-menu-items {
-    color: var(--beaver-orange);
     font-weight: 500;
 }
 
+.navbar-brand {
+    color: var(--beaver-orange);
+}
+
 .navbar-menu-items {
+    color: black;
     margin: 0 0 0 20px;
 }

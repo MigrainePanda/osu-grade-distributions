@@ -1,7 +1,8 @@
-.selectors-container {
-    border-radius: 15px;
-    border: solid 2px var(--header-background);
-    padding-bottom: 30px;
+.images-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .image-container {
@@ -22,25 +23,31 @@
     display: flex;
     justify-content: center;
     padding-top: 20px;
-    font-size: 1.2em;
 }
 
 .button-wrapper a, .button-wrapper button {
-    font-weight: 500;
-    color: black;
     text-decoration: inherit;
 }
 
 .button-wrapper a:hover, .button-wrapper button:hover {
-    color: #646cff;
+    color: black;
     cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--beaver-orange);
 }
 
 .button-component {
-    background: rgba(228, 228, 228, 0.5);
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: none;
     padding: 15px 20px 15px 20px; 
     border-radius: 15px;
     border: 0;
-    font-size: 1.5rem;
     margin: 10px;
+}
+
+.course-description-container {
+    text-align: center;
 }

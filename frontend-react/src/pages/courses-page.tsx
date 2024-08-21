@@ -120,31 +120,25 @@ function CoursesPage() {
     return (
         <>
             <h1 className="center-text">Course Selector</h1>
-            <div className="selectors-container">
+
+            <div className="center-div">
                 <SelectorController />
             </div>
 
-            <CourseDescription courses={coursesArr} />
+            <div className="course-description-container">
+                <CourseDescription courses={coursesArr} />
+            </div>
 
-            <div className="center-div">
+            <div className="images-container">
                 <div className="image-container">
                     <PlotGrades courses={coursesArr} />
                 </div>
-            </div>
-
-            <div className="center-div">
                 <div className="image-container">
                     <PlotPassRate courses={coursesArr} />
                 </div>
-            </div>
-
-            <div className="center-div">
                 <div className="image-container">
                     <PlotAvgGPA courses={coursesArr} />
                 </div>
-            </div>
-
-            <div className="center-div">
                 <div className="image-container">
                     <PlotNumStudents courses={coursesArr} />
                 </div>
