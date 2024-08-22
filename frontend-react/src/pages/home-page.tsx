@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 
 // const URL = import.meta.env.VITE_DOMAIN;
-const URL = "https://damgrades-stg-a56d0fea719f.herokuapp.com/";
+const URL = "https://damgrades-stg-a56d0fea719f.herokuapp.com";
 
 function HomePage() {
 
@@ -10,7 +10,7 @@ function HomePage() {
 
     useEffect(() => {
         const checkRefreshDB = async () => {
-            const response = await fetch(URL);
+            const response = await fetch(URL + "/refresh");
             const checkRefresh = await response.json();
             console.log("refresh: ", checkRefresh);
             setIsUpdated(true);

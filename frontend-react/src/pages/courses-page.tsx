@@ -14,7 +14,7 @@ import BackToTop from "../components/BackToTop.tsx";
 import "./css/courses-page.css";
 
 // const URL = import.meta.env.VITE_DOMAIN;
-const URL = "https://damgrades-stg-a56d0fea719f.herokuapp.com/";
+const URL = "https://damgrades-stg-a56d0fea719f.herokuapp.com";
 
 function CoursesPage() {
     

@@ -5,7 +5,7 @@ const api = express.Router();
 const use = fn => (req, res, next) => 
   Promise.resolve(fn(req, res, next)).catch(next);
 
-// api.get("/", use(controller.fetchAllSubjects));
+api.get("/refresh", use(controller.fetchAllSubjects));
 
 api.get("/terms", use(controller.fetchAllTerms));
 
