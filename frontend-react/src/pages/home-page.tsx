@@ -1,7 +1,8 @@
 import { useEffect, useContext } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 
-const URL = import.meta.env.VITE_BACKEND_URL;
+// const URL = import.meta.env.VITE_DOMAIN;
+const URL = "https://damgrades-stg-a56d0fea719f.herokuapp.com/";
 
 function HomePage() {
 
