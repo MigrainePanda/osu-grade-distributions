@@ -1,4 +1,6 @@
 node_modules
+.env
 
 test.csv
+test.http
 todo.txt
