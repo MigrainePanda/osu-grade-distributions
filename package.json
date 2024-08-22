@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "client-sessions": "^0.8.0",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -9,6 +10,9 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js"
+    "client": "cd frontend-react && npm run dev",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others \"npm run client\" \"npm run server\"",
+    "heroku-postbuild": "cd frontend-react && npm install && npm run build"
   }
 }
