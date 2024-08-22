@@ -23,17 +23,15 @@ app.use(cors());
 
 app.use(session({
   cookieName: 'session',
-  secret: 'fsdalfjaslfjsdk',
+  secret: 'vxvxvsfwerwefwefwe',
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
 }));
 
 app.use(api);
 
-console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'frontend-react/build')));
-  console.log(__dirname);
+  app.use(express.static(path.join(__dirname + '/frontend-react/build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/frontend-react/build/index.html'))
   });
