@@ -30,10 +30,12 @@ app.use(session({
 
 app.use(api);
 
+console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'frontend-react/dist')));
+  app.use(express.static(path.join(__dirname, 'frontend-react/build')));
+  console.log(__dirname);
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/frontend-react/dist/index.html'))
+    res.sendFile(path.join(__dirname + '/frontend-react/build/index.html'))
   });
 }
 
