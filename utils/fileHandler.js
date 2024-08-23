@@ -1,42 +1,3 @@
-import fs from 'fs';
-import readline from 'readline';
-import * as query from "./query.js";
-
-const POSSIBLE_GRADES = {"A": 1, "A-": 1, "B+": 1, "B": 1, "B-": 1, "C+": 1, "C": 1, "C-": 1, "D+": 1, "D": 1, "D-": 1, "F": 1, "W": 1};
-const CSV_PATH = "data";
-
-function handleGeneralQuery(func, req, res, successStr) {
-  func
-    .then(response => {
-      if (response !== null) {
-        console.log(successStr);
-        res.json(response);
-      } else {
-        res.status(404).json({ Error: `There were no instances found on this server at ${getCurrentTime()}.` });
-      }         
-    })
-    .catch(error => {
-      console.log(error);
-      res.status(400).json({ Error: `Server could not process or recognize the retrieval request at ${getCurrentTime()}.` });
-    });
-}
-
-function handleRetrieve(func, req, res) {
-  handleGeneralQuery(func, req, res, `All instances were retrieved from the collection at ${getCurrentTime()}.`);
-}
-
-function getCurrentTime() {
-  const timeElapsed = Date.now();
-  const today = new Date(timeElapsed);
-  const date = today.toUTCString();
-  return date;
-}
-
-function getCurrentEpoch() {
-  return Math.round((new Date()).getTime() / 1000);
-}
-
-
 async function handleFilesCaller() {
   const files = fs.readdirSync(CSV_PATH);
   let path = "";
@@ -128,4 +89,4 @@ function handleFile(path, callback) {
   });
 }
 
-export { POSSIBLE_GRADES, handleGeneralQuery, handleRetrieve, getCurrentTime, getCurrentEpoch, handleFilesCaller };
+export { handleFilesCaller, handleFile }
