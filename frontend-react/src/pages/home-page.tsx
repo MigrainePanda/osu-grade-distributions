@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 
-const URL = import.meta.env.VITE_BACKEND_URL;
+const URL = window.location.href;
 
 function HomePage() {
 
@@ -9,7 +9,7 @@ function HomePage() {
 
     useEffect(() => {
         const checkRefreshDB = async () => {
-            const response = await fetch(URL);
+            const response = await fetch(URL + 'refresh');
             const checkRefresh = await response.json();
             console.log("refresh: ", checkRefresh);
             setIsUpdated(true);
