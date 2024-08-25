@@ -33,6 +33,9 @@ function SplashLoading() {
         <>
             <div id="splash">
                 <img src="/favicon.png" className="splash-logo"></img>
+                <div className="splash-copyright-container">
+                    <p className="copyright splash-copyright">&copy; 2024 Nicholas Tanaka</p>
+                </div>
             </div>
         </>
     );
