@@ -53,4 +53,14 @@
     border-width: 5px;
     border-style: solid;
     border-color: var(--tooltip-background-color) transparent transparent transparent;
-  }
+}
+
+@media(min-width: 768px) {
+    .tooltip-container {
+        margin-left: 0.4vw;
+    }
+
+    .tooltip-wrapper {
+        font-size: 12px;
+    }
+}  

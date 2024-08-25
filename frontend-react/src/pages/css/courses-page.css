@@ -16,11 +16,21 @@
     margin-bottom: 20px;
 }
 
+.course-description-container h4 {
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+
+.course-description-container p {
+    margin-bottom: 3px;
+}
+
 .images-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 .image-container {
@@ -35,4 +45,29 @@
 
 .grade-distribution-container {
     height: 60vh;
+}
+
+@media(min-width: 768px) {
+    .course-title {
+        margin: 4vh 0 4vh 0;
+    }
+
+    .course-description-container h4 {
+        font-size: 1.2vw;
+        margin-bottom: 0.7vh;
+    }
+    
+    .course-description-container p {
+        font-size: 1vw;
+        margin-bottom: 0.3vh;
+    }
+
+    .images-container {
+        margin: 0 auto;
+    }
+
+    .image-container {
+        width: 60vw;
+        height: 30vw;
+    }
 }

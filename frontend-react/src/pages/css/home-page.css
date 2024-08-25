@@ -1,6 +1,7 @@
 .home-container {
     min-height: 90vh;
     height: 100vh;
+    font-weight: 500;
 }
 
 .home-content {
@@ -15,7 +16,16 @@
     padding-bottom: 50px;
 }
 
+.course-title {
+    font-size: 5vh;
+}
+
+.course-subtitle {
+    font-size: 2.5vh;
+}
+
 .home-description {
+    font-size: 1.75vh;
     justify-content: flex-end;
 }
 

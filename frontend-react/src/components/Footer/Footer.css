@@ -55,9 +55,36 @@ footer {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        padding-top: 3vh;
     }
 
     .footer-inner-top {
-        padding: 0 30px 0 30px;
+        padding: 0 6vw 0 1vw;
+    }
+
+    .footer-logo {
+        height: 1rem;
+        margin-right: 10px;
+    }
+
+    .footer-inner-container .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .copyright {
+        font-size: 1rem;
+    }
+
+    .footer-inner-bottom {
+        gap: 3vw;
+    }
+
+    .footer-inner-column-title {    
+        font-size: 1.2rem;
+        padding: 5px 0 5px 0;
+    }
+
+    .footer-inner-column-item a {
+        font-size: 1rem;
     }
 }

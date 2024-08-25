@@ -61,9 +61,10 @@ function PlotNumStudents( { courses } ) {
                     text: "Number of Students"
                 },
                 min: 0,
-                max: biggest + 100,
+                max: biggest + 100 | 1,
                 ticks: {
-                    stepSize: 100,
+                    stepSize: 50,
+                    
                 },
             }
         }

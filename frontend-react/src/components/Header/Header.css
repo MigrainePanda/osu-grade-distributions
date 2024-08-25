@@ -10,7 +10,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    font-size: 1.2em;
+    font-size: clamp(1.2rem, 2.2vh, 3vh);
 }
 
 .navbar-wrapper a {

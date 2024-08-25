@@ -23,11 +23,25 @@
 
 @media(min-width: 768px) {
     .selectors-container {
-        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        width: 60%;
+        margin: 0 auto;
         border: solid 2px var(--header-background);
         border-radius: 15px;
-        padding-bottom: 30px;
-        display: flex;
-        justify-content: space-evenly;
+        padding: 2vh;
+    }
+
+    .select-container {
+        padding: 0 1vw 0 1vw;
+    }
+
+    .select-label-info {
+        margin-bottom: 1.5vh;
+    }
+
+    .select-label-info h3 {
+        font-size: 2vh;
     }
 }
