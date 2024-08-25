@@ -9,7 +9,7 @@ import PlotGrades from "../components/Plot/PlotGrades.tsx";
 import PlotPassRate from "../components/Plot/PlotPassRate.tsx";
 import PlotAvgGPA from "../components/Plot/PlotAvgGPA.tsx";
 import PlotNumStudents from "../components/Plot/PlotNumStudents.tsx";
-import BackToTop from "../components/BackToTop.tsx";
+import BackToTop from "../components/BackToTop/BackToTop.tsx";
 
 import "./css/courses-page.css";
 
@@ -109,9 +109,11 @@ function CoursesPage() {
     if (!isFetched) {
         return (
             <>
-                <h1 className="center-text">Course Selector</h1>
-                <div className="center-div image-loading-container">
-                    <LoadingSpinner />
+                <div className="courses-content">
+                    <h1 className="course-title center-text">Course Selector</h1>
+                    <div className="loading-container">
+                        <LoadingSpinner />
+                    </div>
                 </div>
             </>
         );
@@ -119,32 +121,34 @@ function CoursesPage() {
 
     return (
         <>
-            <h1 className="center-text">Course Selector</h1>
+            <div className="courses-content">
 
-            <div className="center-div">
+                <h1 className="course-title center-text">Course Selector</h1>
+
                 <SelectorController />
-            </div>
 
-            <div className="course-description-container">
-                <CourseDescription courses={coursesArr} />
-            </div>
+                <div className="course-description-container">
+                    <CourseDescription courses={coursesArr} />
+                </div>
 
-            <div className="images-container">
-                <div className="image-container">
-                    <PlotGrades courses={coursesArr} />
+                <div className="images-container">
+                    <div className="image-container grade-distribution-container">
+                        <PlotGrades courses={coursesArr} />
+                    </div>
+                    <div className="image-container">
+                        <PlotPassRate courses={coursesArr} />
+                    </div>
+                    <div className="image-container">
+                        <PlotAvgGPA courses={coursesArr} />
+                    </div>
+                    <div className="image-container">
+                        <PlotNumStudents courses={coursesArr} />
+                    </div>
                 </div>
-                <div className="image-container">
-                    <PlotPassRate courses={coursesArr} />
-                </div>
-                <div className="image-container">
-                    <PlotAvgGPA courses={coursesArr} />
-                </div>
-                <div className="image-container">
-                    <PlotNumStudents courses={coursesArr} />
-                </div>
-            </div>
 
-            <BackToTop />
+                <BackToTop />
+                
+            </div>
         </>
     )
 }

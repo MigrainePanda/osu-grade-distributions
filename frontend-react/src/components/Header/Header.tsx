@@ -7,7 +7,9 @@ function Header() {
         <>
             <header className="navbar-container">
                 <div className="navbar-wrapper">
-                    <NavLink className="navbar-brand" to="/">Dam Grades</NavLink>
+                    <NavLink className="navbar-brand" to="/">
+                        <img src="/favicon.png" className="header-logo"></img>
+                    </NavLink>
                     <nav className="navbar-menu">
                         <NavLink className="navbar-menu-items" to="/">Home</NavLink>
                         <NavLink className="navbar-menu-items" to="/courses">Courses</NavLink>

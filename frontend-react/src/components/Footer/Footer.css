@@ -1,68 +1,63 @@
-:root {
-    --footer-inner-gap: 50px;
-    --footer-bottom-numColumns: 2;
-}
-
 footer {
     background-color: var(--header-background);
-    border-radius: 15px;
-    padding: 10px;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    position: relative;
-    bottom: 10px;
+}
+
+.footer-logo {
+    height: 10px;
+    margin-right: 5px;
 }
 
 .footer-inner-container {
     display: flex;
-    flex-direction: row;
-    gap: var(--footer-inner-gap);
-    padding: 40px;
-    margin: 0 400px;
+    flex-direction: column;
+    padding: 20px 20px 50px 20px;
 }
 
 .footer-inner-top {
-    width: 40%;
-    /* display: flex;
-    justify-content: left; */
+    margin-bottom: 20px;
+}
+
+.footer-inner-top p {
+    padding: 5px 0 5px 0;
 }
 
 .copyright {
-    margin: 0;
-    color: rgb(0 0 0 / 80%);
-}
-
-.footer-inner-bottom {
-    width: 60%;
-}
-
-.footer-bottom-columns {
-    display: grid;
-    grid-template-columns: repeat(var(--footer-bottom-numColumns), minmax(10px, 1fr));
-}
-
-.footer-bottom-column-title {
-    font-weight: 500;
-}
-
-.footer-bottom-column-items {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-bottom-column-items a {
-    margin-bottom: 5px;
-}
-
-.footer-bottom-column a {
-    text-decoration: inherit;
+    font-size: 14px;
     color: rgb(0 0 0 / 70%);
 }
 
-.footer-bottom-column a:hover {
-    /* border-bottom: 1px solid black; */
+.footer-inner-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.footer-inner-column-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.footer-inner-column-item a {
+    text-decoration: inherit;
+    font-size: 14px;
+    color: rgb(0 0 0 / 70%);
+}
+
+.footer-inner-column-item a:hover {
     text-decoration: underline;
     text-underline-offset: 0.2em;
     text-decoration-thickness: 1px;
     text-decoration-color: var(--beaver-orange);
+}
+
+
+@media(min-width: 768px) {
+    .footer-inner-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .footer-inner-top {
+        padding: 0 30px 0 30px;
+    }
 }

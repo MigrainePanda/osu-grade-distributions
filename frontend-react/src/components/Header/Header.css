@@ -2,9 +2,8 @@
     --header-background: #ededed;
 }
 
-.navbar-container {
+header {
     background-color: var(--header-background);
-    border-radius: 10px;
 }
 
 .navbar-wrapper {
@@ -18,12 +17,27 @@
     text-decoration: inherit;
 }
 
+.header-logo {
+    height: 32px;
+    margin: 0 15px 0 0;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
 .navbar-menu a:hover {
     text-decoration: underline;
     text-underline-offset: 0.2em;
     text-decoration-thickness: 1px;
     text-decoration-color: var(--beaver-orange);
-    /* color: #646cff; */
 }
 
 .navbar-brand, .navbar-menu-items {

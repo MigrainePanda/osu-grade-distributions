@@ -1,6 +1,8 @@
 import { useEffect, useContext } from "react";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 
+import "./css/home-page.css";
+
 const URL = window.location.href;
 
 function HomePage() {
@@ -22,12 +24,18 @@ function HomePage() {
 
     return (
         <>
-            <div className="center-text">
-                <h1>Oregon State University</h1>
-                <h2>Grade Distributions</h2>
-                <p>-</p>
-                <p>Find out how other students performed in your classes!</p>
-                <p>Export your data to quickly access it later!</p>
+            <div className="home-container">
+                <div className="home-content">
+                    <div className="home-title center-text">
+                        <h1 className="course-title">Oregon State University</h1>
+                        <h2>Grade Distributions</h2>
+                    </div>
+                    <div className="home-description center-text">
+                        <p>Find out how other students performed in your classes!</p>
+                        <p>Export your data to quickly access it later!</p>
+                    </div>
+                    <p className="chevron">v</p>
+                </div>
             </div>
         </>
     )

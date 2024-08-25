@@ -1,0 +1,36 @@
+#splash {
+    background-color: var(--header-background);
+    z-index: 2;
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    transition: opacity 1s;
+}
+
+#splash.fade {
+    opacity: 0;
+}
+
+#splash h1, #splash h2 {
+    padding: 10px;
+}
+
+.white-screen {
+    background-color: var(--header-background);
+    z-index: 2;
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+}

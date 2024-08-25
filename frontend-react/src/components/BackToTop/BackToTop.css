@@ -1,0 +1,34 @@
+.toTop-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 2vh;
+}
+
+.toTop-wrapper a, .toTop-wrapper button {
+    text-decoration: inherit;
+}
+
+.toTop-wrapper a:hover, .toTop-wrapper button:hover {
+    color: black;
+    cursor: pointer;
+    
+}
+
+.toTop-component {
+    font-size: 2vh;
+    font-weight: 500;
+    background-color: var(--header-background);
+    padding: 1.5vh 2vh 1.5vh 2vh; 
+    border-radius: 1.5vh;
+    border: 0;
+    margin: 1vh;
+}
+
+@media(min-width: 768px) {
+    .toTop-wrapper a:hover, .toTop-wrapper button:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.2vh;
+        text-decoration-thickness: 0.1vh;
+        text-decoration-color: var(--beaver-orange);
+    }
+}

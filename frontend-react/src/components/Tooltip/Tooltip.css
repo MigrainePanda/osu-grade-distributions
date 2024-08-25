@@ -3,7 +3,7 @@
 }
 
 .tooltip-container {
-    margin-left: 10px;
+    margin-left: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,11 +14,11 @@
     position: relative;
     display: inline-block;
     margin-top: 2px;
-    font-size: 1rem;
+    font-size: 10px;
     text-align: center;
     border-radius: 50%;
     border: 0.5px solid grey;
-    padding: 0 10px 0 10px;
+    padding: 0 5px 0 5px;
 }
 
 .tooltip-text {
@@ -26,7 +26,8 @@
     position: absolute;
     z-index: 1;
     border-radius: 15px;
-    padding: 8px;
+    padding: 10px;
+    font-size: 14px;
 
     background: var(--tooltip-background-color);
     box-shadow: rgba(0, 0, 0, 0.15) 1px -1px 4px;
@@ -37,10 +38,10 @@
 }
 
 .tooltip-top {
-    width: 200px;
+    width: 250px;
     bottom: 140%;
     left: 50%;
-    margin-left: -103px;
+    margin-left: -125px;
 }
 
 .tooltip-text::after {

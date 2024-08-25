@@ -1,4 +1,4 @@
-
+import "./BackToTop.css";
 
 function BackToTop() {
 
@@ -8,8 +8,8 @@ function BackToTop() {
 
     return (
         <>
-            <div className="button-wrapper">
-                <button className="button-component" onClick={topFunction} >Back to Top</button>
+            <div className="toTop-wrapper">
+                <button className="toTop-component" onClick={topFunction} >Back to Top</button>
             </div>
         </>
     );

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Line } from "react-chartjs-2";
-import { termNumToName } from "../../utils/conversions";
+import { termNumToShortName } from "../../utils/conversions";
 
 function PlotAvgGPA( { courses } ) {
 
@@ -8,7 +8,7 @@ function PlotAvgGPA( { courses } ) {
     const courseData: Array<number> = [];
 
     for (const course of courses) {
-        const term = termNumToName(course['term']);
+        const term = termNumToShortName(course['term']);
         const year = course['year'];
         const gpa = course['gpa'];
         labels.push(`${term}, ${year}`);
@@ -18,6 +18,7 @@ function PlotAvgGPA( { courses } ) {
     const options = {
         indexAxis: "x" as const,
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: false,
@@ -29,6 +30,18 @@ function PlotAvgGPA( { courses } ) {
                     size: 15
                 }
             },
+            zoom: {
+                pan: {
+                    enabled: true,
+                    mode: 'x' as const
+                },
+                zoom: {
+                    pinch: {
+                        enabled: true
+                    },
+                    mode: 'x' as const,
+                }
+            }
         },
         pointRadius: 5,
         pointHoverRadius: 7,
@@ -37,7 +50,9 @@ function PlotAvgGPA( { courses } ) {
                 title: {
                     display: true,
                     text: "Term, Year"
-                }
+                },
+                min: 0,
+                max: 5,
             },
             y: {
                 title: {

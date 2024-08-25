@@ -12,6 +12,7 @@ import {
     Title,
     Tooltip,
   } from "chart.js";
+  import zoomPlugin from 'chartjs-plugin-zoom'; 
   
   export const registerCharts = () => {
     Chart.register(
@@ -25,6 +26,7 @@ import {
       Title,
       Tooltip,
       RadialLinearScale,
-      Filler
+      Filler,
+      zoomPlugin
     )
   }

@@ -5,6 +5,7 @@ import { AllInfoContext } from "./components/contexts/AllInfoContext.tsx";
 import { registerCharts } from "./components/Plot/registerCharts.tsx";
 registerCharts();
 
+import SplashPage from "./pages/splash-page.tsx";
 import HomePage from "./pages/home-page.tsx";
 import CoursesPage from "./pages/courses-page.tsx";
 import ContactPage from "./pages/contact-page.tsx";
@@ -64,12 +65,15 @@ function App() {
 
           <BrowserRouter>
             <Header />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/about" element={<AboutPage />} />
-            </Routes>
+              <div className="content">
+                <Routes>
+                  <Route path="/splash" element={<SplashPage />} />
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/courses" element={<CoursesPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                </Routes>
+              </div>
             <Footer />
           </BrowserRouter>
           

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Line } from "react-chartjs-2";
-import { termNumToName } from "../../utils/conversions";
+import { termNumToShortName } from "../../utils/conversions";
 
 function PlotNumStudents( { courses } ) {
 
@@ -8,16 +8,18 @@ function PlotNumStudents( { courses } ) {
     const courseData: Array<number> = [];
 
     for (const course of courses) {
-        const term = termNumToName(course['term']);
+        const term = termNumToShortName(course['term']);
         const year = course['year'];
         const studentTotal = course['student_total'];
         labels.push(`${term}, ${year}`);
         courseData.push(studentTotal);
     }
+    const biggest = Math.ceil(Math.max(...courseData)/100)*100;
 
     const options = {
         indexAxis: "x" as const,
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: false,
@@ -29,6 +31,18 @@ function PlotNumStudents( { courses } ) {
                     size: 15
                 }
             },
+            zoom: {
+                pan: {
+                    enabled: true,
+                    mode: 'x' as const
+                },
+                zoom: {
+                    pinch: {
+                        enabled: true
+                    },
+                    mode: 'x' as const,
+                }
+            }
         },
         pointRadius: 5,
         pointHoverRadius: 7,
@@ -37,7 +51,9 @@ function PlotNumStudents( { courses } ) {
                 title: {
                     display: true,
                     text: "Term, Year"
-                }
+                },
+                min: 0,
+                max: 5,
             },
             y: {
                 title: {
@@ -45,6 +61,7 @@ function PlotNumStudents( { courses } ) {
                     text: "Number of Students"
                 },
                 min: 0,
+                max: biggest + 100,
                 ticks: {
                     stepSize: 100,
                 },

@@ -37,6 +37,7 @@ function PlotGrades( { courses } ) {
     const options = {
         indexAxis: "y" as const,
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: false,

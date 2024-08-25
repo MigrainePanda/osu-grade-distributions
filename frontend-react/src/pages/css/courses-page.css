@@ -1,3 +1,21 @@
+.loading-container {
+    margin: 50px auto;
+}
+
+.courses-content {
+    padding: 20px;
+}
+
+.course-title {
+    margin-bottom: 20px;
+}
+
+.course-description-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
 .images-container {
     display: flex;
     flex-direction: column;
@@ -6,48 +24,15 @@
 }
 
 .image-container {
-    max-width: 65%;
-    width: 100%;
     background-color: #ffffff;
-    padding: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 30px;
-    margin-top: 50px;
+    margin-bottom: 20px;
+    position: relative;
+    height: 50vh;
+    width: 90vw;
+    padding: 10px 20px 10px 10px;
 }
 
-.image-loading-container {
-    margin-top: 50px;
-}
-
-.button-wrapper {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-
-.button-wrapper a, .button-wrapper button {
-    text-decoration: inherit;
-}
-
-.button-wrapper a:hover, .button-wrapper button:hover {
-    color: black;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--beaver-orange);
-}
-
-.button-component {
-    font-size: 1.5rem;
-    font-weight: 500;
-    background: none;
-    padding: 15px 20px 15px 20px; 
-    border-radius: 15px;
-    border: 0;
-    margin: 10px;
-}
-
-.course-description-container {
-    text-align: center;
+.grade-distribution-container {
+    height: 60vh;
 }

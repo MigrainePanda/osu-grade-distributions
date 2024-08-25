@@ -1,14 +1,9 @@
 .selectors-container {
-    width: 90%;
-    border: solid 2px var(--header-background);
-    border-radius: 15px;
-    padding-bottom: 30px;
-    display: flex;
-    justify-content: space-evenly;
+    margin-bottom: 25px;
 }
 
 .select-container {
-    width: 15%;
+    margin-bottom: 10px;
 }
 
 .select-component-wrapper {
@@ -23,4 +18,16 @@
 .select-label-info {
     display: flex;
     justify-content: center;
+    margin-bottom: 7px;
+}
+
+@media(min-width: 768px) {
+    .selectors-container {
+        width: 90%;
+        border: solid 2px var(--header-background);
+        border-radius: 15px;
+        padding-bottom: 30px;
+        display: flex;
+        justify-content: space-evenly;
+    }
 }

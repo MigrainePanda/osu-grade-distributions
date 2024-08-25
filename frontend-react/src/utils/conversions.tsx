@@ -7,5 +7,15 @@ function termNumToName(str) {
     }
     return numToName[str];
 }
+
+function termNumToShortName(str) {
+  const numToName = {
+    "00": "Su",
+    "01": "F",
+    "02": "W",
+    "03": "S"
+  }
+  return numToName[str];
+}
   
-export { termNumToName };
+export { termNumToName, termNumToShortName };
