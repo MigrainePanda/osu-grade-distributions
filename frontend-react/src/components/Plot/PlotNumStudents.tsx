@@ -15,6 +15,7 @@ function PlotNumStudents( { courses } ) {
         courseData.push(studentTotal);
     }
     const biggest = Math.ceil(Math.max(...courseData)/100)*100;
+    const yMax = biggest + 100 | 0;
 
     const options = {
         indexAxis: "x" as const,
@@ -28,7 +29,7 @@ function PlotNumStudents( { courses } ) {
                 display: true,
                 text: `Number of Students per Term`,
                 font: {
-                    size: 15
+                    size: 16
                 }
             },
             zoom: {
@@ -61,9 +62,9 @@ function PlotNumStudents( { courses } ) {
                     text: "Number of Students"
                 },
                 min: 0,
-                max: biggest + 100 | 1,
+                max: yMax,
                 ticks: {
-                    stepSize: 50,
+                    stepSize: 100,
                     
                 },
             }

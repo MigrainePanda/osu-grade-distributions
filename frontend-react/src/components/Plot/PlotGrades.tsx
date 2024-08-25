@@ -46,7 +46,7 @@ function PlotGrades( { courses } ) {
                 display: true,
                 text: `Grade Distribution of ${displayedTotalStudents} students`,
                 font: {
-                    size: 15
+                    size: 16
                 }
             },
         },

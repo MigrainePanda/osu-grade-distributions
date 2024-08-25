@@ -41,7 +41,7 @@ function PlotPassRate( { courses } ) {
                 display: true,
                 text: `Pass Rate per Term`,
                 font: {
-                    size: 15
+                    size: 16
                 }
             },
             zoom: {

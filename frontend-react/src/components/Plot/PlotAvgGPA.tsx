@@ -27,7 +27,7 @@ function PlotAvgGPA( { courses } ) {
                 display: true,
                 text: `Average GPA per Term`,
                 font: {
-                    size: 15
+                    size: 16
                 }
             },
             zoom: {
