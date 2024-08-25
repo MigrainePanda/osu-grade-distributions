@@ -1,8 +1,8 @@
 #splash {
     background-color: var(--header-background);
-    z-index: 2;
-    min-width: 100vw;
-    min-height: 100vh;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -10,27 +10,30 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 
     transition: opacity 1s;
 }
 
+.fade-duration {
+    overflow: hidden;
+}
+
 #splash.fade {
     opacity: 0;
+    z-index: 99;
+}
+
+#splash.fade-done {
+    z-index: -1;
 }
 
 #splash h1, #splash h2 {
     padding: 10px;
 }
 
-.white-screen {
-    background-color: var(--header-background);
-    z-index: 2;
-    min-width: 100vw;
-    min-height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: 1;
+.splash-logo {
+    width: 20vw;
+    height: 20vh;
+    margin: 0 auto;
 }

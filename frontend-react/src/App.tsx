@@ -5,7 +5,6 @@ import { AllInfoContext } from "./components/contexts/AllInfoContext.tsx";
 import { registerCharts } from "./components/Plot/registerCharts.tsx";
 registerCharts();
 
-import SplashPage from "./pages/splash-page.tsx";
 import HomePage from "./pages/home-page.tsx";
 import CoursesPage from "./pages/courses-page.tsx";
 import ContactPage from "./pages/contact-page.tsx";
@@ -13,11 +12,11 @@ import AboutPage from "./pages/about-page.tsx";
 
 import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
-
+import SplashLoading from "./components/SplashLoading/SplashLoading.tsx";
 
 function App() {
 
-  const [isUpdated, setIsUpdated] = useState<boolean>(false);
+  const [isSplash, setIsSplash] = useState<boolean>(false);
   const [isFetched, setIsFetched] = useState<boolean>(false);
   const [allCourses, setAllCourses] = useState<Array<object>>([]);
   const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
@@ -25,13 +24,13 @@ function App() {
   const [allTerms, setAllTerms] = useState<Array<object>>([]);
 
   const allProp = {
-    isUpdated,
+    isSplash,
     isFetched,
     allYears,
     allTerms,
     allCourses,
     allSubjects,
-    setIsUpdated,
+    setIsSplash,
     setIsFetched,
     setAllYears,
     setAllTerms,
@@ -66,8 +65,8 @@ function App() {
           <BrowserRouter>
             <Header />
               <div className="content">
+              {!isSplash && <SplashLoading />}
                 <Routes>
-                  <Route path="/splash" element={<SplashPage />} />
                   <Route path="/" element={<HomePage />} />
                   <Route path="/courses" element={<CoursesPage />} />
                   <Route path="/contact" element={<ContactPage />} />

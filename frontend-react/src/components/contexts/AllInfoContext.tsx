@@ -1,13 +1,13 @@
 import { createContext } from 'react';
 
 export type InformationType = {
-    isUpdated: boolean
+    isSplash: boolean
     isFetched: boolean
     allYears: Array<object>
     allTerms: Array<object>
     allCourses: Array<object>
     allSubjects: Array<object>
-    setIsUpdated: (c:boolean) => void
+    setIsSplash: (c:boolean) => void
     setIsFetched: (c:boolean) => void
     setAllYears: (c:Array<object>) => void
     setAllTerms: (c:Array<object>) => void
@@ -16,13 +16,13 @@ export type InformationType = {
 }
 
 const AllInfoContext = createContext<InformationType>({
-    isUpdated: false,
+    isSplash: false,
     isFetched: false,
     allYears: [{}],
     allTerms: [{}],
     allCourses: [{}],
     allSubjects: [{}],
-    setIsUpdated: () => {},
+    setIsSplash: () => {},
     setIsFetched: () => {},
     setAllYears: () => {},
     setAllTerms: () => {},
