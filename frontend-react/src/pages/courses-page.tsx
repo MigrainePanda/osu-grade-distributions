@@ -13,7 +13,7 @@ import BackToTop from "../components/BackToTop/BackToTop.tsx";
 
 import "./css/courses-page.css";
 
-const URL = window.location.href;
+const URL = "https://osu-grade-distributions-stg-22718fe09a22.herokuapp.com/";
 
 function CoursesPage() {
     
