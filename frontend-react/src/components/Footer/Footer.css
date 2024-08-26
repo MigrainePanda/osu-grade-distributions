@@ -36,6 +36,7 @@ footer {
 }
 
 .footer-inner-column-title {
+    font-size: var(--font-size-default);
     font-weight: 500;
     margin-bottom: 5px;
 }
