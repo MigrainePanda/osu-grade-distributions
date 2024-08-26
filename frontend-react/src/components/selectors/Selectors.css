@@ -12,6 +12,7 @@
 }
 
 .select-component {
+    font-size: var(--font-size-default);
     width: 100%;
 }
 
@@ -19,6 +20,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 7px;
+    font-size: var(--font-size-default);
 }
 
 @media(min-width: 768px) {
@@ -41,7 +43,11 @@
         margin-bottom: 1.5vh;
     }
 
-    .select-label-info h3 {
-        font-size: 2vh;
+    .select-component {
+        font-size: var(--desktop-font-size-default);
+    }
+    
+    .select-label-info {
+        font-size: var(--desktop-font-size-default);
     }
 }

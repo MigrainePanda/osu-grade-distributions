@@ -15,7 +15,7 @@
 }
 
 .toTop-component {
-    font-size: 2vh;
+    font-size: var(--font-size-default);
     font-weight: 500;
     background-color: var(--header-background);
     padding: 1.5vh 2vh 1.5vh 2vh; 

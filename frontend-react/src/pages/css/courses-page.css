@@ -11,13 +11,11 @@
 }
 
 .course-description-container {
-    text-align: center;
     margin-top: 40px;
     margin-bottom: 20px;
 }
 
 .course-description-container h4 {
-    font-size: 18px;
     margin-bottom: 7px;
 }
 
@@ -48,17 +46,13 @@
 }
 
 @media(min-width: 768px) {
-    .course-title {
-        margin: 4vh 0 4vh 0;
-    }
-
     .course-description-container h4 {
-        font-size: 1.2vw;
+        /* font-size: 1.2vw; */
         margin-bottom: 0.7vh;
     }
     
     .course-description-container p {
-        font-size: 1vw;
+        /* font-size: 1vw; */
         margin-bottom: 0.3vh;
     }
 

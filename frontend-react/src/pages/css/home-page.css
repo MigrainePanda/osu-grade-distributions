@@ -1,7 +1,6 @@
 .home-container {
     min-height: 90vh;
     height: 100vh;
-    font-weight: 500;
 }
 
 .home-content {
@@ -12,25 +11,44 @@
     justify-content: center;
 }
 
+.home-title-container {
+    margin-bottom: 30px;
+}
+
 .home-title {
-    padding-bottom: 50px;
+    font-size: calc(var(--font-size-title) * 1.3);
+    color: var(--primary-color);
+    padding-bottom: 10px;
 }
 
-.course-title {
-    font-size: 5vh;
-}
-
-.course-subtitle {
-    font-size: 2.5vh;
+.home-subtitle {
+    font-size: calc(var(--font-size-default) * 1.2);
 }
 
 .home-description {
-    font-size: 1.75vh;
-    justify-content: flex-end;
+    width: 80%;
+    font-size: var(--font-size-small);
+    margin: 0 auto;
 }
 
 .chevron {
     position: absolute;
-    top: 90vh;
-    left: 50vw;
+    width: 15px;
+    top: 90%;
+    left: 50%;
+    transform: rotate(90deg);
+}
+
+@media(min-width: 768px) {
+    .home-title {
+        font-size: calc(var(--desktop-font-size-title) * 1.3);
+    }
+    
+    .home-subtitle {
+        font-size: calc(var(--desktop-font-size-small) * 1.3);
+    }
+    
+    .home-description {
+        font-size: var(--desktop-font-size-small);
+    }
 }

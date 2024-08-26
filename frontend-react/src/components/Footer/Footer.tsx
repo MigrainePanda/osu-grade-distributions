@@ -25,7 +25,7 @@ function Footer() {
                         <div className="footer-inner-bottom-items">
                             <p className="footer-inner-column-title">About</p>
                             <div className="footer-inner-column-item">
-                                <NavLink to="/about">About Me</NavLink>
+                                <NavLink to="/about">About This Website</NavLink>
                             </div>
                         </div>
                         

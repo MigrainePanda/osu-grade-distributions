@@ -1,0 +1,35 @@
+.about-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-text-container {
+    flex: 1 0 auto;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.about-text {
+    margin-bottom: 5px;
+}
+
+.about-contact-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.about-data-source {
+    margin-top: 30px;
+}
+
+.about-disclaimer {
+    margin-bottom: 10px;
+}
+
+.about-copyright {
+    flex-shrink: 0;
+    padding-top: 20px;
+}

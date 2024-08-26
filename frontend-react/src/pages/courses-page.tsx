@@ -110,7 +110,7 @@ function CoursesPage() {
         return (
             <>
                 <div className="courses-content">
-                    <h1 className="course-title center-text">Course Selector</h1>
+                    <h1 className="page-title center-text">Course Selector</h1>
                     <div className="loading-container">
                         <LoadingSpinner />
                     </div>
@@ -123,11 +123,11 @@ function CoursesPage() {
         <>
             <div className="courses-content">
 
-                <h1 className="course-title center-text">Course Selector</h1>
+                <h1 className="page-title center-text">Course Selector</h1>
 
                 <SelectorController />
 
-                <div className="course-description-container">
+                <div className="course-description-container page-text center-text">
                     <CourseDescription courses={coursesArr} />
                 </div>
 

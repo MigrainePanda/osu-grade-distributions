@@ -10,7 +10,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    font-size: clamp(1.2rem, 2.2vh, 3vh);
+    font-size: var(--font-size-default);
 }
 
 .navbar-wrapper a {
@@ -51,4 +51,10 @@ header {
 .navbar-menu-items {
     color: black;
     margin: 0 0 0 20px;
+}
+
+@media(min-width: 768px) {
+    .navbar-wrapper {
+        font-size: var(--desktop-font-size-default);
+    }
 }

@@ -10,14 +10,6 @@ html, body, #root {
     height: 100%;
 }
 
-html {
-    --beaver-orange: rgb(215 63 9);
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-}
-
 #root {
     display: flex;
     flex-direction: column;
@@ -35,11 +27,72 @@ footer {
     text-align: center;
 }
 
-.center-div {
-    display: flex;
-    justify-content: center;
+
+
+
+html {
+    --beaver-orange: rgb(215 63 9);
+    
+    --primary-color: var(--beaver-orange);
+    --secondary-color: #ededed;
+    --text-light: rgb(0 0 0 / 70%);
+
+    --desktop-min-width: 768px;
+
+    font-size: 62.5%;
+    --font-size-small: 1.4rem;
+    --font-size-default: 1.6rem;
+    --font-size-large: 2.4rem;
+    --font-size-title: 3.2rem;
+    --line-height-default: 2.6rem;
+    
+    --scale-factor: 1.3;
+    --desktop-font-size-small: calc(var(--font-size-small) * var(--scale-factor));
+    --desktop-font-size-default: calc(var(--font-size-default) * var(--scale-factor));
+    --desktop-font-size-large: calc(var(--font-size-large) * var(--scale-factor));
+    --desktop-font-size-title: calc(var(--font-size-title) * var(--scale-factor));
+    --desktop-line-height-default: calc(var(--line-height-default) * var(--scale-factor));
 }
 
-h1 {
+.page-title {
+    font-size: var(--font-size-title);
     color: var(--beaver-orange);
+    margin-bottom: 20px;
+}
+
+@media(min-width: 768px) {
+    .page-title {
+        font-size: var(--desktop-font-size-title);
+        margin: 4vh 0 4vh 0;
+    }
+}
+
+.page-text {
+    font-size: var(--font-size-default);
+    line-height: var(--line-height-default);
+}
+
+@media(min-width: 768px) {
+    .page-text {
+        font-size: var(--desktop-font-size-default);
+        line-height: var(--desktop-line-height-default);
+    }
+}
+
+.page-text-small {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-default);
+    color: var(--text-light);
+}
+
+@media(min-width: 768px) {
+    .page-text-small {
+        font-size: var(--desktop-font-size-small);
+        line-height: var(--desktop-line-height-default);
+    }
+}
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
 }
