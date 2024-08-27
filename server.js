@@ -1,4 +1,5 @@
 import express from "express";
+import secure from 'ssl-express-www';
 import cors from "cors";
 import session from "client-sessions";
 import api from "./api.js";
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('assets'));
 app.use(express.static(__dirname +'/'));
+app.use(secure);
 app.use(cors());
 
 app.use(session({
