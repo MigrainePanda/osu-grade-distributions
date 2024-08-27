@@ -63,29 +63,11 @@
     margin: 0;
 }
 
-/*
-@media(min-width: 768px) {
-    .contact-form {
-        width: 50%;
-        margin: 0 auto;
-        font-size: 1.75vh;
-    }
+.captcha-container {
+    margin-bottom: 20px;
+}
 
-    #contact-name-input, 
-    #contact-email-input,
-    #contact-message-input,
-    .contact-submit-button {
-        padding: 1vh;
-    }
-
-    .contact-submit-button {
-        padding: 1vh;
-        margin-bottom: 20px;
-        font-size: 1.4vh;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        font-size: 1.3vh;
-    }
-} */
+.contact-result {
+    width: 90%;
+    margin: 2vh auto 6vh auto;
+}
