@@ -1,95 +1,42 @@
 footer {
-    background-color: var(--header-background);
-}
-
-.footer-logo {
-    height: 12px;
-    margin-right: 5px;
-}
-
-.footer-inner-container .navbar-brand {
-    font-size: var(--font-size-default);
+    background-color: #e2e2e2;
 }
 
 .footer-inner-container {
     display: flex;
     flex-direction: column;
-    padding: 20px 20px 50px 20px;
+    gap: 1rem;
+    padding: 3rem 2rem;
 }
 
-.footer-inner-top {
-    margin-bottom: 20px;
+.footer-logo {
+    height: 1.2rem;
+    margin-right: 0.5rem;
 }
 
-.footer-inner-top p {
-    padding: 5px 0 5px 0;
+.footer-inner-container .navbar-brand {
+    font-size: var(--font-size-default);
+    margin: 0 auto;
 }
 
 .copyright {
+    margin: 0 auto;
     font-size: var(--font-size-small);
     color: rgb(0 0 0 / 70%);
 }
-
-.footer-inner-bottom {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.footer-inner-column-title {
-    font-size: var(--font-size-default);
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-.footer-inner-column-item a {
-    text-decoration: inherit;
-    font-size: var(--font-size-small);
-    color: rgb(0 0 0 / 70%);
-}
-
-.footer-inner-column-item a:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--beaver-orange);
-}
-
 
 @media(min-width: 768px) {
-    .footer-inner-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        padding-top: 3vh;
-    }
-
-    .footer-inner-top {
-        padding: 0 6vw 0 1vw;
-    }
-
-    .footer-logo {
-        height: var(--desktop-font-size-small);;
-        margin-right: 10px;
-    }
-
     .footer-inner-container .navbar-brand {
         font-size: var(--desktop-font-size-default);
     }
 
     .copyright {
+        margin: 0 auto;
         font-size: var(--desktop-font-size-small);
+        color: rgb(0 0 0 / 70%);
     }
 
-    .footer-inner-bottom {
-        gap: 3vw;
-    }
-
-    .footer-inner-column-title {    
-        font-size: var(--desktop-font-size-default);
-        padding: 5px 0 5px 0;
-    }
-
-    .footer-inner-column-item a {
-        font-size: var(--desktop-font-size-small);
+    .footer-inner-container {
+        padding: 4rem 3rem;
     }
 }
