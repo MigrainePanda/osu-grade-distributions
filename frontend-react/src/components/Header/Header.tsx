@@ -1,20 +1,85 @@
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const iconRef = useRef<HTMLDivElement>(null);
+    const menuRef = useRef<HTMLElement>(null);
+
+    const handleToggle = () => {
+        iconRef.current?.classList.toggle('show-icon');
+        menuRef.current?.classList.toggle('show-menu');
+        setIsOpen(prevOpen => !prevOpen);
+    }
+
+    const handleLink = () => {
+        iconRef.current?.classList.remove('show-icon');
+        menuRef.current?.classList.remove('show-menu');
+        setIsOpen(false);
+    }
+    
+    function disableScroll() {
+        window.onscroll = function () {
+            window.scrollTo(0, 0);
+        }
+        document.body.classList.add('no-scroll');
+    }
+
+    function enableScroll() {
+        window.onscroll = function () { };
+        document.body.classList.remove('no-scroll');
+    }
+
+    useEffect(() => {
+        if (isOpen) {
+            disableScroll();
+        }
+        else {
+            enableScroll();
+        }
+    }, [isOpen]);
    
     return (
         <>
-            <header className="navbar-container">
-                <div className="navbar-wrapper">
-                    <NavLink className="navbar-brand" to="/">
-                        <img src="/favicon.png" className="header-logo"></img>
-                    </NavLink>
-                    <nav className="navbar-menu">
-                        <NavLink className="navbar-menu-items" to="/">Home</NavLink>
-                        <NavLink className="navbar-menu-items" to="/courses">Courses</NavLink>
+            <header>
+                <nav className="nav-container">
+                    <div className="nav-inner-container">
+                        <NavLink className="nav-brand" to="/">
+                            <img src="/favicon.png" className="header-logo"></img>
+                        </NavLink>
+
+                        <div className="nav-toggle" id="nav-toggle" onClick={handleToggle} ref={iconRef}>
+                            <img src="/open-burger.svg" className="dropdown-open"></img>
+                            <img src="/close-x.svg" className="dropdown-close"></img>
+                        </div>
+
+                        <div className="nav-desktop">
+                            <NavLink className="page-text" to="/" onClick={handleLink}>Home</NavLink>
+                            <NavLink className="page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
+                            <NavLink className="page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
+                            <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
+                        </div>
+                    </div>
+
+                    <nav className="nav-menu" id="nav-menu" ref={menuRef}>
+                        <ul className="nav-list">
+                            <li>
+                                <NavLink className="page-text" to="/" onClick={handleLink}>Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
+                            </li>
+                        </ul>
                     </nav>
-                </div>
+                </nav>
             </header>
         </>
     )
