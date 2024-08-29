@@ -8,22 +8,29 @@ function SplashLoading() {
     const { setIsSplash } = useContext(AllInfoContext);
 
     function disableScroll() {
+        console.log('scroll disabled');
         window.onscroll = function () {
             window.scrollTo(0, 0);
         }
+        document.body.classList.add('no-scroll');
     }
-    disableScroll();
 
     function enableScroll() {
+        console.log('scroll enabled');
         window.onscroll = function () { };
+        document.body.classList.remove('no-scroll');
     }
+
+    useEffect(() => {
+        disableScroll();
+    }, []);
 
     useEffect(() => {
         setTimeout(() => {
             document.getElementById('splash')?.classList.add('fade');
             setTimeout(() => {
-                enableScroll();
                 document.getElementById('splash')?.classList.add('fade-done');
+                enableScroll();
                 setIsSplash(true);
             }, 1000);
         }, 1000);

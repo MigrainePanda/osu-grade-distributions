@@ -1,5 +1,9 @@
+.no-scroll {
+    overflow: hidden;
+}
+
 #splash {
-    background-color: var(--header-background);
+    background-color: var(--sixty-color);
     z-index: 99;
     width: 100%;
     height: 100%;
@@ -25,7 +29,7 @@
 }
 
 #splash.fade-done {
-    z-index: -1;
+    display: none;
 }
 
 #splash h1, #splash h2 {
