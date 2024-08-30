@@ -13,17 +13,7 @@
 }
 
 
-
-
-    
-.contact-form {
-    display: flex;
-    flex-direction: column;
-}
-
-
 .contact-input-container {
-    max-width: 500px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -86,4 +76,15 @@
 .contact-result {
     width: 90%;
     margin: 0 auto;
+}
+
+@media(min-width: 1000px) {
+    .contact-input-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .captcha-wrapper {
+        transform: none;
+    }
 }

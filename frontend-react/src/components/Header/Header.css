@@ -4,13 +4,10 @@
     --menu-height: 83.5vh;
 }
 
-.no-scroll {
-    overflow: hidden;
-}
-
 header {
     margin-top: 3vh;
     z-index: 90;
+
 }
 
 .nav-container {
@@ -18,7 +15,7 @@ header {
     width: 90%;
     margin: 0 auto 0 auto;
     border-radius: var(--border-radius);
-    background-color: var(--sixty-color);
+    background-color: var(--background-color);
     padding: 2.5rem 3rem;
 }
 
@@ -105,16 +102,17 @@ header {
 
 .nav-desktop a {
     color: var(--primary-color);
-    font-size: var(--font-size-title);
+    font-size: var(--font-size-large);
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1000px) {
     .nav-toggle,
     .nav-menu {
         display: none;
     }
 
     .nav-container {
+        width: var(--page-width);
         height: 9rem;
     }
 

@@ -1,5 +1,5 @@
 footer {
-    background-color: #e2e2e2;
+    background-color: var(--background-footer-color);
 }
 
 .footer-inner-container {

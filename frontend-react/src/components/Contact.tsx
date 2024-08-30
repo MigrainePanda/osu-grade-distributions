@@ -42,41 +42,43 @@ function Contact( { setResult } ) {
 
   return (
     <>
-    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
-        <input
-            type="checkbox"
-            id="bot-check"
-            className="hidden"
-            style={{ display: "none" }}
-            {...register("botcheck")}
-        /> 
+        <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+            <input
+                type="checkbox"
+                id="bot-check"
+                className="hidden"
+                style={{ display: "none" }}
+                {...register("botcheck")}
+            /> 
 
-        <div className="contact-input-container">
-            <label htmlFor="contact-name-input" className="page-text contact-label"><p>Full Name</p></label>
-            <input 
-                type="text"
-                placeholder="John Stones"
-                id="contact-name-input" 
-                {...register("name", { 
-                    required: "Enter your full name", 
-                    maxLength: 30
-                })} 
-                autoComplete="on"
-            />
-        </div>
+            <div className="grid-block">    
+                <div className="contact-input-container">
+                    <label htmlFor="contact-name-input" className="page-text contact-label"><p>Full Name</p></label>
+                    <input 
+                        type="text"
+                        placeholder="John Stones"
+                        id="contact-name-input" 
+                        {...register("name", { 
+                            required: "Enter your full name", 
+                            maxLength: 30
+                        })} 
+                        autoComplete="on"
+                    />
+                </div>
 
-            <div className="contact-input-container">
-                <label htmlFor="contact-email-input" className="page-text contact-label"><p>Email</p></label>
-                <input 
-                    type="email"
-                    placeholder="johnstones@email.com"
-                    id="contact-email-input" 
-                    {...register("email", { 
-                        required: "Enter your email", 
-                        maxLength: 50
-                    })} 
-                    autoComplete="on"
-                />
+                <div className="contact-input-container">
+                    <label htmlFor="contact-email-input" className="page-text contact-label"><p>Email</p></label>
+                    <input 
+                        type="email"
+                        placeholder="johnstones@email.com"
+                        id="contact-email-input" 
+                        {...register("email", { 
+                            required: "Enter your email", 
+                            maxLength: 50
+                        })} 
+                        autoComplete="on"
+                    />
+                </div>
             </div>
 
             <div className="contact-input-container">

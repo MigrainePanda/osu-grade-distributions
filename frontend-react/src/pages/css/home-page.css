@@ -1,9 +1,3 @@
-.content-title-block {
-    border: 1px solid var(--background-grey-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 .home-title {
     font-size: calc(var(--font-size-title) * 1.3);
     color: var(--ten-color);
@@ -22,5 +16,15 @@
     
     .home-subtitle {
         font-size: calc(var(--desktop-font-size-small) * 1.3);
+    }
+
+    .grid-block {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .mobile-separator {
+        display: none;
     }
 }

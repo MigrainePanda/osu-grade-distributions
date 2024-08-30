@@ -52,13 +52,18 @@ footer {
     display: none;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
 
 
+
+
+.separator, .mobile-separator {
+    height: 3rem;;
+} 
 
 .content-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
     padding: 2rem 3rem 4rem 3rem;
 }
 
@@ -86,7 +91,12 @@ footer {
     margin-bottom: 5px;
 }
 
-
+.content-title-block {
+    background-color: var(--background-sixty-color);
+    border: 1px solid var(--border-sixty-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 
 
@@ -97,13 +107,14 @@ html {
     --sixty-color: #f4f4f4;
     --thirty-color: #0a1e3e;
     --ten-color: #d73f09;
-
+    
     --text-color: var(--thirty-color);
-    --background-color: var(--sixty-color);
+    --background-color: #eeee;
     --background-ten-color: #ffeee2;
-    --background-grey-color: rgb(221, 221, 221);
-
-
+    --background-sixty-color: #ececec;
+    --background-footer-color: #e2e2e2;
+    --border-sixty-color: #e0e0e0;
+    
     --page-width: 60%;
     
     font-size: 62.5%;
@@ -121,10 +132,15 @@ html {
     --desktop-line-height-default: calc(var(--line-height-default) * var(--scale-factor));
 }
 
-.page-title {
+
+
+.block-title {
     font-size: var(--font-size-title);
     color: var(--thirty-color);
-    /* margin-bottom: 3.5rem; */
+}
+
+.page-title {
+    color: var(--ten-color);
 }
 
 .page-text {
@@ -136,7 +152,6 @@ html {
 .page-action {
     width: fit-content;
     margin-top: 1rem;
-    /* margin-left: 0.1rem; */
     color: white;
     background-color: #0D5257;
     background-color: #D73F09;
@@ -144,15 +159,17 @@ html {
     border-radius: 2rem;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1000px) {
     .content {
         width: var(--page-width);
     }
 
-    .page-title {
+    .content-block-text-container {
+        padding-bottom: 2rem;
+    }
+
+    .block-title {
         font-size: var(--desktop-font-size-title);
-        line-height: var(--desktop-line-height-default);
-        margin: 4vh 0 4vh 0;
     }
 
     .page-text {

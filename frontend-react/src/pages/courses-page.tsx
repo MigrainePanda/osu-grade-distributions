@@ -114,18 +114,14 @@ function CoursesPage() {
 
                     <div className="content-block">
                         <div className="content-block-inner">
-                            <h1 className="content-block-title page-title">Courses</h1>
+                            <h1 className="content-block-title block-title">Courses</h1>
                             <div className="content-block-text-container">
                                 <p className="content-block-text page-text">Select the course you would like to view.</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div className="content-block">
-                        <div className="content-block-inner">
-                            <LoadingSpinner />
-                        </div>
-                    </div>
+                    <div className="separator"></div>
+                    <LoadingSpinner />
                 </div>
             </>
         );
@@ -137,12 +133,14 @@ function CoursesPage() {
 
                 <div className="content-block">
                     <div className="content-block-inner">
-                        <h1 className="content-block-title page-title">Courses</h1>
+                        <h1 className="content-block-title block-title">Courses</h1>
                         <div className="content-block-text-container">
                             <p className="content-block-text page-text">Select the course you would like to view.</p>
                         </div>
                     </div>
                 </div>
+
+                <div className="separator"></div>
 
                 <div className="content-block">
                     <div className="content-block-inner">
@@ -150,28 +148,37 @@ function CoursesPage() {
                     </div>
                 </div>
 
+                <div className="separator"></div>
+
                 <div className="content-block">
                     <div className="content-block-inner">
                         <CourseDescription courses={coursesArr} />
                     </div>
                 </div>
 
+                <div className="separator"></div>
+
                 <div className="image-container grade-distribution-container">
                     <PlotGrades courses={coursesArr} />
                 </div>
+                <div className="separator"></div>
                 <div className="image-container">
                     <PlotPassRate courses={coursesArr} />
                 </div>
+                <div className="separator"></div>
                 <div className="image-container">
                     <PlotAvgGPA courses={coursesArr} />
                 </div>
+                <div className="separator"></div>
                 <div className="image-container">
                     <PlotNumStudents courses={coursesArr} />
                 </div>
 
+                <div className="separator"></div>
+
                 <div className="content-block">
                     <div className="content-block-inner">
-                        <h1 className="content-block-title page-title">Can&apos;t find what you&apos;re looking for?</h1>
+                        <h1 className="content-block-title block-title">Can&apos;t find what you&apos;re looking for?</h1>
                         <div className="content-block-text-container">
                             <p className="content-block-text page-text">Send me a message.</p>
                         </div>

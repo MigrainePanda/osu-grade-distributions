@@ -20,16 +20,11 @@
     font-size: var(--font-size-default);
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1000px) {
     .selectors-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-
-        width: 60%;
-        margin: 0 auto;
-        border: solid 2px var(--header-background);
-        border-radius: 15px;
-        padding: 2vh;
+        width: 100%;
     }
 
     .select-container {

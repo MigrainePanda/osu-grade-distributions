@@ -18,11 +18,14 @@ function ContactPage() {
     }, [result, setResult]);
 
     const resultElement = (
-        <div className="content-block">
-            <div className="content-block-inner">
-                <div className="contact-result page-text center-text">{result}</div>
+        <>
+            <div className="content-block">
+                <div className="content-block-inner">
+                    <div className="contact-result page-text center-text">{result}</div>
+                </div>
             </div>
-        </div>
+            <div className="separator"></div>
+        </>
     );
     
     return (
@@ -33,16 +36,18 @@ function ContactPage() {
 
                 <div className="content-block">
                     <div className="content-block-inner">
-                        <h1 className="content-block-title page-title">Get in Touch!</h1>
+                        <h1 className="content-block-title block-title">Get in Touch!</h1>
                         <div className="content-block-text-container">
                             <p className="content-block-text page-text">Email me at {myEmail} or fill out the form below.</p>
                         </div>
                     </div>
                 </div>
 
+                <div className="separator"></div>
+
                 <div className="content-block">
                     <div className="content-block-inner">
-                        <h1 className="content-block-title page-title">Form</h1>
+                        <h1 className="content-block-title block-title">Form</h1>
                         <Contact setResult={setResult} />
                     </div>
                 </div>
