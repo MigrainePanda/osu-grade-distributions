@@ -85,6 +85,7 @@ header {
 }
 
 .show-menu {
+    pointer-events: all;
     display: block;
 }
 
