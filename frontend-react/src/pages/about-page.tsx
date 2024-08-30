@@ -10,7 +10,7 @@ function AboutPage() {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = 'Grade Distributions | About';
-    }, []);
+    });
 
     return (
         <>

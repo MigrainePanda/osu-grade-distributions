@@ -11,7 +11,7 @@ function ContactPage() {
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = 'Grade Distributions | Contact';
-    }, []);
+    });
 
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});

@@ -30,6 +30,7 @@ function CoursesPage() {
     const { courseName, year, term } = useContext(CurrInfoContext);
     
     useEffect(() => {
+        document.title = 'Grade Distributions | Courses';
         const loadPage = (async () => {    
             const yearsResponse = await fetch(URL + "api/years");
             const years = await yearsResponse.json();
@@ -57,7 +58,6 @@ function CoursesPage() {
 
         if (!isFetched) {
             loadPage();
-            document.title = 'Grade Distributions | Courses';
         }
     }, [isFetched, setIsFetched, setAllYears, setAllTerms, setAllSubjects, setAllCourses]);
 

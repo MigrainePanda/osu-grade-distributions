@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import "./css/home-page.css";
 
 function HomePage() {
     
-    document.title = 'Grade Distributions | Home';
+    useEffect(() => {
+        document.title = 'Grade Distributions | Home';
+    });
 
     return (
         <>
