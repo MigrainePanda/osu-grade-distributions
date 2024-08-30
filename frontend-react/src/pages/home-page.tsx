@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import "./css/home-page.css";
 
 function HomePage() {
@@ -9,17 +10,34 @@ function HomePage() {
 
     return (
         <>
-            <div className="home-container">
-                <div className="home-content">
-                    <div className="home-title-container center-text">
-                        <h1 className="home-title">Oregon State University</h1>
-                        <h2 className="home-subtitle">Grade Distributions</h2>
+            <div className="content-inner">
+
+                <div className="content-title-block">
+                    <div className="content-block-inner">
+                        <h1 className="home-title center-text">Oregon State University</h1>
+                        <h2 className="home-subtitle center-text">Grade Distributions</h2>
                     </div>
-                    <div className="home-description center-text">
-                        <p>Find out how other students performed in your classes!</p>
-                    </div>
-                    <img src="/chevron.svg" alt="Chevron pointing down" className="chevron" />
                 </div>
+
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <h1 className="content-block-title page-title">Getting Started</h1>
+                        <div className="content-block-text-container">
+                            <p className="content-block-text page-text">palceholder</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <h1 className="content-block-title page-title">Ready to go?</h1>
+                        <div className="content-block-text-container">
+                            <p className="content-block-text page-text">Find out how other students performed in your classes!</p>
+                        </div>
+                        <NavLink to={"/courses"} className={"page-action page-text"}>Get Started</NavLink>
+                    </div>
+                </div>
+
             </div>
         </>
     )

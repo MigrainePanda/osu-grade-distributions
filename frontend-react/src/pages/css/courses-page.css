@@ -1,6 +1,6 @@
 .image-container {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgb(221, 221, 221);
+    border: 1px solid var(--background-grey-color);
     border-radius: var(--border-radius);
     position: relative;
     width: 100%;

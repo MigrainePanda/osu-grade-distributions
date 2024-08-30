@@ -59,7 +59,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    padding: 3rem;
+    padding: 2rem 3rem 4rem 3rem;
 }
 
 .content-block {
@@ -101,6 +101,7 @@ html {
     --text-color: var(--thirty-color);
     --background-color: var(--sixty-color);
     --background-ten-color: #ffeee2;
+    --background-grey-color: rgb(221, 221, 221);
 
 
     --page-width: 60%;
