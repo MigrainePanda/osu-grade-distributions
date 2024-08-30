@@ -13,6 +13,7 @@ import AboutPage from "./pages/about-page.tsx";
 import Header from "./components/Header/Header.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import SplashLoading from "./components/SplashLoading/SplashLoading.tsx";
+import BackToTop from "./components/BackToTop/BackToTop";
 
 function App() {
 
@@ -64,8 +65,8 @@ function App() {
 
           <BrowserRouter>
             <Header />
-              <div className="content">
               {!isSplash && <SplashLoading />}
+              <div className="content" id="content">
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/courses" element={<CoursesPage />} />
@@ -74,6 +75,7 @@ function App() {
                 </Routes>
               </div>
             <Footer />
+            <BackToTop />
           </BrowserRouter>
           
         </CurrInfoContext.Provider>

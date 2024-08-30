@@ -58,11 +58,8 @@ header {
 
 .nav-menu {
     height: var(--menu-height);
-    overflow: auto;
     pointer-events: none;
-
     display: none;
-    transition: display .9s;
 }
 
 .nav-menu::-webkit-scrollbar {
@@ -89,7 +86,6 @@ header {
 
 .show-menu {
     display: block;
-    pointer-events: initial;
 }
 
 .show-icon .dropdown-open {

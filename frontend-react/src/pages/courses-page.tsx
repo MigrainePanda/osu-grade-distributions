@@ -9,7 +9,6 @@ import PlotGrades from "../components/Plot/PlotGrades.tsx";
 import PlotPassRate from "../components/Plot/PlotPassRate.tsx";
 import PlotAvgGPA from "../components/Plot/PlotAvgGPA.tsx";
 import PlotNumStudents from "../components/Plot/PlotNumStudents.tsx";
-import BackToTop from "../components/BackToTop/BackToTop.tsx";
 
 import "./css/courses-page.css";
 
@@ -30,7 +29,7 @@ function CoursesPage() {
     const { courseName, year, term } = useContext(CurrInfoContext);
     
     useEffect(() => {
-        const loadPage = (async () => {      
+        const loadPage = (async () => {    
             const yearsResponse = await fetch(URL + "api/years");
             const years = await yearsResponse.json();
             setAllYears(years);
@@ -57,6 +56,7 @@ function CoursesPage() {
 
         if (!isFetched) {
             loadPage();
+            document.title = 'Grade Distributions | Courses';
         }
     }, [isFetched, setIsFetched, setAllYears, setAllTerms, setAllSubjects, setAllCourses]);
 
@@ -145,8 +145,6 @@ function CoursesPage() {
                         <PlotNumStudents courses={coursesArr} />
                     </div>
                 </div>
-
-                <BackToTop />
                 
             </div>
         </>

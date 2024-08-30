@@ -21,14 +21,10 @@ function Header() {
     }
     
     function disableScroll() {
-        window.onscroll = function () {
-            window.scrollTo(0, 0);
-        }
         document.body.classList.add('no-scroll');
     }
 
     function enableScroll() {
-        window.onscroll = function () { };
         document.body.classList.remove('no-scroll');
     }
 
@@ -62,23 +58,23 @@ function Header() {
                             <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
                         </div>
                     </div>
+                </nav>
 
-                    <nav className="nav-menu" id="nav-menu" ref={menuRef}>
-                        <ul className="nav-list">
-                            <li>
-                                <NavLink className="page-text" to="/" onClick={handleLink}>Home</NavLink>
-                            </li>
-                            <li>
-                                <NavLink className="page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
-                            </li>
-                            <li>
-                                <NavLink className="page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
-                            </li>
-                            <li>
-                                <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
-                            </li>
-                        </ul>
-                    </nav>
+                <nav className="nav-menu" id="nav-menu" ref={menuRef}>
+                    <ul className="nav-list">
+                        <li>
+                            <NavLink className="page-text" to="/" onClick={handleLink}>Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
+                        </li>
+                    </ul>
                 </nav>
             </header>
         </>
