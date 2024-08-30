@@ -1,6 +1,8 @@
 import "./css/home-page.css";
 
 function HomePage() {
+    
+    document.title = 'Grade Distributions | Home';
 
     return (
         <>

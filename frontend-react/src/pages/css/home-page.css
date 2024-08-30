@@ -1,6 +1,7 @@
 .home-container {
     min-height: 90vh;
     height: 100vh;
+    color: var(--thirty-color);
 }
 
 .home-content {
@@ -17,7 +18,7 @@
 
 .home-title {
     font-size: calc(var(--font-size-title) * 1.3);
-    color: var(--primary-color);
+    color: var(--ten-color);
     padding-bottom: 10px;
 }
 

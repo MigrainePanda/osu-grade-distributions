@@ -47,12 +47,10 @@
 
 @media(min-width: 768px) {
     .course-description-container h4 {
-        /* font-size: 1.2vw; */
         margin-bottom: 0.7vh;
     }
     
     .course-description-container p {
-        /* font-size: 1vw; */
         margin-bottom: 0.3vh;
     }
 
