@@ -18,8 +18,8 @@ const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static('assets'));
-app.use(express.static(__dirname +'/'));
+app.use(express.static(__dirname + 'frontend-react/public'));
+app.use(express.static(__dirname + '/'));
 app.use(secure);
 app.use(cors());
 
