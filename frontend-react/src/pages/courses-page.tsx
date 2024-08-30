@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../components/contexts/CurrInfoContext.tsx";
 
@@ -109,10 +110,21 @@ function CoursesPage() {
     if (!isFetched) {
         return (
             <>
-                <div className="courses-content">
-                    <h1 className="page-title center-text">Course Selector</h1>
-                    <div className="loading-container">
-                        <LoadingSpinner />
+                <div className="content-inner">
+
+                    <div className="content-block">
+                        <div className="content-block-inner">
+                            <h1 className="content-block-title page-title">Courses</h1>
+                            <div className="content-block-text-container">
+                                <p className="content-block-text page-text">Select the course you would like to view.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="content-block">
+                        <div className="content-block-inner">
+                            <LoadingSpinner />
+                        </div>
                     </div>
                 </div>
             </>
@@ -121,28 +133,49 @@ function CoursesPage() {
 
     return (
         <>
-            <div className="courses-content">
+            <div className="content-inner">
 
-                <h1 className="page-title center-text">Course Selector</h1>
-
-                <SelectorController />
-
-                <div className="course-description-container page-text center-text">
-                    <CourseDescription courses={coursesArr} />
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <h1 className="content-block-title page-title">Courses</h1>
+                        <div className="content-block-text-container">
+                            <p className="content-block-text page-text">Select the course you would like to view.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="images-container">
-                    <div className="image-container grade-distribution-container">
-                        <PlotGrades courses={coursesArr} />
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <SelectorController />
                     </div>
-                    <div className="image-container">
-                        <PlotPassRate courses={coursesArr} />
+                </div>
+
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <CourseDescription courses={coursesArr} />
                     </div>
-                    <div className="image-container">
-                        <PlotAvgGPA courses={coursesArr} />
-                    </div>
-                    <div className="image-container">
-                        <PlotNumStudents courses={coursesArr} />
+                </div>
+
+                <div className="image-container grade-distribution-container">
+                    <PlotGrades courses={coursesArr} />
+                </div>
+                <div className="image-container">
+                    <PlotPassRate courses={coursesArr} />
+                </div>
+                <div className="image-container">
+                    <PlotAvgGPA courses={coursesArr} />
+                </div>
+                <div className="image-container">
+                    <PlotNumStudents courses={coursesArr} />
+                </div>
+
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <h1 className="content-block-title page-title">Can&apos;t find what you&apos;re looking for?</h1>
+                        <div className="content-block-text-container">
+                            <p className="content-block-text page-text">Send me a message.</p>
+                        </div>
+                        <NavLink to={"/contact"} className={"page-action page-text"}>Contact Me</NavLink>
                     </div>
                 </div>
                 

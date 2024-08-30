@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function CourseDescription( { courses } ) {
 
     if (courses.length === 0) {
-        return <p className="center-text">There is no data associated with the current selections.</p>;
+        return <p className="content-block-text page-text center-text">There is no data associated with the current selections.</p>;
     }
 
     // console.log(courses)
@@ -26,10 +26,12 @@ function CourseDescription( { courses } ) {
 
     return (
         <>
-            <h4>Course Information</h4>
-            <p>Data Range: {yearRange}</p>
-            <p>Credit Hours: {credits}</p>
-            <p>Average GPA: {displayedAvgGPA}</p>
+            <div className="content-block-text-container center-text">
+                <h4 className="content-block-text page-text">Course Information</h4>
+                <p className="content-block-text page-text">Data Range: {yearRange}</p>
+                <p className="content-block-text page-text">Credit Hours: {credits}</p>
+                <p className="content-block-text page-text">Average GPA: {displayedAvgGPA}</p>
+            </div>
         </>
     );
 }

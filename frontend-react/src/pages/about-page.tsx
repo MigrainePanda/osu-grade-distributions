@@ -31,7 +31,7 @@ function AboutPage() {
                         <div className="content-block-text-container">
                             <p className="content-block-text page-text">I hope you find this site useful for your degree planning and wish you the best of luck in your classes! If you have any questions, concerns, or feedback, please let me know.</p>
                         </div>
-                        <NavLink to={"/contact"} className={"foo page-action page-text"}>Contact Me</NavLink>
+                        <NavLink to={"/contact"} className={"page-action page-text"}>Contact Me</NavLink>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@ function AboutPage() {
                         <div className="content-block-text-container">
                             <p className="content-block-text page-text">All grade data was acquired from FOIA (Freedom of Information Act) requests to the Oregon State University Public Records Officer.</p>
                         </div>
-                        <a href={PUBLIC_RECORDS_URL} className="foo page-action page-text">Learn more</a>
+                        <a href={PUBLIC_RECORDS_URL} className="page-action page-text">Learn more</a>
                     </div>
                 </div>
 
