@@ -1,24 +1,51 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import "./css/contact-page.css";
 import Contact from "../components/Contact";
 
 function ContactPage() {
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, []);
-
+    const [result, setResult] = useState<string>("");
     const myEmail = <a href="mailto:tanakan@oregonstate.edu" className="email-link">tanakan@oregonstate.edu</a>;
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        document.title = 'Grade Distributions | Contact';
+    }, []);
+
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }, [result, setResult]);
+
+    const resultElement = (
+        <div className="content-block">
+            <div className="content-block-inner">
+                <div className="contact-result page-text center-text">{result}</div>
+            </div>
+        </div>
+    );
+    
     return (
         <>
-            <div className="contact-content">
+            <div className="content-inner">
 
-                <h1 className="page-title center-text">Get in Touch!</h1>
-                <p className="page-text contact-subtitle center-text">Email me at {myEmail} or fill out the form below.</p>
+                {result !== "" && resultElement}
 
-                <Contact />
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <h1 className="content-block-title page-title">Get in Touch!</h1>
+                        <div className="content-block-text-container">
+                            <p className="content-block-text page-text">Email me at {myEmail} or fill out the form below.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="content-block">
+                    <div className="content-block-inner">
+                        <h1 className="content-block-title page-title">Form</h1>
+                        <Contact setResult={setResult} />
+                    </div>
+                </div>
 
             </div>
         </>

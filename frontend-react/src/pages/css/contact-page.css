@@ -9,18 +9,20 @@
 
 .email-link {
     text-decoration: inherit;
+    color: var(--ten-color);
 }
+
+
+
+
     
 .contact-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 
 .contact-input-container {
-    width: 70%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
@@ -46,11 +48,6 @@
     height: 30vh;
 }
 
-.contact-submit-button {
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
 .char-counter-container {
     text-align: right;
 }
@@ -64,10 +61,29 @@
 }
 
 .captcha-container {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
+}
+
+.captcha-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.77);
+}
+
+.contact-submit-container {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-submit-button {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 1rem;
 }
 
 .contact-result {
     width: 90%;
-    margin: 2vh auto 6vh auto;
+    margin: 0 auto;
 }

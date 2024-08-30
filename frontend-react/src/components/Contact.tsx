@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";    
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import PropTypes from 'prop-types';
 
-function Contact() {
+function Contact( { setResult } ) {
 
+    const captchaRef = useRef<HTMLDivElement>(null);
     const {register, reset, handleSubmit, setValue } = useForm();
-    const [result, setResult] = useState<string>("");
+    
     const accessKey = "c300c8ae-679f-4eb4-84e8-f91e7382a246";
 
     const { submit: onSubmit } = useWeb3Forms({
@@ -43,7 +45,7 @@ function Contact() {
     <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
         <input
             type="checkbox"
-            id=""
+            id="bot-check"
             className="hidden"
             style={{ display: "none" }}
             {...register("botcheck")}
@@ -59,6 +61,7 @@ function Contact() {
                     required: "Enter your full name", 
                     maxLength: 30
                 })} 
+                autoComplete="on"
             />
         </div>
 
@@ -67,11 +70,12 @@ function Contact() {
                 <input 
                     type="email"
                     placeholder="johnstones@email.com"
-                    id="contact-name-input" 
+                    id="contact-email-input" 
                     {...register("email", { 
                         required: "Enter your email", 
                         maxLength: 50
                     })} 
+                    autoComplete="on"
                 />
             </div>
 
@@ -90,12 +94,14 @@ function Contact() {
                 </div>
             </div>
 
-            <div className="captcha-container">
-                <HCaptcha
-                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                    reCaptchaCompat={false}
-                    onVerify={onHCaptchaChange} 
-                />
+            <div className="captcha-container" ref={captchaRef}>
+                <div className="captcha-wrapper">
+                    <HCaptcha
+                        sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                        reCaptchaCompat={false}
+                        onVerify={onHCaptchaChange}
+                    />
+                </div>
             </div>
 
             <div className="contact-submit-container">
@@ -103,11 +109,12 @@ function Contact() {
             </div>
 
         </form>
-
-        <div className="contact-result page-text center-text">{result}</div>
-
     </>
  );
+}
+
+Contact.propTypes = {
+    setResult: PropTypes.func,
 }
 
 export default Contact;
