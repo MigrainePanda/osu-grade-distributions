@@ -42,13 +42,13 @@ function Header() {
             <header>
                 <nav className="nav-container">
                     <div className="nav-inner-container">
-                        <NavLink className="nav-brand" to="/">
-                            <img src="/favicon.png" className="header-logo"></img>
+                        <NavLink className="nav-brand" to="/" aria-label="Navigate to the home page">
+                            <img src="/favicon.png" alt="Brand logo spelling OSU" className="header-logo"></img>
                         </NavLink>
 
                         <div className="nav-toggle" id="nav-toggle" onClick={handleToggle} ref={iconRef}>
-                            <img src="/open-burger.svg" className="dropdown-open"></img>
-                            <img src="/close-x.svg" className="dropdown-close"></img>
+                            <img src="/open-burger.svg" alt="Three horizontal lines indicating a menu" className="dropdown-open"></img>
+                            <img src="/close-x.svg" alt="Crossing lines in X indiciating to close a menu" className="dropdown-close"></img>
                         </div>
 
                         <div className="nav-desktop">
