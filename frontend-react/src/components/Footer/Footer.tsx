@@ -7,7 +7,7 @@ function Footer() {
                 <div className="footer-inner-container">
                     <div className="footer-grid">
                         <div className="footer-left">
-                            <img src="/favicon.png" alt="Brand logo spelling OSU" className="footer-logo"></img>
+                            <img src="/favicon.webp" alt="Brand logo spelling OSU" className="header-logo"></img>
                         </div>
                         <div className="footer-right">
                             <p className="navbar-brand">OSU Grade Distributions</p>

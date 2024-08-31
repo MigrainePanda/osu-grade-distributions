@@ -43,7 +43,7 @@ function Header() {
                 <nav className="nav-container">
                     <div className="nav-inner-container">
                         <NavLink className="nav-brand" to="/" aria-label="Navigate to the home page">
-                            <img src="/favicon.png" alt="Brand logo spelling OSU" className="header-logo"></img>
+                            <img src="/favicon.webp" alt="Brand logo spelling OSU" className="header-logo"></img>
                         </NavLink>
 
                         <div className="nav-toggle" id="nav-toggle" onClick={handleToggle} ref={iconRef}>
