@@ -5,8 +5,15 @@ function Footer() {
         <>
             <footer>
                 <div className="footer-inner-container">
-                    <p className="navbar-brand"><img src="/favicon.png" className="footer-logo"></img>OSU Grade Distributions</p>
-                    <p className="copyright">&copy; 2024 Nicholas Tanaka</p>
+                    <div className="footer-grid">
+                        <div className="footer-left">
+                            <img src="/favicon.png" alt="Brand logo spelling OSU" className="footer-logo"></img>
+                        </div>
+                        <div className="footer-right">
+                            <p className="navbar-brand">OSU Grade Distributions</p>
+                            <p className="copyright">&copy; 2024 Nicholas Tanaka</p>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </>
