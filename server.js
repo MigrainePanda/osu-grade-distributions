@@ -1,5 +1,6 @@
 import express from "express";
 import secure from 'ssl-express-www';
+import compression from "compression";
 import cors from "cors";
 import session from "client-sessions";
 import api from "./api.js";
@@ -49,6 +50,17 @@ app.use(function(err, req, res, next) {
     res.status(500).send(err);
   }
 });
+
+app.use(compression({ filter: shouldCompress }))
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
 
 const server = app.listen(port, () => {
   console.log(`Server running on port ${port}.`);
