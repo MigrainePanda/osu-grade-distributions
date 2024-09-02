@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { AllInfoContext } from "../contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../contexts/CurrInfoContext.tsx";
 import { OptionsType, ValueType } from "./SelectorTypes.tsx";
+import customStyles from "./SelectorStyle.tsx";
 
 import Select from "react-select";
 import Tooltip from "../Tooltip/Tooltip.tsx";
@@ -42,6 +43,7 @@ function YearSelector() {
                 <div className="select-component-wrapper">
                     <Select 
                         className="select-component center-text"
+                        styles={customStyles}
                         options={options} 
                         value={value}
                         onChange={option => handleChange(option)}

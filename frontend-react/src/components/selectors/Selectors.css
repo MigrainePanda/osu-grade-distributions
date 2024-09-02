@@ -28,18 +28,10 @@
     }
 
     .select-container {
-        padding: 0 1vw 0 1vw;
+        padding: 0 1rem 0 1rem;
     }
 
     .select-label-info {
         margin-bottom: 1.5vh;
-    }
-
-    .select-component {
-        font-size: var(--desktop-font-size-default);
-    }
-    
-    .select-label-info {
-        font-size: var(--desktop-font-size-default);
     }
 }
