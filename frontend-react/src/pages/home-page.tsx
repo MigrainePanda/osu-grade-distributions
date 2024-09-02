@@ -12,7 +12,7 @@ function HomePage() {
         <>
             <div className="content-inner">
 
-                <div className="content-title-block">
+                <div className="content-home-title-block">
                     <div className="content-block-inner">
                         <h1 className="home-title center-text">Oregon State University</h1>
                         <h2 className="home-subtitle center-text">Grade Distributions</h2>

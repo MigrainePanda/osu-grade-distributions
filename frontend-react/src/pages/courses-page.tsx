@@ -131,9 +131,9 @@ function CoursesPage() {
         <>
             <div className="content-inner">
 
-                <div className="content-block">
+                <div className="content-title-block">
                     <div className="content-block-inner">
-                        <h1 className="content-block-title block-title">Courses</h1>
+                        <h1 className="content-block-title page-title block-title">Courses</h1>
                         <div className="content-block-text-container">
                             <p className="content-block-text page-text">Select the course you would like to view.</p>
                         </div>

@@ -103,7 +103,7 @@ header {
 
 .nav-desktop a {
     color: var(--primary-color);
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-default);
 }
 
 @media(min-width: 1000px) {
@@ -120,7 +120,7 @@ header {
     .nav-desktop {
         display: flex;
         flex-direction: row;
-        gap: 4.5rem;
+        gap: 2.5rem;
     }
 
     .nav-desktop a:hover {
