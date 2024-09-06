@@ -112,11 +112,11 @@ function CoursesPage() {
             <>
                 <div className="content-inner">
 
-                    <div className="content-block">
+                    <div className="content-title-block">
                         <div className="content-block-inner">
-                            <h1 className="content-block-title block-title">Courses</h1>
+                            <h1 className="content-block-title page-title block-title">Courses</h1>
                             <div className="content-block-text-container">
-                                <p className="content-block-text page-text">Select the course you would like to view.</p>
+                                <p className="content-block-text page-subtitle page-text">Select the course you would like to view.</p>
                             </div>
                         </div>
                     </div>
@@ -150,9 +150,24 @@ function CoursesPage() {
 
                 <div className="separator"></div>
 
-                <div className="content-block">
-                    <div className="content-block-inner center-center">
-                        <CourseDescription courses={coursesArr} />
+                <div className="grid-block course-description-block">
+                    <div className="content-block">
+                        <div className="content-block-inner">
+                            <CourseDescription courses={coursesArr} />
+                        </div>
+                    </div>
+                    <div className="mobile-separator"></div>
+                    <div className="content-block">
+                        <div className="content-block-inner">
+                            <h1 className="content-block-title block-title">Legend</h1>
+                            <ul className="page-text">
+                                <li className="content-block-text">F: Fall</li>
+                                <li className="content-block-text">W: Winter</li>
+                                <li className="content-block-text">S: Spring</li>
+                                <li className="content-block-text">Su: Summer</li>
+                                <li className="content-block-text">Ex. &quot;F, 2023&quot; is Fall 2023</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
