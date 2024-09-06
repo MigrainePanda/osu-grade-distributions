@@ -46,22 +46,57 @@ function PlotGrades( { courses } ) {
                 display: true,
                 text: `Grade Distribution of ${displayedTotalStudents} students`,
                 font: {
-                    size: 16
+                    size: 18
                 }
             },
+            tooltip: {
+                titleFont: {
+                    size: 16
+                },
+                bodyFont: {
+                    size: 16
+                },
+                callbacks: {
+                  label: function(context) {
+                    const value = context.raw;
+                    const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                    const percentage = ((value / total) * 100).toFixed(2);
+                    return ` ${value} (${percentage}%)`;
+                  }
+                }
+            }
         },
         scales: {
             x: {
                 title: {
                     display: true,
-                    text: "Number of students"
-                }
+                    text: "Number of students",
+                    font: {
+                        size: 18
+                    }
+                },
+                ticks: {
+                    font: {
+                        size: 16
+                    }
+                },
             },
             y: {
                 title: {
                     display: true,
-                    text: "Grade"
-                }
+                    text: "Grade",
+                    font: {
+                        size: 18
+                    }
+                },
+                afterFit: function(scale) {
+                    scale.width = 70
+                },
+                ticks: {
+                    font: {
+                        size: 16
+                    }
+                },
             }
         }
     }
@@ -72,34 +107,34 @@ function PlotGrades( { courses } ) {
             {
                 data: courseData,
                 backgroundColor: [
-                    "rgba(0, 186, 19, 0.6)",
-                    "rgba(51, 199, 15, 0.6)", 
-                    "rgba(102, 212, 11, 0.6)", 
-                    "rgba(153, 225, 8, 0.6)", 
-                    "rgba(204, 238, 4, 0.6)", 
-                    "rgba(228, 224, 0, 0.6)", 
-                    "rgba(255, 231, 0, 0.6)", 
-                    "rgba(255, 201, 0, 0.6)", 
-                    "rgba(255, 185, 0, 0.6)", 
-                    "rgba(255, 151, 0, 0.6)", 
-                    "rgba(255, 100, 0, 0.6)", 
-                    "rgba(255, 0, 0, 0.6)",
-                    "rgba(0, 0, 0, 0.3)",
+                    "rgba(215, 63, 9, 0.6)",
+                    "rgba(218, 74, 24, 0.6)", 
+                    "rgba(220, 86, 38, 0.6)", 
+                    "rgba(223, 97, 53, 0.6)", 
+                    "rgba(226, 109, 67, 0.6)", 
+                    "rgba(228, 120, 82, 0.6)", 
+                    "rgba(231, 132, 96, 0.6)", 
+                    "rgba(234, 143, 111, 0.6)", 
+                    "rgba(236, 154, 125, 0.6)", 
+                    "rgba(239, 166, 140, 0.6)", 
+                    "rgba(242, 177, 154, 0.6)", 
+                    "rgba(244, 189, 169, 0.6)",
+                    "rgba(247, 200, 183, 0.6)",
                 ],
                 borderColor: [
-                    "rgba(0, 186, 19, 1)",
-                    "rgba(51, 199, 15, 1)", 
-                    "rgba(102, 212, 11, 1)", 
-                    "rgba(153, 225, 8, 1)", 
-                    "rgba(204, 238, 4, 1)", 
-                    "rgba(228, 224, 0, 1)", 
-                    "rgba(255, 231, 0, 1)", 
-                    "rgba(255, 201, 0, 1)", 
-                    "rgba(255, 185, 0, 1)", 
-                    "rgba(255, 151, 0, 1)", 
-                    "rgba(255, 100, 0, 1)", 
-                    "rgba(255, 0, 0, 1)",
-                    "rgba(9, 0, 0, 0.5)",
+                    "rgba(215, 63, 9, 1)",
+                    "rgba(218, 74, 24, 1)", 
+                    "rgba(220, 86, 38, 1)", 
+                    "rgba(223, 97, 53, 1)", 
+                    "rgba(226, 109, 67, 1)", 
+                    "rgba(228, 120, 82, 1)", 
+                    "rgba(231, 132, 96, 1)", 
+                    "rgba(234, 143, 111, 1)", 
+                    "rgba(236, 154, 125, 1)", 
+                    "rgba(239, 166, 140, 1)", 
+                    "rgba(242, 177, 154, 1)", 
+                    "rgba(244, 189, 169, 1)",
+                    "rgba(247, 200, 183, 1)",
                 ],
                 borderWidth: 3,
             },

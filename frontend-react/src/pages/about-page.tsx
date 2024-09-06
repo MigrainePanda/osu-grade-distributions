@@ -55,7 +55,7 @@ function AboutPage() {
                 <div className="content-block">
                     <div className="content-block-inner">
                         <h1 className="content-block-title block-title">Contributions</h1>
-                        <p className="content-block-text page-text">I&apos;d like to give special thanks to Ella Gordon for helping out with the design.</p>
+                        <p className="content-block-text page-text">Special thanks to Ella Gordon for helping out with the design.</p>
                     </div>
                 </div>
 

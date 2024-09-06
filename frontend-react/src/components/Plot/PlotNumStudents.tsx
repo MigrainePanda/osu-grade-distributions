@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { Line } from "react-chartjs-2";
+import { useMediaQuery } from 'react-device-sizes';
 import { termNumToShortName } from "../../utils/conversions";
 
 function PlotNumStudents( { courses } ) {
+    const is1000 = useMediaQuery({ minWidth: 1000 });
 
     const labels: Array<string> = [];
     const courseData: Array<number> = [];
@@ -15,7 +17,8 @@ function PlotNumStudents( { courses } ) {
         courseData.push(studentTotal);
     }
     const biggest = Math.ceil(Math.max(...courseData)/100)*100;
-    const yMax = biggest + 100 | 0;
+    const isGreaterThan200 = biggest > 200;
+    const yMax = isGreaterThan200 ? biggest + 100 : biggest + 50 | 0;
 
     const options = {
         indexAxis: "x" as const,
@@ -29,7 +32,21 @@ function PlotNumStudents( { courses } ) {
                 display: true,
                 text: `Number of Students per Term`,
                 font: {
+                    size: 18
+                }
+            },
+            tooltip: {
+                titleFont: {
                     size: 16
+                },
+                bodyFont: {
+                    size: 16
+                },
+                callbacks: {
+                  label: function(context) {
+                    const value = context.raw;
+                    return ` ${value}`;
+                  }
                 }
             },
             zoom: {
@@ -45,29 +62,48 @@ function PlotNumStudents( { courses } ) {
                 }
             }
         },
-        pointRadius: 5,
-        pointHoverRadius: 7,
+        pointRadius: 6,
+        pointHoverRadius: 8,
         scales: {
             x: {
                 title: {
                     display: true,
-                    text: "Term, Year"
+                    text: "Term, Year",
+                    font: {
+                        size: 18
+                    }
+                },
+                ticks: {
+                    font: {
+                        size: 16
+                    }
                 },
                 min: 0,
-                max: 5,
+                max: is1000 ? 9 : 4,
             },
             y: {
                 title: {
                     display: true,
-                    text: "Number of Students"
+                    text: "Number of Students",
+                    font: {
+                        size: 18
+                    },
+                },
+                afterFit: function(scale) {
+                    scale.width = 80
+                },
+                ticks: {
+                    stepSize: isGreaterThan200 ? 100 : 25,
+                    font: {
+                        size: 16
+                    }
                 },
                 min: 0,
                 max: yMax,
-                ticks: {
-                    stepSize: 100,
-                    
-                },
             }
+        },
+        layout: {
+            padding: 0
         }
     }
 
@@ -80,8 +116,9 @@ function PlotNumStudents( { courses } ) {
                     "rgba(0, 50, 50, 1)"
                 ],
                 borderColor: [
-                    "rgba(0, 0, 150, 1)"
-                ]
+                    "rgba(215, 63, 9, 0.6)"
+                ],
+                pointBackgroundColor: "rgba(215, 63, 9, 1)",
             },
         ],
     }
