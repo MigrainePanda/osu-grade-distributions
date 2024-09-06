@@ -17,4 +17,8 @@
     .image-container {
         height: 30vw;
     }
+
+    .course-desc-block {
+        padding-bottom: 0 !important;
+    }
 }

@@ -38,7 +38,7 @@ function ContactPage() {
                     <div className="content-block-inner">
                         <h1 className="content-block-title page-title block-title">Get in Touch!</h1>
                         <div className="content-block-text-container">
-                            <p className="content-block-text page-text">Email me at {myEmail} or fill out the form below.</p>
+                            <p className="content-block-text page-subtitle page-text">Email me at {myEmail} or fill out the form below.</p>
                         </div>
                     </div>
                 </div>

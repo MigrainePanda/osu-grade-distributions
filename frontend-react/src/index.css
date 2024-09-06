@@ -1,23 +1,25 @@
 html {
     --sixty-color: #f4f4f4;
-    --thirty-color: #0a1e3e;
+    --thirty-color: #010814; 
     --ten-color: #d73f09;
     
     --text-color: var(--thirty-color);
     --background-color: #eeeeee;
-    --background-ten-color: #ffc8a1; /* #ffeee2 */
     --background-sixty-color: #ececec;
+    --background-ten-color: #f7c8b7;
+    --background-title-color: var(--ten-color);
     --background-footer-color: #e2e2e2;
     --border-sixty-color: #e0e0e0;
     
     --page-width: 60%;
+    --border-radius: 3rem;
     
     font-size: 62.5%;
     --font-size-small: 1.4rem;
     --font-size-default: 1.6rem;
     --font-size-large: 2.4rem;
     --font-size-title: 3.2rem;
-    --line-height-default: 2.8rem;
+    --line-height-default: 3rem;
 }
 
 * {
@@ -63,9 +65,9 @@ footer {
     text-align: center;
 }
 
-.center-div {
-    display: flex;
+.center-center {
     justify-content: center;
+    align-items: center;
 }
 
 .hidden {
@@ -93,7 +95,8 @@ footer {
 }
 
 .content-block-inner {
-    padding: 5rem 5rem 4rem 5rem;
+    /* padding: 5rem 5rem 4rem 5rem; */
+    padding: 7rem 5rem 6rem 5rem;
     display: flex;
     flex-direction: column;
 }
@@ -113,7 +116,7 @@ footer {
 
 .content-title-block,
 .content-home-title-block {
-    background-color: var(--background-sixty-color);
+    background-color: var(--background-title-color);
     border: 1px solid var(--border-sixty-color);
     border-radius: var(--border-radius);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -128,8 +131,9 @@ footer {
     color: var(--thirty-color);
 }
 
-.page-title {
-    color: var(--ten-color);
+.page-title,
+.page-subtitle {
+    color: white !important;
 }
 
 .page-text {
@@ -142,7 +146,6 @@ footer {
     width: fit-content;
     margin-top: 1rem;
     color: white;
-    background-color: #0D5257;
     background-color: #D73F09;
     padding: 0.65rem 2.5rem;
     border-radius: 2rem;
@@ -154,7 +157,8 @@ footer {
     }
 
     .content-title-block .content-block-inner {
-        padding-bottom: 1.9rem;
+        /* padding-bottom: 1.9rem; */
+        padding-bottom: 3rem;
     }
 
     .content-block-text-container {

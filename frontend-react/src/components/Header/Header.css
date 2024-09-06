@@ -1,13 +1,10 @@
 :root {
-    --menu-top: 14rem;
-    --border-radius: 3rem;
-    --menu-height: 83.5vh;
+    --menu-height: 90vh;
 }
 
 header {
     margin-top: 3vh;
     z-index: 90;
-
 }
 
 .nav-container {
@@ -65,7 +62,7 @@ header {
 }
 
 .nav-list {
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;

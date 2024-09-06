@@ -52,10 +52,10 @@ function Header() {
                         </div>
 
                         <div className="nav-desktop">
-                            <NavLink className="page-text" to="/" onClick={handleLink}>Home</NavLink>
-                            <NavLink className="page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
-                            <NavLink className="page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
-                            <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
+                            <NavLink className="header-item page-text" to="/" onClick={handleLink}>Home</NavLink>
+                            <NavLink className="header-item page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
+                            <NavLink className="header-item page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
+                            <NavLink className="header-item page-text" to="/about" onClick={handleLink}>About</NavLink>
                         </div>
                     </div>
                 </nav>
@@ -63,16 +63,16 @@ function Header() {
                 <nav className="nav-menu" id="nav-menu" ref={menuRef}>
                     <ul className="nav-list">
                         <li>
-                            <NavLink className="page-text" to="/" onClick={handleLink}>Home</NavLink>
+                            <NavLink className="header-item page-text" to="/" onClick={handleLink}>Home</NavLink>
                         </li>
                         <li>
-                            <NavLink className="page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
+                            <NavLink className="header-item page-text" to="/courses" onClick={handleLink}>Courses</NavLink>
                         </li>
                         <li>
-                            <NavLink className="page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
+                            <NavLink className="header-item page-text" to="/contact" onClick={handleLink}>Contact</NavLink>
                         </li>
                         <li>
-                            <NavLink className="page-text" to="/about" onClick={handleLink}>About</NavLink>
+                            <NavLink className="header-item page-text" to="/about" onClick={handleLink}>About</NavLink>
                         </li>
                     </ul>
                 </nav>

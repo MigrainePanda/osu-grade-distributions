@@ -135,7 +135,7 @@ function CoursesPage() {
                     <div className="content-block-inner">
                         <h1 className="content-block-title page-title block-title">Courses</h1>
                         <div className="content-block-text-container">
-                            <p className="content-block-text page-text">Select the course you would like to view.</p>
+                            <p className="content-block-text page-subtitle page-text">Select the course you would like to view.</p>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ function CoursesPage() {
                 <div className="separator"></div>
 
                 <div className="content-block">
-                    <div className="content-block-inner">
+                    <div className="content-block-inner center-center">
                         <CourseDescription courses={coursesArr} />
                     </div>
                 </div>
