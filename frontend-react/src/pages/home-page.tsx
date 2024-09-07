@@ -25,13 +25,13 @@ function HomePage() {
                     <div className="content-block">
                         <div className="content-block-inner">
                             <h1 className="content-block-title block-title">Made for students by students</h1>
-                            <p className="content-block-text page-text">To academic success!</p>
+                            <p className="content-block-text page-text">Search through 20,000+ courses to find information that fits your needs, and use data to help make decisions during course registration.</p>
                         </div>
                     </div>
                     <div className="mobile-separator"></div>
                     <div className="content-block">
                         <div className="content-block-inner">
-                            <h1 className="content-block-title block-title">Data centered on reliablility</h1>
+                            <h1 className="content-block-title block-title">Data centered on reliability</h1>
                             <p className="content-block-text page-text">Because our data is sourced from official Oregon State courses, our visualizations display real course data from real students.</p>
                         </div>
                     </div>

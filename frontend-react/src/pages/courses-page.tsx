@@ -8,7 +8,7 @@ import SelectorController from "../components/selectors/SelectorController.tsx";
 import CourseDescription from "../components/CourseDescription.tsx";
 import PlotGrades from "../components/Plot/PlotGrades.tsx";
 import PlotPassRate from "../components/Plot/PlotPassRate.tsx";
-import PlotAvgGPA from "../components/Plot/PlotAvgGPA.tsx";
+import PlotAvgGPA from "../components/Plot/PlotAvgWithdraw.tsx";
 import PlotNumStudents from "../components/Plot/PlotNumStudents.tsx";
 
 import "./css/courses-page.css";
@@ -30,6 +30,7 @@ function CoursesPage() {
     const { courseName, year, term } = useContext(CurrInfoContext);
     
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = 'Grade Distributions | Courses';
         const loadPage = (async () => {    
             const yearsResponse = await fetch(URL + "api/years");

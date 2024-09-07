@@ -1,1 +1,11 @@
+.external-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 
+.image-external-link {
+    width: 1.5rem;
+    height: 1.5rem;
+}
