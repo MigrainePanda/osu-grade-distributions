@@ -47,7 +47,7 @@ function AboutPage() {
                             <p className="content-block-text page-text">This website is not affiliated with Oregon State University.</p>
                         </div>
                         <a target="_blank" rel="noopener noreferrer" href={PUBLIC_RECORDS_URL} className="page-action page-text external-link">
-                            Learn more <img src="/public/share-box-fill.svg" alt="External link as arrow pointing out of box" className="image-external-link"></img>
+                            Learn more <img src="/share-box-fill.svg" alt="External link as arrow pointing out of box" className="image-external-link"></img>
                         </a>
                     </div>
                 </div>

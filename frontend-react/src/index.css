@@ -65,6 +65,12 @@ footer {
     text-align: center;
 }
 
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .center-center {
     justify-content: center;
     align-items: center;
