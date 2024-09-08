@@ -9,9 +9,12 @@ const connectionString = process.env.DATABASE_URL;
 let db;
 
 if (process.env.NODE_ENV === "staging" || process.env.NODE_ENV === "production") {
-    console.log("\n\nStaging/Production Env Database\n\n");
+    console.log("\nStaging/Production Env Database");
     db = new Pool({
-        connectionString
+        connectionString,
+        ssl: {
+            rejectUnauthized: false
+        }
     });   
 }
 else {
@@ -30,8 +33,8 @@ try {
     const currTime = checkConn.rows[0].now;
     console.log(`Succesfully connected to the database at ${currTime}.`);
 }
-catch {
-    console.error("Could not connect to the database.");
+catch (err) {
+    console.error(err);
 }
 
 export default db;
