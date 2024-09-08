@@ -33,4 +33,11 @@
     .course-desc-block {
         padding-bottom: 0 !important;
     }
+
+    .course-description-block .content-block {
+        animation: none;
+        opacity: 1;
+        scale: 1;
+        z-index: -1;
+    }
 }
