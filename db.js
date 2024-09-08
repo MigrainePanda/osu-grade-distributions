@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "staging" || process.env.NODE_ENV === "production")
     db = new Pool({
         connectionString,
         ssl: {
-            rejectUnauthized: false
+            rejectUnauthorized: false
         }
     });   
 }
