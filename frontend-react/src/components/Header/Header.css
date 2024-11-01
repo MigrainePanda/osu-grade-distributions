@@ -48,7 +48,7 @@ header {
     font-size: var(--font-size-default);
     margin: auto;
     cursor: pointer;
-    transition: opacity .1s, transform .4s; 
+    transition: opacity 0.1s, transform 0.4s;
 }
 
 .nav-menu {
@@ -103,7 +103,7 @@ header {
     font-size: var(--font-size-default);
 }
 
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
     .nav-toggle,
     .nav-menu {
         display: none;

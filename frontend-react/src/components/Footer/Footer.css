@@ -32,7 +32,7 @@ footer {
     color: rgb(0 0 0 / 70%);
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
     .copyright {
         margin: 0 auto;
         color: rgb(0 0 0 / 70%);

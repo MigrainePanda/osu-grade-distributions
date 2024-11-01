@@ -6,7 +6,6 @@ import CourseSelector from "./CourseSelector";
 import "./Selectors.css";
 
 function SelectorController() {
-
     return (
         <>
             <div className="selectors-container">
@@ -16,7 +15,7 @@ function SelectorController() {
                 <TermSelector />
             </div>
         </>
-    )
+    );
 }
 
 export default SelectorController;

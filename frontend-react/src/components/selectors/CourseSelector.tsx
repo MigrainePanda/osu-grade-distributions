@@ -10,15 +10,16 @@ import Tooltip from "../Tooltip/Tooltip.tsx";
 function CourseSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { subjectName, setCourseName, year, term } = useContext(CurrInfoContext);
+    const { subjectName, setCourseName, year, term } =
+        useContext(CurrInfoContext);
     const { allCourses } = useContext(AllInfoContext);
 
     function addOptions(uniqueCourses: Set<string>) {
         const filtered = Array.from(uniqueCourses);
         const sorted = filtered.sort();
         const formatted = sorted.map((course) => {
-            return { label: course, value: course }
-        })
+            return { label: course, value: course };
+        });
         setOptions(formatted);
     }
 
@@ -31,11 +32,11 @@ function CourseSelector() {
 
         if (term !== "All" && year === "All") {
             allCourses.filter((course) => {
-                const isSubject = course['subject'] === subjectName;
-                const isTerm = course['term'] === term;
-                const isUnique = uniqueCourses.has(course['short']);
+                const isSubject = course["subject"] === subjectName;
+                const isTerm = course["term"] === term;
+                const isUnique = uniqueCourses.has(course["short"]);
                 if (isSubject && isTerm && !isUnique) {
-                    uniqueCourses.add(course['short']);
+                    uniqueCourses.add(course["short"]);
                     return true;
                 }
                 return false;
@@ -47,12 +48,12 @@ function CourseSelector() {
         // subject, term
         if (term !== "All") {
             allCourses.filter((course) => {
-                const isSubject = course['subject'] === subjectName;
-                const isYear = course['year'] === year;
-                const isTerm = course['term'] === term;
-                const isUnique = uniqueCourses.has(course['short']);
+                const isSubject = course["subject"] === subjectName;
+                const isYear = course["year"] === year;
+                const isTerm = course["term"] === term;
+                const isUnique = uniqueCourses.has(course["short"]);
                 if (isSubject && isYear && isTerm && !isUnique) {
-                    uniqueCourses.add(course['short']);
+                    uniqueCourses.add(course["short"]);
                     return true;
                 }
                 return false;
@@ -64,11 +65,11 @@ function CourseSelector() {
         // subject, year
         if (year !== "" && year !== "All") {
             allCourses.filter((course) => {
-                const isSubject = course['subject'] === subjectName;
-                const isYear = course['year'] === year;
-                const isUnique = uniqueCourses.has(course['short']);
+                const isSubject = course["subject"] === subjectName;
+                const isYear = course["year"] === year;
+                const isUnique = uniqueCourses.has(course["short"]);
                 if (isSubject && isYear && !isUnique) {
-                    uniqueCourses.add(course['short']);
+                    uniqueCourses.add(course["short"]);
                     return true;
                 }
                 return false;
@@ -79,10 +80,10 @@ function CourseSelector() {
 
         // just subject
         allCourses.filter((course) => {
-            const isSubject = course['subject'] === subjectName;
-            const isUnique = uniqueCourses.has(course['short']);
+            const isSubject = course["subject"] === subjectName;
+            const isUnique = uniqueCourses.has(course["short"]);
             if (isSubject && !isUnique) {
-                uniqueCourses.add(course['short']);
+                uniqueCourses.add(course["short"]);
                 return true;
             }
             return false;
@@ -97,24 +98,28 @@ function CourseSelector() {
 
     const handleChange = (option) => {
         console.log("course updated ", option);
-        setCourseName(option['value']);
+        setCourseName(option["value"]);
         setValue(option);
-    }
+    };
 
-    return(
+    return (
         <>
             <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Course</h3>
-                    <Tooltip message={"Course number to indicate a specific course within that academic subject"} />
+                    <Tooltip
+                        message={
+                            "Course number to indicate a specific course within that academic subject"
+                        }
+                    />
                 </div>
                 <div className="select-component-wrapper">
-                    <Select 
+                    <Select
                         className="select-component center-text"
                         styles={customStyles}
-                        options={options} 
+                        options={options}
                         value={value}
-                        onChange={option => handleChange(option)}
+                        onChange={(option) => handleChange(option)}
                         placeholder="Select..."
                         isSearchable
                     />

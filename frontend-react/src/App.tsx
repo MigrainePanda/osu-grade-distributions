@@ -16,72 +16,75 @@ import SplashLoading from "./components/SplashLoading/SplashLoading.tsx";
 import BackToTop from "./components/BackToTop/BackToTop";
 
 function App() {
+    const [isSplash, setIsSplash] = useState<boolean>(false);
+    const [isFetched, setIsFetched] = useState<boolean>(false);
+    const [allCourses, setAllCourses] = useState<Array<object>>([]);
+    const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
+    const [allYears, setAllYears] = useState<Array<object>>([]);
+    const [allTerms, setAllTerms] = useState<Array<object>>([]);
 
-  const [isSplash, setIsSplash] = useState<boolean>(false);
-  const [isFetched, setIsFetched] = useState<boolean>(false);
-  const [allCourses, setAllCourses] = useState<Array<object>>([]);
-  const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
-  const [allYears, setAllYears] = useState<Array<object>>([]);
-  const [allTerms, setAllTerms] = useState<Array<object>>([]);
+    const allProp = {
+        isSplash,
+        isFetched,
+        allYears,
+        allTerms,
+        allCourses,
+        allSubjects,
+        setIsSplash,
+        setIsFetched,
+        setAllYears,
+        setAllTerms,
+        setAllCourses,
+        setAllSubjects,
+    };
 
-  const allProp = {
-    isSplash,
-    isFetched,
-    allYears,
-    allTerms,
-    allCourses,
-    allSubjects,
-    setIsSplash,
-    setIsFetched,
-    setAllYears,
-    setAllTerms,
-    setAllCourses,
-    setAllSubjects,
-  }
+    const [courseName, setCourseName] = useState<string>("");
+    const [subjectName, setSubjectName] = useState<string>("");
+    const [year, setYear] = useState<string>("");
+    const [term, setTerm] = useState<string>("");
+    const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
 
-  const [courseName, setCourseName] = useState<string>("");
-  const [subjectName, setSubjectName] = useState<string>("");
-  const [year, setYear] = useState<string>("");
-  const [term, setTerm] = useState<string>("");
-  const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
+    const currProp = {
+        year,
+        term,
+        courseName,
+        subjectName,
+        coursesArr,
+        setYear,
+        setTerm,
+        setCourseName,
+        setSubjectName,
+        setCoursesArr,
+    };
 
-  const currProp = {
-    year,
-    term,
-    courseName, 
-    subjectName,
-    coursesArr,
-    setYear,
-    setTerm,
-    setCourseName,
-    setSubjectName,
-    setCoursesArr,
-  }
-
-  return (
-    <>
-      <AllInfoContext.Provider value={allProp}>
-        <CurrInfoContext.Provider value={currProp}>
-
-          <BrowserRouter>
-            <Header />
-              {!isSplash && <SplashLoading />}
-              <div className="content" id="content">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/courses" element={<CoursesPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                </Routes>
-              </div>
-            <Footer />
-            <BackToTop />
-          </BrowserRouter>
-          
-        </CurrInfoContext.Provider>
-      </AllInfoContext.Provider>
-    </>
-  )
+    return (
+        <>
+            <AllInfoContext.Provider value={allProp}>
+                <CurrInfoContext.Provider value={currProp}>
+                    <BrowserRouter>
+                        <Header />
+                        {!isSplash && <SplashLoading />}
+                        <div className="content" id="content">
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route
+                                    path="/courses"
+                                    element={<CoursesPage />}
+                                />
+                                <Route
+                                    path="/contact"
+                                    element={<ContactPage />}
+                                />
+                                <Route path="/about" element={<AboutPage />} />
+                            </Routes>
+                        </div>
+                        <Footer />
+                        <BackToTop />
+                    </BrowserRouter>
+                </CurrInfoContext.Provider>
+            </AllInfoContext.Provider>
+        </>
+    );
 }
 
-export default App
+export default App;

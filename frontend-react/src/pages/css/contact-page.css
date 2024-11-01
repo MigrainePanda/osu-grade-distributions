@@ -12,7 +12,6 @@
     color: var(--thirty-color);
 }
 
-
 .contact-input-container {
     display: flex;
     flex-direction: column;
@@ -24,7 +23,7 @@
     margin-bottom: 5px;
 }
 
-#contact-name-input, 
+#contact-name-input,
 #contact-email-input,
 #contact-message-input,
 .contact-submit-button {
@@ -79,7 +78,7 @@
     margin: 0 auto;
 }
 
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
     .contact-input-container {
         width: 100%;
         max-width: 100%;

@@ -20,7 +20,7 @@
     font-size: var(--font-size-default);
 }
 
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
     .selectors-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

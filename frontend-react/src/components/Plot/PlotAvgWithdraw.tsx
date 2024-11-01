@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
-import { useMediaQuery } from 'react-device-sizes';
+import { useMediaQuery } from "react-device-sizes";
 import { termNumToShortName } from "../../utils/conversions";
 
-function PlotAvgGPA( { courses } ) {
+function PlotAvgGPA({ courses }) {
     const is1000 = useMediaQuery({ minWidth: 1000 });
 
     const labels: Array<string> = [];
     const courseData: Array<number> = [];
 
     for (const course of courses) {
-        const term = termNumToShortName(course['term']);
-        const year = course['year'];
-        const gpa = course['gpa'];
+        const term = termNumToShortName(course["term"]);
+        const year = course["year"];
+        const gpa = course["gpa"];
         labels.push(`${term}, ${year}`);
         courseData.push(gpa);
     }
 
-    const yMax = Math.round(Math.max(...courseData)*2) | 0;
+    const yMax = Math.round(Math.max(...courseData) * 2) | 0;
 
     const options = {
         indexAxis: "x" as const,
@@ -31,35 +31,35 @@ function PlotAvgGPA( { courses } ) {
                 display: true,
                 text: `Withdraw Rate per Term`,
                 font: {
-                    size: 18
-                }
+                    size: 18,
+                },
             },
             tooltip: {
                 titleFont: {
-                    size: 16
+                    size: 16,
                 },
                 bodyFont: {
-                    size: 16
+                    size: 16,
                 },
                 callbacks: {
-                  label: function(context) {
-                    const value = context.raw;
-                    return ` ${value}%`;
-                  }
-                }
+                    label: function (context) {
+                        const value = context.raw;
+                        return ` ${value}%`;
+                    },
+                },
             },
             zoom: {
                 pan: {
                     enabled: true,
-                    mode: 'x' as const
+                    mode: "x" as const,
                 },
                 zoom: {
                     pinch: {
-                        enabled: true
+                        enabled: true,
                     },
-                    mode: 'x' as const,
-                }
-            }
+                    mode: "x" as const,
+                },
+            },
         },
         pointRadius: 6,
         pointHoverRadius: 8,
@@ -69,13 +69,13 @@ function PlotAvgGPA( { courses } ) {
                     display: true,
                     text: "Term, Year",
                     font: {
-                        size: 18
-                    }
+                        size: 18,
+                    },
                 },
                 ticks: {
                     font: {
-                        size: 16
-                    }
+                        size: 16,
+                    },
                 },
                 min: 0,
                 max: is1000 ? 9 : 4,
@@ -85,40 +85,36 @@ function PlotAvgGPA( { courses } ) {
                     display: true,
                     text: "Percentage",
                     font: {
-                        size: 18
-                    }
+                        size: 18,
+                    },
                 },
-                afterFit: function(scale) {
-                    scale.width = 70
+                afterFit: function (scale) {
+                    scale.width = 70;
                 },
                 min: 0,
                 max: yMax,
                 ticks: {
                     stepSize: 1,
                     font: {
-                        size: 16
-                    }
+                        size: 16,
+                    },
                 },
-            }
+            },
         },
-    }
+    };
 
     const data = {
         labels,
         datasets: [
             {
                 data: courseData,
-                backgroundColor: [
-                    "rgba(247, 200, 183, 0.6)"
-                ],
-                borderColor: [
-                    "rgba(215, 63, 9, 0.6)"
-                ],
+                backgroundColor: ["rgba(247, 200, 183, 0.6)"],
+                borderColor: ["rgba(215, 63, 9, 0.6)"],
                 pointBackgroundColor: "rgba(215, 63, 9, 1)",
                 fill: true,
             },
         ],
-    }
+    };
 
     // const options = {
     //     indexAxis: "x" as const,
@@ -196,7 +192,7 @@ function PlotAvgGPA( { courses } ) {
 }
 
 PlotAvgGPA.propTypes = {
-    courses: PropTypes.array
-}
+    courses: PropTypes.array,
+};
 
 export default PlotAvgGPA;

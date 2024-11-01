@@ -7,7 +7,6 @@ import customStyles from "./SelectorStyle.tsx";
 import Select from "react-select";
 import Tooltip from "../Tooltip/Tooltip.tsx";
 
-
 function YearSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
@@ -19,7 +18,7 @@ function YearSelector() {
             return;
         }
         const yearOptions = allYears.map((year) => {
-            return { label: year['year'], value: year['year'] }
+            return { label: year["year"], value: year["year"] };
         });
         yearOptions.unshift({ label: "All", value: "All" });
         setYear(yearOptions[0]["value"]);
@@ -28,8 +27,8 @@ function YearSelector() {
     }, [allYears, setYear]);
 
     const handleChange = (option) => {
-        console.log("year updated ", option)
-        setYear(option['value']);
+        console.log("year updated ", option);
+        setYear(option["value"]);
         setValue(option);
     };
 
@@ -38,22 +37,24 @@ function YearSelector() {
             <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Year</h3>
-                    <Tooltip message={"The calendar year of which to filter data by"} />
+                    <Tooltip
+                        message={"The calendar year of which to filter data by"}
+                    />
                 </div>
                 <div className="select-component-wrapper">
-                    <Select 
+                    <Select
                         className="select-component center-text"
                         styles={customStyles}
-                        options={options} 
+                        options={options}
                         value={value}
-                        onChange={option => handleChange(option)}
+                        onChange={(option) => handleChange(option)}
                         placeholder="Loading..."
                         isSearchable
                     />
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default YearSelector;

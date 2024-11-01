@@ -15,31 +15,35 @@ function SubjectSelector() {
 
     useEffect(() => {
         const formatted = allSubjects.map((subject) => {
-            return { label: subject['short'], value: subject['short'] }
+            return { label: subject["short"], value: subject["short"] };
         });
-        setOptions(formatted)
+        setOptions(formatted);
     }, [allSubjects]);
 
     const handleChange = (option) => {
         console.log("subject updated ", option);
-        setSubjectName(option['value']);
+        setSubjectName(option["value"]);
         setValue(option);
-    }
+    };
 
-    return(
+    return (
         <>
             <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Subject</h3>
-                    <Tooltip message={"An abbreviation that indicates the academic subject area"} />
+                    <Tooltip
+                        message={
+                            "An abbreviation that indicates the academic subject area"
+                        }
+                    />
                 </div>
                 <div className="select-component-wrapper">
-                    <Select 
+                    <Select
                         className="select-component center-text"
                         styles={customStyles}
-                        options={options} 
+                        options={options}
                         value={value}
-                        onChange={option => handleChange(option)}
+                        onChange={(option) => handleChange(option)}
                         placeholder="Select..."
                         isSearchable
                     />

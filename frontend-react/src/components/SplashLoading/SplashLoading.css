@@ -10,7 +10,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +32,8 @@
     display: none;
 }
 
-#splash h1, #splash h2 {
+#splash h1,
+#splash h2 {
     padding: 10px;
 }
 
@@ -58,7 +59,7 @@
     margin-bottom: 10vh;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
     .splash-logo {
         width: 20vw;
         height: 20vh;

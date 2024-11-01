@@ -4,7 +4,7 @@
     bottom: 1rem;
     right: -6rem;
     cursor: pointer;
-    transition: translate .3s;
+    transition: translate 0.3s;
 }
 
 .toTop-img {
@@ -16,13 +16,13 @@
     translate: -7em 0;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
     .toTop-container {
         bottom: 6rem;
         right: -6rem;
-        transition: translate .5s;
+        transition: translate 0.5s;
     }
-    
+
     .show-top-button {
         translate: -10em 0;
     }

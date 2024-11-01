@@ -16,7 +16,7 @@ function TermSelector() {
 
     useEffect(() => {
         const filtered = allTerms.filter((term) => {
-            if (term['year'] === year) return term;
+            if (term["year"] === year) return term;
         });
         // year = All
         if (filtered.length === 0) {
@@ -27,17 +27,17 @@ function TermSelector() {
                 { label: "Winter", value: "02" },
                 { label: "Spring", value: "03" },
             ];
-            setTerm(noOption[0]['value']);
+            setTerm(noOption[0]["value"]);
             setValue(noOption[0]);
             setOptions(noOption);
             return;
         }
         const filteredOptions = filtered.map((term) => {
-            const termName = termNumToName(term['term']);
-            return { label: termName, value: term['term'] }
+            const termName = termNumToName(term["term"]);
+            return { label: termName, value: term["term"] };
         });
         filteredOptions.unshift({ label: "All", value: "All" });
-        setTerm(filteredOptions[0]['value']);
+        setTerm(filteredOptions[0]["value"]);
         setValue(filteredOptions[0]);
         setOptions(filteredOptions);
     }, [year, allTerms, setTerm]);
@@ -53,22 +53,26 @@ function TermSelector() {
             <div className="select-container">
                 <div className="select-label-info">
                     <h3 className="center-text">Term</h3>
-                    <Tooltip message={"The term of which to filter data by (Summer, Fall, Winter, Spring)"} />
+                    <Tooltip
+                        message={
+                            "The term of which to filter data by (Summer, Fall, Winter, Spring)"
+                        }
+                    />
                 </div>
                 <div className="select-component-wrapper">
-                    <Select 
+                    <Select
                         className="select-component center-text"
                         styles={customStyles}
-                        options={options} 
+                        options={options}
                         value={value}
-                        onChange={option => handleChange(option)}
+                        onChange={(option) => handleChange(option)}
                         placeholder="Loading..."
                         isSearchable
                     />
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default TermSelector;

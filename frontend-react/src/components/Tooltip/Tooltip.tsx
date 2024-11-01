@@ -1,14 +1,12 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./Tooltip.css";
 
 function Tooltip({ message }) {
-
     return (
         <>
             <div className="tooltip-container">
                 <div className="tooltip-wrapper">
-                    i
-                    <span className="tooltip-text tooltip-top">{message}</span>
+                    i<span className="tooltip-text tooltip-top">{message}</span>
                 </div>
             </div>
         </>
@@ -16,7 +14,7 @@ function Tooltip({ message }) {
 }
 
 Tooltip.propTypes = {
-    message: PropTypes.string
-}
+    message: PropTypes.string,
+};
 
 export default Tooltip;
