@@ -23,7 +23,7 @@ if (
     console.log("\nDevelopment Env Database");
     db = new Pool({
         user: "postgres",
-        password: "password",
+        password: process.env.POSTGRES_LOCAL_PASSWORD,
         host: "localhost",
         port: 5432,
         database: "osu_grade_distributions",
