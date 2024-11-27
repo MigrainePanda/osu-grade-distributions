@@ -98,7 +98,7 @@ footer {
 }
 
 .content-block {
-    background-color: #e4e4e4;
+    background-color: var(--background-sixty-color);
     border: 1px solid var(--border-sixty-color);
     border-radius: var(--border-radius);
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
@@ -115,10 +115,6 @@ footer {
     padding-bottom: 2rem;
     font-size: var(--font-size-title);
     color: var(--thirty-color);
-    text-decoration: underline;
-    text-decoration-color: var(--ten-color);
-    text-underline-offset: 10px;
-    text-decoration-thickness: 2px;
 }
 
 .content-block-text-container {
@@ -127,6 +123,10 @@ footer {
 
 .content-block-text {
     margin-bottom: 5px;
+}
+
+.page-title {
+    color: var(--ten-color);
 }
 
 .page-text {

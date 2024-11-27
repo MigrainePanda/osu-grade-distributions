@@ -38,9 +38,9 @@ function ContactPage() {
             <div className="content-inner">
                 {result !== "" && resultElement}
 
-                <div className="content-title-block">
+                <div className="content-block">
                     <div className="content-block-inner">
-                        <h1 className="content-block-title page-title block-title">
+                        <h1 className="content-block-title page-title">
                             Get in Touch!
                         </h1>
                         <div className="content-block-text-container">
