@@ -5,16 +5,15 @@ const backgroundColor = cssStyles.getPropertyValue("--background-color");
 const borderRadius = cssStyles.getPropertyValue("--border-radius");
 
 const customStyles = {
-    control: (base, state) => ({
+    control: (base) => ({
         ...base,
         background: backgroundColor,
-        borderRadius: state.isFocused ? borderRadius : borderRadius,
-        borderColor: state.isFocused ? "lightgrey" : "lightgrey",
+        borderRadius: borderRadius,
+        borderColor: "lightgrey",
     }),
     menu: (base) => ({
         ...base,
         background: backgroundColor,
-        color: textColor,
         borderRadius: borderRadius,
         marginTop: "0.5rem",
     }),
@@ -27,11 +26,12 @@ const customStyles = {
         borderRadius: borderRadius,
         backgroundColor: state.isDisabled
             ? undefined
-            : state.isSelected
-            ? textColor
             : state.isFocused
             ? "lightblue"
+            : state.isSelected
+            ? "lightgrey"
             : undefined,
+        color: textColor,
     }),
 };
 

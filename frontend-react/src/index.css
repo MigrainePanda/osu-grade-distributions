@@ -98,12 +98,13 @@ footer {
 }
 
 .content-block {
-    background-color: var(--background-ten-color);
+    background-color: #e4e4e4;
+    border: 1px solid var(--border-sixty-color);
     border-radius: var(--border-radius);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .content-block-inner {
-    /* padding: 5rem 5rem 4rem 5rem; */
     padding: 7rem 5rem 6rem 5rem;
     display: flex;
     flex-direction: column;
@@ -112,6 +113,12 @@ footer {
 .content-block-title {
     margin: 0;
     padding-bottom: 2rem;
+    font-size: var(--font-size-title);
+    color: var(--thirty-color);
+    text-decoration: underline;
+    text-decoration-color: var(--ten-color);
+    text-underline-offset: 10px;
+    text-decoration-thickness: 2px;
 }
 
 .content-block-text-container {
@@ -120,24 +127,6 @@ footer {
 
 .content-block-text {
     margin-bottom: 5px;
-}
-
-.content-title-block,
-.content-home-title-block {
-    background-color: var(--background-title-color);
-    border: 1px solid var(--border-sixty-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.block-title {
-    font-size: var(--font-size-title);
-    color: var(--thirty-color);
-}
-
-.page-title,
-.page-subtitle {
-    color: white !important;
 }
 
 .page-text {
@@ -161,16 +150,11 @@ footer {
     }
 
     .content-title-block .content-block-inner {
-        /* padding-bottom: 1.9rem; */
         padding-bottom: 3rem;
     }
 
     .content-block-text-container {
         padding-bottom: 2rem;
-    }
-
-    .block-title {
-        font-size: var(--font-size-large);
     }
 
     .page-text {
@@ -183,10 +167,11 @@ footer {
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
     .home-image,
     .content-block,
-    .image-container {
+    .image-container,
+    .content-block:not(.course-info) {
         animation: fade-in linear forwards;
         animation-timeline: view();
         animation-range: entry;
@@ -200,4 +185,4 @@ footer {
             scale: 1;
         }
     }
-}
+} */
