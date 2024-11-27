@@ -80,13 +80,6 @@ function Header() {
                             </NavLink>
                             <NavLink
                                 className="header-item page-text"
-                                to="/courses"
-                                onClick={handleLink}
-                            >
-                                Courses
-                            </NavLink>
-                            <NavLink
-                                className="header-item page-text"
                                 to="/contact"
                                 onClick={handleLink}
                             >
@@ -112,15 +105,6 @@ function Header() {
                                 onClick={handleLink}
                             >
                                 Home
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                className="header-item page-text"
-                                to="/courses"
-                                onClick={handleLink}
-                            >
-                                Courses
                             </NavLink>
                         </li>
                         <li>

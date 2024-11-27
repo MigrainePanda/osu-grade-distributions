@@ -6,7 +6,6 @@ import { registerCharts } from "./components/Plot/registerCharts.tsx";
 registerCharts();
 
 import HomePage from "./pages/home-page.tsx";
-import CoursesPage from "./pages/courses-page.tsx";
 import ContactPage from "./pages/contact-page.tsx";
 import AboutPage from "./pages/about-page.tsx";
 
@@ -67,10 +66,6 @@ function App() {
                         <div className="content" id="content">
                             <Routes>
                                 <Route path="/" element={<HomePage />} />
-                                <Route
-                                    path="/courses"
-                                    element={<CoursesPage />}
-                                />
                                 <Route
                                     path="/contact"
                                     element={<ContactPage />}
