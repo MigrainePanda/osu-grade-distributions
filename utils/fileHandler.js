@@ -1,93 +1,133 @@
-async function handleFilesCaller() {
-    const files = fs.readdirSync(CSV_PATH);
-    let path = "";
-    for (const file of files) {
-        if (file == "test.csv") {
-            continue;
-        }
-        path = `${CSV_PATH}/${file}`;
+import * as fs from "fs";
+import * as handleData from "./handleData.js";
+import { open } from "node:fs/promises";
 
-        await new Promise((resolve, reject) => {
-            handleFile(path, (subjects, courses) => {
-                let idx = path.indexOf("/") + 1;
-                let year = path.substring(idx, idx + 4);
-                let term = path.substring(idx + 5, idx + 7);
-                // console.log("courses: ", courses);
+const CSV_PATH = "../data";
 
-                for (let i = 0; i < subjects.length; i++) {
-                    query.addSubjectData(subjects[i]);
-                }
-                for (let i = 0; i < courses.length; i++) {
-                    query.addCourseData(courses[i], year, term);
-                }
-                resolve();
-            });
-        });
-    }
+function formatKey(key) {
+    key = key.trim();
+    key = key.toLowerCase();
+    key = key.replace(" ", "_");
+    return key;
 }
 
-function handleFile(path, callback) {
-    const stream = fs.createReadStream(path);
-    const reader = readline.createInterface({
-        input: stream,
-        crlfDelay: Infinity,
-    });
+function formatValue(val) {
+    const temp = Number(val);
+    if (isNaN(temp)) {
+        return val;
+    }
+    return temp;
+}
 
+function toJSON(line, splitter, removeLength = 0) {
+    let json = {};
+    const line_arr = line
+        .substring(0, line.length - removeLength)
+        .split(splitter);
+    for (const idx in line_arr) {
+        const [key, value] = line_arr[idx].split(": ");
+        json[formatKey(key)] = formatValue(value);
+    }
+    return json;
+}
+
+function handleCourseInfo(line) {
+    let course = toJSON(line, "  ", 3);
+    course["short_name"] = course["course"].split(" ")[0];
+    course["long_name"] = course["course"];
+    delete course["course"];
+    return course;
+}
+
+function handleGradeInfo(line) {
+    let grade = toJSON(line, ", ");
+    const letter = grade["grade"];
+    delete grade["grade"];
+    return [grade, letter];
+}
+
+async function handleFile(file) {
     const subjects = new Set();
+    const credits = new Set();
     const courses = [];
     let grades = {};
-    reader.on("line", (line) => {
-        function toDict(cols) {
-            let dict = {};
-            for (let i = 0; i < cols.length; i++) {
-                let temp = cols[i].split(": ");
-                dict[temp[0]] = temp[1];
-            }
-            return dict;
-        }
-        function formatter(line) {
-            let cols = line.split(",");
+    let temp_course = null;
+    let is_grades = false;
 
-            if (line === ",,," && Object.keys(grades).length > 0) {
-                courses.push(grades);
+    for await (const line of file.readLines()) {
+        const trimmed = line.trim();
+        if (is_grades) {
+            if (trimmed === ",,,") {
+                is_grades = false;
+                temp_course["grade_data"] = grades;
+                courses.push(temp_course);
                 grades = {};
-                return;
+                continue;
             }
-            if (line.substring(0, 6) === "Course") {
-                cols = cols.filter((str) => {
-                    return str.length !== 0;
-                })[0];
-                cols = toDict(cols.split("  "));
-                grades["Course"] = cols["Course"];
-                grades["Student Total"] = cols["Student Total"];
-                grades["Credit Hours"] = cols["Credit Hours"];
-                grades["Grade Pts"] = cols["Grade Pts"];
-                grades["GPA Hours"] = cols["GPA Hours"];
-                grades["GPA"] = cols["GPA"];
+            const [grade_json, letter] = handleGradeInfo(trimmed);
+            grades[letter] = grade_json;
+            continue;
+        }
 
-                let subject = cols["Course"].substring(
-                    0,
-                    cols["Course"].indexOf(" ")
-                );
+        if (line.substring(0, 6) === "Course") {
+            is_grades = true;
+            temp_course = handleCourseInfo(line);
+            let subject = temp_course["short_name"];
+            if (!subjects.has(subject)) {
                 subjects.add(subject);
             }
-            if (line[0] === "G") {
-                cols = cols.map((str) => str.trim());
-                cols = toDict(cols);
-                let letter = cols["Grade"];
-                if (letter in POSSIBLE_GRADES && !(letter in grades)) {
-                    grades[letter] = cols["Pct"];
-                }
+            let credit = temp_course["credit_hours"];
+            if (!credits.has(credit)) {
+                credits.add(credit);
             }
         }
+    }
 
-        formatter(line);
-    });
-
-    reader.on("close", () => {
-        let subjectsArr = Array.from(subjects);
-        callback(subjectsArr, courses);
-    });
+    return [courses, Array.from(subjects), Array.from(credits)];
 }
 
-export { handleFilesCaller, handleFile };
+async function handleFiles(testing = false) {
+    const yearTerms = {};
+
+    const files = fs.readdirSync(CSV_PATH);
+    let path = "";
+    for (const fileName of files) {
+        if (fileName == "test.csv" || fileName == "included_data.csv") {
+            continue;
+        }
+
+        path = `${CSV_PATH}/${fileName}`;
+        if (testing) {
+            path = `${CSV_PATH}/test.csv`;
+        }
+        const file = await open(path);
+
+        const [year, term] = fileName
+            .substring(0, fileName.length - 4)
+            .split("_");
+        const [courses, subjects, credits] = await handleFile(file);
+
+        const data = {
+            year,
+            term,
+            courses,
+            subjects,
+            credits,
+        };
+
+        const res = await handleData.addData(data);
+
+        if (!(year in yearTerms)) {
+            yearTerms[year] = [];
+        }
+        yearTerms[year].push(term);
+
+        if (testing) break;
+    }
+
+    const res = await handleData.addYearTerms(yearTerms);
+}
+
+handleFiles(false);
+
+export default handleFiles;
