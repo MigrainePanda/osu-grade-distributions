@@ -10,7 +10,7 @@ import Tooltip from "../Tooltip/Tooltip.tsx";
 function YearSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { setYear } = useContext(CurrInfoContext);
+    const { setCurrYear } = useContext(CurrInfoContext);
     const { allYears } = useContext(AllInfoContext);
 
     useEffect(() => {
@@ -18,17 +18,20 @@ function YearSelector() {
             return;
         }
         const yearOptions = allYears.map((year) => {
-            return { label: year["year"], value: year["year"] };
+            return {
+                label: year["calendar_year"],
+                value: year["calendar_year"],
+            };
         });
         yearOptions.unshift({ label: "All", value: "All" });
-        setYear(yearOptions[0]["value"]);
+        setCurrYear(yearOptions[0]["value"]);
         setValue(yearOptions[0]);
         setOptions(yearOptions);
-    }, [allYears, setYear]);
+    }, [allYears, setCurrYear]);
 
     const handleChange = (option) => {
         console.log("year updated ", option);
-        setYear(option["value"]);
+        setCurrYear(option["value"]);
         setValue(option);
     };
 
