@@ -10,19 +10,22 @@ import Tooltip from "../Tooltip/Tooltip.tsx";
 function SubjectSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { setSubjectName } = useContext(CurrInfoContext);
+    const { setCurrSubject } = useContext(CurrInfoContext);
     const { allSubjects } = useContext(AllInfoContext);
 
     useEffect(() => {
         const formatted = allSubjects.map((subject) => {
-            return { label: subject["short"], value: subject["short"] };
+            return {
+                label: subject["short_name"],
+                value: subject["short_name"],
+            };
         });
         setOptions(formatted);
     }, [allSubjects]);
 
     const handleChange = (option) => {
         console.log("subject updated ", option);
-        setSubjectName(option["value"]);
+        setCurrSubject(option["value"]);
         setValue(option);
     };
 
