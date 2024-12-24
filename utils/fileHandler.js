@@ -25,7 +25,11 @@ function toJSON(line, splitter, removeLength = 0) {
         .substring(0, line.length - removeLength)
         .split(splitter);
     for (const idx in line_arr) {
-        const [key, value] = line_arr[idx].split(": ");
+        const item = line_arr[idx];
+        let [key, value] = item.split(": ");
+        if (item.substring(item.length - 1) === ",") {
+            value = value.substring(0, value.length - 1);
+        }
         json[formatKey(key)] = formatValue(value);
     }
     return json;
