@@ -2,7 +2,7 @@ import db from "../../db.js";
 import * as timeHelper from "../conversions.js";
 
 const getAllYearsHasTerms = async () => {
-    const query = `SELECT * from years_has_terms`;
+    const query = `SELECT year_term_id, calendar_year, term_number from years_has_terms order by calendar_year, term_number asc`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
             if (err) reject(err);

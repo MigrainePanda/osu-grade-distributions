@@ -2,7 +2,7 @@ import db from "../../db.js";
 import * as timeHelper from "../conversions.js";
 
 const getAllCredits = async () => {
-    const query = `SELECT * from credits`;
+    const query = `SELECT credit_id, credit_value from credits order by length(credit_value), credit_value asc`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
             if (err) reject(err);

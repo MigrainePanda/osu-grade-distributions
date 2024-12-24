@@ -2,7 +2,7 @@ import db from "../../db.js";
 import * as timeHelper from "../conversions.js";
 
 const getAllSubjects = async () => {
-    const query = `SELECT * from subjects`;
+    const query = `SELECT subject_id, short_name from subjects order by short_name asc`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
             if (err) reject(err);
