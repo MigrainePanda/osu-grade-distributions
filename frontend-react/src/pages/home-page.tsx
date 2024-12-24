@@ -170,38 +170,7 @@ function HomePage() {
 
                 <div className="separator"></div>
 
-                <div className="content-block">
-                    <div className="content-block-inner">
-                        <h1 className="content-block-title">Legend</h1>
-                        <ul className="page-text">
-                            <li className="content-block-text">F: Fall</li>
-                            <li className="content-block-text">W: Winter</li>
-                            <li className="content-block-text">S: Spring</li>
-                            <li className="content-block-text">Su: Summer</li>
-                            <li className="content-block-text">
-                                Ex. &quot;F, 2023&quot; is Fall 2023
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="separator"></div>
-
-                <div className="image-container grade-distribution-container">
-                    <PlotGrades courses={coursesArr} />
-                </div>
-                <div className="separator"></div>
-                <div className="image-container">
-                    <PlotPassRate courses={coursesArr} />
-                </div>
-                <div className="separator"></div>
-                <div className="image-container">
-                    <PlotAvgGPA courses={coursesArr} />
-                </div>
-                <div className="separator"></div>
-                <div className="image-container">
-                    <PlotNumStudents courses={coursesArr} />
-                </div>
+                <PlotController coursesArr={coursesArr} />
 
                 <div className="separator"></div>
 
