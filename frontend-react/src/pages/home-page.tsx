@@ -1,121 +1,120 @@
-// import { useEffect } from "react";
 import "./css/home-page.css";
 
-// import CoursesPage from "./courses-page";
-import { NavLink } from "react-router-dom";
-import LoadingSpinner from "../components/LoadingSpinner";
 import { useState, useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { AllInfoContext } from "../components/contexts/AllInfoContext.tsx";
 import { CurrInfoContext } from "../components/contexts/CurrInfoContext.tsx";
+
+import LoadingSpinner from "../components/LoadingSpinner";
 import SelectorController from "../components/selectors/SelectorController";
 import CourseDescription from "../components/CourseDescription";
-import PlotGrades from "../components/Plot/PlotGrades";
-import PlotPassRate from "../components/Plot/PlotPassRate";
-import PlotAvgGPA from "../components/Plot/PlotAvgWithdraw";
-import PlotNumStudents from "../components/Plot/PlotNumStudents";
+import PlotController from "../components/Plot/PlotController.tsx";
 
-const URL = "http://localhost:8080/";
+import * as fetchHelper from "../utils/fetchHelpers.tsx";
+import * as conversions from "../utils/conversions.tsx";
 
 function HomePage() {
     const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
+    const [ytDict, setYTDict] = useState<object>();
     const {
         setAllYears,
         setAllTerms,
+        setAllCredits,
         setAllSubjects,
         setAllCourses,
-        allCourses,
+        setAllYearsTerms,
         isFetched,
         setIsFetched,
+        allCourses,
+        allYearsTerms,
     } = useContext(AllInfoContext);
-    const { courseName, year, term } = useContext(CurrInfoContext);
+    const { currSubject, currCourse, currYear, currTerm } =
+        useContext(CurrInfoContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = "Grade Distributions | Home";
-        const loadPage = async () => {
-            const yearsResponse = await fetch(URL + "api/years");
-            const years = await yearsResponse.json();
-            setAllYears(years);
-            // console.log("Years received.", years);
 
-            const termsResponse = await fetch(URL + "api/terms");
-            const terms = await termsResponse.json();
-            setAllTerms(terms);
-            // console.log("Terms received.", terms);
-
-            const subjectsResponse = await fetch(URL + "api/subjects");
-            const subjects = await subjectsResponse.json();
-            setAllSubjects(subjects);
-            // console.log("Subjects received.", subjects);
-
-            const coursesResponse = await fetch(URL + "api/courses");
-            const courses = await coursesResponse.json();
-            setAllCourses(courses);
-            // console.log("Courses received.", courses);
-
-            console.log("Years, terms, subjects, courses fetched.");
-            setIsFetched(true);
-        };
-
-        if (!isFetched) {
-            loadPage();
+        if (isFetched) {
+            return;
         }
+
+        fetchHelper.fetchData("/years").then((res) => {
+            setAllYears(res);
+        });
+        fetchHelper.fetchData("/terms").then((res) => {
+            setAllTerms(res);
+        });
+        fetchHelper.fetchData("/credits").then((res) => {
+            setAllCredits(res);
+        });
+        fetchHelper.fetchData("/subjects").then((res) => {
+            setAllSubjects(res);
+        });
+        fetchHelper.fetchData("/courses").then((res) => {
+            setAllCourses(res);
+        });
+        fetchHelper.fetchData("/years-has-terms").then((res) => {
+            setAllYearsTerms(res);
+            const dict = conversions.getYearTermMap(res);
+            setYTDict(dict);
+        });
+        setIsFetched(true);
     }, [
-        isFetched,
-        setIsFetched,
         setAllYears,
         setAllTerms,
+        setAllCredits,
         setAllSubjects,
         setAllCourses,
+        setAllYearsTerms,
+        allYearsTerms,
+        isFetched,
+        setIsFetched,
     ]);
 
     useEffect(() => {
-        let arr: Array<object> = [];
-        // term only
-        if (term !== "All" && year === "All") {
-            arr = allCourses.filter((course) => {
-                if (courseName === course["short"] && term === course["term"]) {
-                    return true;
-                }
-                return false;
-            });
-            setCoursesArr(arr);
+        if (ytDict === undefined || currSubject === "") {
+            return;
         }
-        // term and year
-        else if (term !== "All") {
-            arr = allCourses.filter((course) => {
-                if (
-                    courseName === course["short"] &&
-                    year === course["year"] &&
-                    term === course["term"]
-                ) {
-                    return true;
-                }
-                return false;
-            });
-            setCoursesArr(arr);
+
+        const arr: Array<object> = [];
+        for (const course of allCourses) {
+            const courseLong = course["long_name"];
+            if (courseLong !== currCourse) {
+                continue;
+            }
+
+            const yt = ytDict[course["year_term_id"]];
+            const year = yt["calendar_year"];
+            const term = yt["term_number"];
+
+            // year, term
+            if (currYear === year && currTerm === term) {
+                arr.push(course);
+                continue;
+            }
+
+            // all years, all terms
+            if (currYear === "All" && currTerm === "All") {
+                arr.push(course);
+                continue;
+            }
+
+            // all years, term
+            if (currYear === "All" && currTerm === term) {
+                arr.push(course);
+                continue;
+            }
+
+            // year, all terms
+            if (currYear === year && currTerm === "All") {
+                arr.push(course);
+                continue;
+            }
         }
-        // year only
-        else if (year !== "" && year !== "All") {
-            arr = allCourses.filter((course) => {
-                if (courseName === course["short"] && year === course["year"]) {
-                    return true;
-                }
-                return false;
-            });
-            setCoursesArr(arr);
-        }
-        // no filters
-        else {
-            arr = allCourses.filter((course) => {
-                if (courseName === course["short"]) {
-                    return true;
-                }
-                return false;
-            });
-            setCoursesArr(arr);
-        }
-    }, [allCourses, courseName, year, term]);
+
+        setCoursesArr(arr);
+    }, [currSubject, currCourse, currYear, currTerm, allCourses, ytDict]);
 
     if (!isFetched) {
         <>
@@ -131,6 +130,7 @@ function HomePage() {
                     </div>
                 </div>
 
+                <div className="separator"></div>
                 <div className="separator"></div>
 
                 <LoadingSpinner />
