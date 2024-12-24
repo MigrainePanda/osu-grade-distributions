@@ -1,25 +1,11 @@
 import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
+import { possibleGrades } from "../../utils/letterGrades";
 
 function PlotGrades({ courses }) {
-    const possibleGrades = [
-        "A",
-        "A-",
-        "B+",
-        "B",
-        "B-",
-        "C+",
-        "C",
-        "C-",
-        "D+",
-        "D",
-        "D-",
-        "F",
-        "W",
-    ];
     const labels = possibleGrades;
     const courseData: Array<number> = [];
-    let displayedTotalStudents = 0;
+    let courseTotalStudents = 0;
 
     function formatData() {
         for (let i = 0; i < possibleGrades.length; i++) {
@@ -27,25 +13,18 @@ function PlotGrades({ courses }) {
         }
 
         for (const course of courses) {
-            const studentTotal = course["student_total"];
-            const gradeData = JSON.parse(course["grade_data"]);
-            for (const grade of possibleGrades) {
-                if (!(grade in gradeData)) {
-                    gradeData[grade] = "0";
-                }
-            }
-
-            let courseStudentTotal = 0;
-            for (let i = 0; i < possibleGrades.length; i++) {
+            const gradeData = course["grade_data"];
+            for (const i in possibleGrades) {
                 const grade = possibleGrades[i];
-                const num = Math.round(
-                    (parseFloat(gradeData[grade]) / 100) * studentTotal
-                );
-                courseData[i] += num;
-                courseStudentTotal += num;
+                if (!(grade in gradeData)) {
+                    gradeData[grade] = {
+                        credits: 0,
+                        student_count: 0,
+                    };
+                }
+                courseData[i] += gradeData[grade]["student_count"];
+                courseTotalStudents += gradeData[grade]["student_count"];
             }
-
-            displayedTotalStudents += courseStudentTotal;
         }
     }
     formatData();
@@ -60,7 +39,7 @@ function PlotGrades({ courses }) {
             },
             title: {
                 display: true,
-                text: `Grade Distribution of ${displayedTotalStudents} students`,
+                text: `Grade Distribution of ${courseTotalStudents} students`,
                 font: {
                     size: 18,
                 },
@@ -75,12 +54,10 @@ function PlotGrades({ courses }) {
                 callbacks: {
                     label: function (context) {
                         const value = context.raw;
-                        const total =
-                            context.chart.data.datasets[0].data.reduce(
-                                (a, b) => a + b,
-                                0
-                            );
-                        const percentage = ((value / total) * 100).toFixed(2);
+                        const percentage = (
+                            (value / courseTotalStudents) *
+                            100
+                        ).toFixed(2);
                         return ` ${value} (${percentage}%)`;
                     },
                 },

@@ -2,20 +2,31 @@ import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
 import { useMediaQuery } from "react-device-sizes";
 import { termNumToShortName } from "../../utils/conversions";
+import { useContext } from "react";
+import { AllInfoContext } from "../contexts/AllInfoContext";
+import { IDToYearTerm } from "../../utils/conversions.react";
 
 function PlotNumStudents({ courses }) {
+    const { allYearsTerms } = useContext(AllInfoContext);
     const is1000 = useMediaQuery({ minWidth: 1000 });
 
     const labels: Array<string> = [];
     const courseData: Array<number> = [];
 
-    for (const course of courses) {
-        const term = termNumToShortName(course["term"]);
-        const year = course["year"];
-        const studentTotal = course["student_total"];
-        labels.push(`${term}, ${year}`);
-        courseData.push(studentTotal);
+    function formatData() {
+        for (const course of courses) {
+            const [year, term] = IDToYearTerm(
+                Array.from(allYearsTerms),
+                course["year_term_id"]
+            );
+
+            const studentTotal = course["student_total"];
+            labels.push(`${termNumToShortName(term)}, ${year}`);
+            courseData.push(studentTotal);
+        }
     }
+    formatData();
+
     const biggest = Math.ceil(Math.max(...courseData) / 100) * 100;
     const isGreaterThan200 = biggest > 200;
     const yMax = isGreaterThan200 ? biggest + 100 : (biggest + 50) | 0;

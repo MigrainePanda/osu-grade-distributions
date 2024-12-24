@@ -2,34 +2,33 @@ import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
 import { useMediaQuery } from "react-device-sizes";
 import { termNumToShortName } from "../../utils/conversions";
+import { IDToYearTerm } from "../../utils/conversions.react";
+import { useContext } from "react";
+import { AllInfoContext } from "../contexts/AllInfoContext";
 
-function PlotPassRate({ courses }) {
+function PlotAvgWithdraw({ courses }) {
+    const { allYearsTerms } = useContext(AllInfoContext);
     const is1000 = useMediaQuery({ minWidth: 1000 });
 
-    // const engrPassingGrades = [];
-    const passingGrades = ["A", "A-", "B+", "B", "B-", "C+", "C"];
     const labels: Array<string> = [];
     const courseData: Array<number> = [];
+    let yMax = -1;
 
-    for (const course of courses) {
-        const term = termNumToShortName(course["term"]);
-        const year = course["year"];
+    function formatData() {
+        for (const course of courses) {
+            const [year, term] = IDToYearTerm(
+                Array.from(allYearsTerms),
+                course["year_term_id"]
+            );
 
-        const gradeData = JSON.parse(course["grade_data"]);
-        let passRate = 0;
-        for (const grade of passingGrades) {
-            if (gradeData[grade] !== undefined) {
-                passRate += Number(gradeData[grade]);
-            }
+            const gpa = course["gpa"];
+            labels.push(`${termNumToShortName(term)}, ${year}`);
+            courseData.push(gpa);
         }
 
-        labels.push(`${term}, ${year}`);
-        if (passRate === 0) {
-            courseData.push(NaN);
-            continue;
-        }
-        courseData.push(Number(passRate.toFixed(2)));
+        yMax = Math.round(Math.max(...courseData) * 2) | 0;
     }
+    formatData();
 
     const options = {
         indexAxis: "x" as const,
@@ -41,7 +40,7 @@ function PlotPassRate({ courses }) {
             },
             title: {
                 display: true,
-                text: `Pass Rate per Term`,
+                text: `Avg Withdraw Rate per Term`,
                 font: {
                     size: 18,
                 },
@@ -104,9 +103,9 @@ function PlotPassRate({ courses }) {
                     scale.width = 70;
                 },
                 min: 0,
-                max: 100,
+                max: yMax,
                 ticks: {
-                    stepSize: 10,
+                    stepSize: 1,
                     font: {
                         size: 16,
                     },
@@ -128,6 +127,74 @@ function PlotPassRate({ courses }) {
         ],
     };
 
+    // const options = {
+    //     indexAxis: "x" as const,
+    //     responsive: true,
+    //     maintainAspectRatio: false,
+    //     plugins: {
+    //         legend: {
+    //             display: false,
+    //         },
+    //         title: {
+    //             display: true,
+    //             text: `Withdraw Rate per Term`,
+    //             font: {
+    //                 size: 16
+    //             }
+    //         },
+    //         zoom: {
+    //             pan: {
+    //                 enabled: true,
+    //                 mode: 'x' as const
+    //             },
+    //             zoom: {
+    //                 pinch: {
+    //                     enabled: true
+    //                 },
+    //                 mode: 'x' as const,
+    //             }
+    //         }
+    //     },
+    //     pointRadius: 5,
+    //     pointHoverRadius: 7,
+    //     scales: {
+    //         x: {
+    //             title: {
+    //                 display: true,
+    //                 text: "Term, Year"
+    //             },
+    //             min: 0,
+    //             max: 5,
+    //         },
+    //         y: {
+    //             title: {
+    //                 display: true,
+    //                 text: "Average GPA"
+    //             },
+    //             max: 4.00,
+    //             min: 0,
+    //             ticks: {
+    //                 stepSize: 0.5,
+    //             },
+    //         }
+    //     }
+    // }
+
+    // const data = {
+    //     labels,
+    //     datasets: [
+    //         {
+    //             data: courseData,
+    //             backgroundColor: [
+    //                 "rgba(0, 50, 50, 1)"
+    //             ],
+    //             borderColor: [
+    //                 "rgba(0, 0, 150, 1)"
+    //             ]
+    //         },
+    //     ],
+    // }
+
     return (
         <>
             <Line options={options} data={data} />
@@ -135,8 +202,8 @@ function PlotPassRate({ courses }) {
     );
 }
 
-PlotPassRate.propTypes = {
+PlotAvgWithdraw.propTypes = {
     courses: PropTypes.array,
 };
 
-export default PlotPassRate;
+export default PlotAvgWithdraw;
