@@ -1,6 +1,13 @@
+import { AllInfoContext } from "./contexts/AllInfoContext";
+
+import { useContext } from "react";
 import PropTypes from "prop-types";
+import * as conversionsReact from "../utils/conversions.react.tsx";
+import { possibleGrades, passingGrades } from "../utils/letterGrades.tsx";
 
 function CourseDescription({ courses }) {
+    const { allCredits, allYearsTerms } = useContext(AllInfoContext);
+
     if (courses.length === 0) {
         return (
             <div className="content-block-text-container course-desc-block">
@@ -11,76 +18,124 @@ function CourseDescription({ courses }) {
             </div>
         );
     }
-    // console.log(courses)
 
     // data range
-    const startYear = courses[0]["year"];
-    const endYear = courses[courses.length - 1]["year"];
+    const startYTID = courses[0]["year_term_id"];
+    const endYTID = courses[courses.length - 1]["year_term_id"];
+
+    const startYear = conversionsReact.IDToYear(allYearsTerms, startYTID);
+    const endYear = conversionsReact.IDToYear(allYearsTerms, endYTID);
     let yearRange = "";
     if (startYear == endYear) {
-        yearRange = startYear;
+        yearRange = String(startYear);
     } else {
         yearRange = `${startYear} - ${endYear}`;
     }
 
-    // credits
-    const credits = courses[0]["credit_hours"];
-
     // passing rate, withdraw rate, student total
-    const passingGrades = ["A", "A-", "B+", "B", "B-", "C+", "C"];
+    const avgGPAArr: Array<number> = [];
     const avgPassRateArr: Array<number> = [];
-    const withdrawRateArr: Array<number> = [];
-    const studentTotalArr: Array<number> = [];
+    const avgWithdrawRateArr: Array<number> = [];
+    const avgStudentTotalArr: Array<number> = [];
 
+    const credits_id = new Set();
+    const credits: Array<string> = [];
     for (const course of courses) {
-        const gradeData = JSON.parse(course["grade_data"]);
-        let passRate = 0;
-        for (const grade of passingGrades) {
-            if (gradeData[grade] !== undefined) {
-                passRate += Number(gradeData[grade]);
+        //credits
+        const credit_id = course["credit_id"];
+        if (!credits_id.has(credit_id)) {
+            credits_id.add(credit_id);
+            const credit_value = conversionsReact.IDToCreditValue(
+                allCredits,
+                credit_id
+            );
+            credits.push(credit_value);
+        }
+
+        // grades
+        const gradeData = course["grade_data"];
+
+        // gpa for one course
+        avgGPAArr.push(course["gpa"]);
+
+        // passrate for one course
+        let passrate = 0;
+        for (const i in passingGrades) {
+            const grade = possibleGrades[i];
+            if (!gradeData[grade]) {
+                continue;
             }
+            passrate += gradeData[grade]["student_count"];
         }
-        if (gradeData["W"] !== undefined) {
-            withdrawRateArr.push(Number(gradeData["W"]));
+        passrate = (passrate / course["student_total"]) * 100;
+        avgPassRateArr.push(passrate);
+
+        // withdraw rate for one course
+        let withdrawRate = 0;
+        if (gradeData["W"]) {
+            withdrawRate =
+                (gradeData["W"]["student_count"] / course["student_total"]) *
+                100;
         }
-        avgPassRateArr.push(passRate);
-        studentTotalArr.push(Number(course["student_total"]));
+        avgWithdrawRateArr.push(withdrawRate);
+
+        // student count for one course
+        avgStudentTotalArr.push(course["student_total"]);
     }
+
+    // compute values for all courses
+    const avgGPA =
+        avgGPAArr.reduce((acc, curr) => acc + curr, 0) / avgGPAArr.length;
+    const displayedAvgGPA = avgGPA.toFixed(2);
 
     const avgPassRate =
         avgPassRateArr.reduce((acc, curr) => acc + curr, 0) /
         avgPassRateArr.length;
     const displayedAvgPassRate = avgPassRate.toFixed(2);
 
-    const withdrawRate =
-        withdrawRateArr.reduce((acc, curr) => acc + curr, 0) /
-        withdrawRateArr.length;
-    const displayedWithdrawRate = withdrawRate.toFixed(2);
+    const avgWithdrawRate =
+        avgWithdrawRateArr.reduce((acc, curr) => acc + curr, 0) /
+        avgWithdrawRateArr.length;
+    const displayedAvgWithdrawRate = avgWithdrawRate.toFixed(2);
 
-    const studentTotal =
-        studentTotalArr.reduce((acc, curr) => acc + curr, 0) /
-        studentTotalArr.length;
-    const displayedStudentTotal = studentTotal.toFixed();
+    const studentTotal = avgStudentTotalArr.reduce(
+        (acc, curr) => acc + curr,
+        0
+    );
+    const avgStudentTotal = studentTotal / avgStudentTotalArr.length;
+    const displayedAvgStudentTotal = avgStudentTotal.toFixed();
 
     return (
         <>
             <div className="content-block-text-container course-desc-block">
                 <h1 className="content-block-title block-title">Course Info</h1>
-                <p className="content-block-text page-text">
-                    Data Range: {yearRange}
-                </p>
-                <p className="content-block-text page-text">
-                    Credit Hours: {credits}
-                </p>
-                <p className="content-block-text page-text">
-                    Avg Pass Rate: {displayedAvgPassRate}%
-                </p>
-                <p className="content-block-text page-text">
-                    Avg Withdraw Rate: {displayedWithdrawRate}%
-                </p>
-                <p className="content-block-text page-text">
-                    Avg Number of Students: {displayedStudentTotal}
-                </p>
+                <div className="grid-block">
+                    <div>
+                        <p className="content-block-text page-text">
+                            Data Range: {yearRange}
+                        </p>
+                        <p className="content-block-text page-text">
+                            Credit Hours: {credits.join(", ")}
+                        </p>
+                        <p className="content-block-text page-text">
+                            Total Students: {studentTotal}
+                        </p>
+                    </div>
+                    <div>
+                        <p className="content-block-text page-text">
+                            Avg GPA: {displayedAvgGPA}
+                        </p>
+                        <p className="content-block-text page-text">
+                            Avg Pass Rate: {displayedAvgPassRate}%
+                        </p>
+                        <p className="content-block-text page-text">
+                            Avg Withdraw Rate: {displayedAvgWithdrawRate}%
+                        </p>
+                        <p className="content-block-text page-text">
+                            Avg Number of Students: {displayedAvgStudentTotal}
+                        </p>
+                    </div>
+                </div>
             </div>
         </>
     );
