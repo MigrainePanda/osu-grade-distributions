@@ -1,5 +1,5 @@
 import express from "express";
-import * as controller from "./controller.js";
+import * as controller from "./api_controller.js";
 const api = express.Router();
 
 const use = (fn) => (req, res, next) =>
@@ -11,8 +11,12 @@ api.get("/api/years", use(controller.fetchAllYears));
 
 api.get("/api/terms", use(controller.fetchAllTerms));
 
+api.get("/api/credits", use(controller.fetchAllCredits));
+
 api.get("/api/subjects", use(controller.fetchAllSubjects));
 
 api.get("/api/courses", use(controller.fetchAllCourses));
+
+api.get("/api/years-has-terms", use(controller.fetchAllYearsHasTerms));
 
 export default api;
