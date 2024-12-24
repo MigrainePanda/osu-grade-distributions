@@ -11,23 +11,24 @@ import Tooltip from "../Tooltip/Tooltip.tsx";
 function TermSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { year, setTerm } = useContext(CurrInfoContext);
+    const { currYear, setCurrTerm } = useContext(CurrInfoContext);
     const { allTerms } = useContext(AllInfoContext);
 
     useEffect(() => {
         const filtered = allTerms.filter((term) => {
-            if (term["year"] === year) return term;
+            if (term["year"] === currYear) return term;
         });
+
         // year = All
         if (filtered.length === 0) {
             const noOption = [
                 { label: "All", value: "All" },
-                { label: "Summer", value: "00" },
                 { label: "Fall", value: "01" },
                 { label: "Winter", value: "02" },
                 { label: "Spring", value: "03" },
+                { label: "Summer", value: "00" },
             ];
-            setTerm(noOption[0]["value"]);
+            setCurrTerm(noOption[0]["value"]);
             setValue(noOption[0]);
             setOptions(noOption);
             return;
@@ -37,14 +38,14 @@ function TermSelector() {
             return { label: termName, value: term["term"] };
         });
         filteredOptions.unshift({ label: "All", value: "All" });
-        setTerm(filteredOptions[0]["value"]);
+        setCurrTerm(filteredOptions[0]["value"]);
         setValue(filteredOptions[0]);
         setOptions(filteredOptions);
-    }, [year, allTerms, setTerm]);
+    }, [currYear, allTerms, setCurrTerm]);
 
     const handleChange = (option) => {
         console.log("term updated ", option);
-        setTerm(option["value"]);
+        setCurrTerm(option["value"]);
         setValue(option);
     };
 
