@@ -1,29 +1,29 @@
 import { createContext } from "react";
 
 export type InformationType = {
-    year: string;
-    term: string;
-    courseName: string;
-    subjectName: string;
-    coursesArr: Array<object>;
-    setYear: (c: string) => void;
-    setTerm: (c: string) => void;
-    setCourseName: (c: string) => void;
-    setSubjectName: (c: string) => void;
-    setCoursesArr: (c: Array<object>) => void;
+    currYear: string;
+    currTerm: string;
+    currCourse: string;
+    currSubject: string;
+    currCoursesArr: Array<object>;
+    setCurrYear: (c: string) => void;
+    setCurrTerm: (c: string) => void;
+    setCurrCourse: (c: string) => void;
+    setCurrSubject: (c: string) => void;
+    setCurrCoursesArr: (c: Array<object>) => void;
 };
 
 const CurrInfoContext = createContext<InformationType>({
-    year: "All",
-    term: "N/A",
-    courseName: "None",
-    subjectName: "None",
-    coursesArr: [{}],
-    setYear: () => {},
-    setTerm: () => {},
-    setCourseName: () => {},
-    setSubjectName: () => {},
-    setCoursesArr: () => {},
+    currYear: "All",
+    currTerm: "N/A",
+    currCourse: "None",
+    currSubject: "None",
+    currCoursesArr: [{}],
+    setCurrYear: () => {},
+    setCurrTerm: () => {},
+    setCurrCourse: () => {},
+    setCurrSubject: () => {},
+    setCurrCoursesArr: () => {},
 });
 
 export { CurrInfoContext };
