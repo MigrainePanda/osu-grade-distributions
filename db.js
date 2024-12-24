@@ -1,6 +1,6 @@
 import pg from "pg";
 import { configDotenv } from "dotenv";
-import { readFileSync } from "fs";
+import * as timeHelper from "./utils/conversions.js";
 configDotenv();
 
 const { Pool } = pg;
@@ -32,7 +32,8 @@ if (
 
 try {
     const checkConn = await db.query("SELECT NOW()");
-    const currTime = checkConn.rows[0].now;
+    // const currTime = checkConn.rows[0].now;
+    const currTime = timeHelper.getCurrentEpoch();
     console.log(`Succesfully connected to the database at ${currTime}.`);
 } catch (err) {
     console.error(err);
