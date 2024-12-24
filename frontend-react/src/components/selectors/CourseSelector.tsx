@@ -10,8 +10,7 @@ import Tooltip from "../Tooltip/Tooltip.tsx";
 function CourseSelector() {
     const [options, setOptions] = useState<OptionsType>([]);
     const [value, setValue] = useState<ValueType>([]);
-    const { subjectName, setCourseName, year, term } =
-        useContext(CurrInfoContext);
+    const { currSubject, setCurrCourse } = useContext(CurrInfoContext);
     const { allCourses } = useContext(AllInfoContext);
 
     function addOptions(uniqueCourses: Set<string>) {
@@ -24,81 +23,37 @@ function CourseSelector() {
     }
 
     useEffect(() => {
-        // just year/term, no subject
-        if (subjectName === "") {
-            return;
-        }
-        const uniqueCourses = new Set<string>();
+        const uniqueCourseNames = new Set<string>();
 
-        if (term !== "All" && year === "All") {
-            allCourses.filter((course) => {
-                const isSubject = course["subject"] === subjectName;
-                const isTerm = course["term"] === term;
-                const isUnique = uniqueCourses.has(course["short"]);
-                if (isSubject && isTerm && !isUnique) {
-                    uniqueCourses.add(course["short"]);
-                    return true;
-                }
-                return false;
-            });
-            addOptions(uniqueCourses);
+        if (currSubject === "") {
             return;
         }
 
-        // subject, term
-        if (term !== "All") {
-            allCourses.filter((course) => {
-                const isSubject = course["subject"] === subjectName;
-                const isYear = course["year"] === year;
-                const isTerm = course["term"] === term;
-                const isUnique = uniqueCourses.has(course["short"]);
-                if (isSubject && isYear && isTerm && !isUnique) {
-                    uniqueCourses.add(course["short"]);
-                    return true;
-                }
-                return false;
-            });
-            addOptions(uniqueCourses);
-            return;
-        }
+        allCourses.map((course) => {
+            const courseLong = course["long_name"];
+            const courseShort = course["short_name"];
 
-        // subject, year
-        if (year !== "" && year !== "All") {
-            allCourses.filter((course) => {
-                const isSubject = course["subject"] === subjectName;
-                const isYear = course["year"] === year;
-                const isUnique = uniqueCourses.has(course["short"]);
-                if (isSubject && isYear && !isUnique) {
-                    uniqueCourses.add(course["short"]);
-                    return true;
-                }
-                return false;
-            });
-            addOptions(uniqueCourses);
-            return;
-        }
-
-        // just subject
-        allCourses.filter((course) => {
-            const isSubject = course["subject"] === subjectName;
-            const isUnique = uniqueCourses.has(course["short"]);
-            if (isSubject && !isUnique) {
-                uniqueCourses.add(course["short"]);
-                return true;
+            if (uniqueCourseNames.has(courseLong)) {
+                return;
             }
-            return false;
+            if (courseShort !== currSubject) {
+                return;
+            }
+
+            uniqueCourseNames.add(courseLong);
         });
-        addOptions(uniqueCourses);
-    }, [allCourses, subjectName, year, term]);
+
+        addOptions(uniqueCourseNames);
+    }, [allCourses, currSubject]);
 
     useEffect(() => {
-        setCourseName("");
+        setCurrCourse("");
         setValue([]);
-    }, [subjectName, setCourseName]);
+    }, [currSubject, setCurrCourse]);
 
     const handleChange = (option) => {
         console.log("course updated ", option);
-        setCourseName(option["value"]);
+        setCurrCourse(option["value"]);
         setValue(option);
     };
 
