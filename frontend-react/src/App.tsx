@@ -17,43 +17,50 @@ import BackToTop from "./components/BackToTop/BackToTop";
 function App() {
     const [isSplash, setIsSplash] = useState<boolean>(false);
     const [isFetched, setIsFetched] = useState<boolean>(false);
-    const [allCourses, setAllCourses] = useState<Array<object>>([]);
-    const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
+
     const [allYears, setAllYears] = useState<Array<object>>([]);
     const [allTerms, setAllTerms] = useState<Array<object>>([]);
+    const [allCredits, setAllCredits] = useState<Array<object>>([]);
+    const [allSubjects, setAllSubjects] = useState<Array<object>>([]);
+    const [allCourses, setAllCourses] = useState<Array<object>>([]);
+    const [allYearsTerms, setAllYearsTerms] = useState<Array<object>>([]);
 
     const allProp = {
         isSplash,
         isFetched,
         allYears,
         allTerms,
-        allCourses,
         allSubjects,
+        allCredits,
+        allCourses,
+        allYearsTerms,
         setIsSplash,
         setIsFetched,
         setAllYears,
         setAllTerms,
-        setAllCourses,
+        setAllCredits,
         setAllSubjects,
+        setAllCourses,
+        setAllYearsTerms,
     };
 
-    const [courseName, setCourseName] = useState<string>("");
-    const [subjectName, setSubjectName] = useState<string>("");
-    const [year, setYear] = useState<string>("");
-    const [term, setTerm] = useState<string>("");
-    const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
+    const [currYear, setCurrYear] = useState<string>("");
+    const [currTerm, setCurrTerm] = useState<string>("");
+    const [currCourse, setCurrCourse] = useState<string>("");
+    const [currSubject, setCurrSubject] = useState<string>("");
+    const [currCoursesArr, setCurrCoursesArr] = useState<Array<object>>([]);
 
     const currProp = {
-        year,
-        term,
-        courseName,
-        subjectName,
-        coursesArr,
-        setYear,
-        setTerm,
-        setCourseName,
-        setSubjectName,
-        setCoursesArr,
+        currYear,
+        currTerm,
+        currCourse,
+        currSubject,
+        currCoursesArr,
+        setCurrYear,
+        setCurrTerm,
+        setCurrCourse,
+        setCurrSubject,
+        setCurrCoursesArr,
     };
 
     return (

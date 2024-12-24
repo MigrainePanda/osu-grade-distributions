@@ -18,4 +18,25 @@ function termNumToShortName(str) {
     return numToName[str];
 }
 
-export { termNumToName, termNumToShortName };
+function getYearTermMap(arr) {
+    const yt_dict = {};
+    for (const obj of arr) {
+        yt_dict[obj["year_term_id"]] = {
+            term_number: obj["term_number"],
+            calendar_year: obj["calendar_year"],
+        };
+        // if (
+        //     obj["term_number"] === currTerm &&
+        //     obj["calendar_year"] === currYear
+        // ) {
+        //     yt_id = obj["year_term_id"];
+        //     break;
+        // }
+    }
+    return yt_dict;
+    // allYearsTerms.map((obj) => {
+    //     yt_dict[obj["year_term_id"]] = { ...obj };
+    // });
+}
+
+export { termNumToName, termNumToShortName, getYearTermMap };
