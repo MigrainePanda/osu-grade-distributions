@@ -14,6 +14,9 @@ function SubjectSelector() {
     const { allSubjects } = useContext(AllInfoContext);
 
     useEffect(() => {
+        if (allSubjects.length === 0) {
+            return;
+        }
         const formatted = allSubjects.map((subject) => {
             return {
                 label: subject["short_name"],

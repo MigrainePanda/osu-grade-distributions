@@ -23,6 +23,9 @@ function CourseSelector() {
     }
 
     useEffect(() => {
+        if (allCourses.length === 0) {
+            return;
+        }
         const uniqueCourseNames = new Set<string>();
 
         if (currSubject === "") {

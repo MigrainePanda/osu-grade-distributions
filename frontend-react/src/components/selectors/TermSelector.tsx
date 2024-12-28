@@ -15,6 +15,9 @@ function TermSelector() {
     const { allTerms } = useContext(AllInfoContext);
 
     useEffect(() => {
+        if (allTerms.length === 0) {
+            return;
+        }
         const filtered = allTerms.filter((term) => {
             if (term["year"] === currYear) return term;
         });
