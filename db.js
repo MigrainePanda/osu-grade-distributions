@@ -26,7 +26,7 @@ if (
         password: process.env.POSTGRES_LOCAL_PASSWORD,
         host: "localhost",
         port: 5432,
-        database: "osu_grade_distributions",
+        database: "testing_osu_grade_distributions",
     });
 }
 

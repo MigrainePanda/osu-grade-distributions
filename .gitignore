@@ -2,6 +2,7 @@ node_modules
 .env
 todo.txt
 
+test.js
 test.csv
 test.http
 
