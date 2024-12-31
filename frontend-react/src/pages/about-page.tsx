@@ -172,8 +172,12 @@ function AboutPage() {
                                 University Public Records Officer.
                             </p>
                             <p className="content-block-text page-text">
-                                This website is not affiliated with Oregon State
-                                University.
+                                The data displayed on this website is publicly
+                                available information and is intended for
+                                informational purposes only. The website is not
+                                affiliated with Oregon State University, and the
+                                data may not reflect current grading policies or
+                                practices.
                             </p>
                         </div>
                         <a
