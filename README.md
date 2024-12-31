@@ -5,8 +5,11 @@ Welcome to the Grade Distribution website for Oregon State University courses! H
 ## Features
 
 **Interactive Visualization**: Use dynamically updated graphs and charts to analyze data over different time ranges.
+
 **Data Filtering**: Refine search results by course, department, year, and term.
+
 **User-Friendly Interface**: Navigate the platform easily with an interface designed for users to find and understand relevant data right away.
+
 **Mobile Friendly**: Access on the go with responsive design, ensuring full functionality and acessibility on devices of all sizes.
 
 ## Data Sources
