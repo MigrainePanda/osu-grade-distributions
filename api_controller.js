@@ -7,10 +7,30 @@ import * as coursesHandler from "./utils/controllers/coursesController.js";
 import * as yearsHasTermsHandler from "./utils/controllers/yearsHasTermsController.js";
 
 async function test(req, res) {
-    const query = `SELECT * FROM courses`;
-    const queryResp = await db.query(query);
-    const reqResp = await queryResp.rows;
-    res.send(reqResp);
+    console.log("query params: ", req.query);
+    const query_params = req.query;
+    const subject = query_params["subject"];
+    const term = query_params["term"];
+    const year = query_params["year"];
+    if (!subject) {
+        res.send("Query parameter 'subject' not provided.");
+        return;
+    }
+    if (!term) {
+        res.send("Query parameter 'term' not provided.");
+        return;
+    }
+    if (!year) {
+        res.send("Query parameter 'year' not provided.");
+        return;
+    }
+    const reqResp = await coursesHandler.getCourseBySpecification(
+        subject,
+        term,
+        year
+    );
+    console.log("response: ", reqResp);
+    res.send(`The provided subject is ${subject}`);
 }
 
 async function fetchAllYears(req, res) {
