@@ -17,19 +17,16 @@ function HomePage() {
     const [coursesArr, setCoursesArr] = useState<Array<object>>([]);
     const [ytDict, setYTDict] = useState<object>();
     const {
+        isFetched,
+        setIsFetched,
         setAllYears,
         setAllTerms,
         setAllCredits,
         setAllSubjects,
-        setAllCourses,
         setAllYearsTerms,
-        isFetched,
-        setIsFetched,
-        allCourses,
-        allYearsTerms,
+        setAllCourses,
     } = useContext(AllInfoContext);
-    const { currSubject, currCourse, currYear, currTerm } =
-        useContext(CurrInfoContext);
+    const { currSubject, currYear, currTerm } = useContext(CurrInfoContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -51,9 +48,6 @@ function HomePage() {
         fetchHelper.fetchData("/subjects").then((res) => {
             setAllSubjects(res);
         });
-        fetchHelper.fetchData("/courses").then((res) => {
-            setAllCourses(res);
-        });
         fetchHelper.fetchData("/years-has-terms").then((res) => {
             setAllYearsTerms(res);
             const dict = conversions.getYearTermMap(res);
@@ -61,60 +55,33 @@ function HomePage() {
         });
         setIsFetched(true);
     }, [
+        setIsFetched,
         setAllYears,
         setAllTerms,
         setAllCredits,
         setAllSubjects,
-        setAllCourses,
         setAllYearsTerms,
-        allYearsTerms,
         isFetched,
-        setIsFetched,
     ]);
 
     useEffect(() => {
         if (ytDict === undefined || currSubject === "") {
             return;
         }
-
         const arr: Array<object> = [];
-        for (const course of allCourses) {
-            const courseLong = course["long_name"];
-            if (courseLong !== currCourse) {
-                continue;
-            }
-
-            const yt = ytDict[course["year_term_id"]];
-            const year = yt["calendar_year"];
-            const term = yt["term_number"];
-
-            // year, term
-            if (currYear === year && currTerm === term) {
+        let url = "/courses";
+        url += "?subject=" + currSubject;
+        url += "&term=" + currTerm;
+        url += "&year=" + currYear;
+        fetchHelper.fetchData(url).then((res) => {
+            console.log(res);
+            setAllCourses(res);
+            for (const course of res) {
                 arr.push(course);
-                continue;
             }
-
-            // all years, all terms
-            if (currYear === "All" && currTerm === "All") {
-                arr.push(course);
-                continue;
-            }
-
-            // all years, term
-            if (currYear === "All" && currTerm === term) {
-                arr.push(course);
-                continue;
-            }
-
-            // year, all terms
-            if (currYear === year && currTerm === "All") {
-                arr.push(course);
-                continue;
-            }
-        }
-
+        });
         setCoursesArr(arr);
-    }, [currSubject, currCourse, currYear, currTerm, allCourses, ytDict]);
+    }, [currSubject, currYear, currTerm, setAllCourses, ytDict]);
 
     if (!isFetched) {
         <>

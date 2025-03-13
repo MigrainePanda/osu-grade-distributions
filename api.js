@@ -15,7 +15,7 @@ api.get("/api/credits", use(controller.fetchAllCredits));
 
 api.get("/api/subjects", use(controller.fetchAllSubjects));
 
-api.get("/api/courses", use(controller.fetchAllCourses));
+api.get("/api/courses", use(controller.fetchCoursesBySpecification));
 
 api.get("/api/years-has-terms", use(controller.fetchAllYearsHasTerms));
 
