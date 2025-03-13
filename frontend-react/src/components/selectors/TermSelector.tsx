@@ -70,7 +70,7 @@ function TermSelector() {
                         options={options}
                         value={value}
                         onChange={(option) => handleChange(option)}
-                        placeholder="Loading..."
+                        placeholder="Select..."
                         isSearchable
                     />
                 </div>
