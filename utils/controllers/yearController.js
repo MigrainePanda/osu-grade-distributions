@@ -5,7 +5,14 @@ const getAllYears = async () => {
     const query = `SELECT calendar_year FROM years ORDER BY calendar_year asc`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
-            if (err) reject(err);
+            if (err) {
+                reject(err);
+                return;
+            }
+            if (!res) {
+                reject(err);
+                return;
+            }
             if (res.rows.length != 0) {
                 console.log(
                     `All rows successfully retrieved at ${timeHelper.getCurrentEpoch()}:`

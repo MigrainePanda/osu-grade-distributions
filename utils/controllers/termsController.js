@@ -5,7 +5,14 @@ const getAllTerms = async () => {
     const query = `SELECT term_number, term_name from terms`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
-            if (err) reject(err);
+            if (err) {
+                reject(err);
+                return;
+            }
+            if (!res) {
+                reject(err);
+                return;
+            }
             if (res.rows.length != 0) {
                 console.log(
                     `All rows successfully retrieved at ${timeHelper.getCurrentEpoch()}:`

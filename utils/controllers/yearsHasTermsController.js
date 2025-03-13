@@ -5,7 +5,14 @@ const getAllYearsHasTerms = async () => {
     const query = `SELECT year_term_id, calendar_year, term_number from years_has_terms order by calendar_year, term_number asc`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
-            if (err) reject(err);
+            if (err) {
+                reject(err);
+                return;
+            }
+            if (!res) {
+                reject(err);
+                return;
+            }
             if (res.rows.length != 0) {
                 console.log(
                     `All rows successfully retrieved at ${timeHelper.getCurrentEpoch()}:`

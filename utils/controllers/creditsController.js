@@ -5,7 +5,14 @@ const getAllCredits = async () => {
     const query = `SELECT credit_id, credit_value from credits order by length(credit_value), credit_value asc`;
     return new Promise((resolve, reject) => {
         db.query(query, (err, res) => {
-            if (err) reject(err);
+            if (err) {
+                reject(err);
+                return;
+            }
+            if (!res) {
+                reject(err);
+                return;
+            }
             if (res.rows.length != 0) {
                 console.log(
                     `All rows successfully retrieved at ${timeHelper.getCurrentEpoch()}:`
