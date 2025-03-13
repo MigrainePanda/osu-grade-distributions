@@ -20,11 +20,7 @@ const getCourseBySpecification = async (subject, term, year) => {
     let values = [subject];
     const query_top = `
         SELECT
-            courses.course_id,
-            courses.short_name,
-            courses.long_name,
-            years_has_terms.term_number,
-            years_has_terms.calendar_year
+            *
         FROM 
             courses
         JOIN 
@@ -34,7 +30,7 @@ const getCourseBySpecification = async (subject, term, year) => {
     `;
 
     let term_str = "";
-    if (term === "ALL") {
+    if (term === "All") {
         values.push("%");
         term_str = "term_number LIKE $2";
     } else {
@@ -42,7 +38,7 @@ const getCourseBySpecification = async (subject, term, year) => {
         term_str = "term_number = $2";
     }
     let year_str = "";
-    if (year === "ALL") {
+    if (year === "All") {
         values.push(0);
         year_str = `calendar_year > $3`;
     } else {
@@ -57,7 +53,6 @@ const getCourseBySpecification = async (subject, term, year) => {
     `;
 
     const query = query_top + query_mid + query_bot;
-    console.log(values);
 
     return new Promise((resolve, reject) => {
         db.query(query, values, (err, res) => {

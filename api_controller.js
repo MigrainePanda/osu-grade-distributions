@@ -59,7 +59,6 @@ async function fetchAllCourses(req, res) {
 }
 
 async function fetchCoursesBySpecification(req, res) {
-    console.log("query params: ", req.query);
     const query_params = req.query;
     const subject = query_params["subject"];
     const term = query_params["term"];
