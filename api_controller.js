@@ -29,7 +29,7 @@ async function test(req, res) {
         term,
         year
     );
-    console.log("response: ", reqResp);
+    console.log("response: ", reqResp.length);
     res.send(`The provided subject is ${subject}`);
 }
 
@@ -58,6 +58,32 @@ async function fetchAllCourses(req, res) {
     res.send(reqResp);
 }
 
+async function fetchCoursesBySpecification(req, res) {
+    console.log("query params: ", req.query);
+    const query_params = req.query;
+    const subject = query_params["subject"];
+    const term = query_params["term"];
+    const year = query_params["year"];
+    if (!subject) {
+        res.send("Query parameter 'subject' not provided.");
+        return;
+    }
+    if (!term) {
+        res.send("Query parameter 'term' not provided.");
+        return;
+    }
+    if (!year) {
+        res.send("Query parameter 'year' not provided.");
+        return;
+    }
+    const reqResp = await coursesHandler.getCourseBySpecification(
+        subject,
+        term,
+        year
+    );
+    res.send(reqResp);
+}
+
 async function fetchAllYearsHasTerms(req, res) {
     const reqResp = await yearsHasTermsHandler.getAllYearsHasTerms();
     res.send(reqResp);
@@ -70,5 +96,6 @@ export {
     fetchAllCredits,
     fetchAllSubjects,
     fetchAllCourses,
+    fetchCoursesBySpecification,
     fetchAllYearsHasTerms,
 };
