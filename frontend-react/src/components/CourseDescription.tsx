@@ -10,12 +10,40 @@ function CourseDescription({ courses }) {
 
     if (courses.length === 0) {
         return (
-            <div className="content-block-text-container course-desc-block">
-                <h1 className="content-block-title block-title">Course Info</h1>
-                <p className="content-block-text page-text">
-                    There is no data associated with the current selections.
-                </p>
-            </div>
+            <>
+                <div className="content-block-text-container course-desc-block">
+                    <h1 className="content-block-title block-title">
+                        Course Info
+                    </h1>
+                    <div className="grid-block">
+                        <div>
+                            <p className="content-block-text page-text">
+                                Data Range: N/A
+                            </p>
+                            <p className="content-block-text page-text">
+                                Credit Hours: N/A
+                            </p>
+                            <p className="content-block-text page-text">
+                                Total Students: N/A
+                            </p>
+                        </div>
+                        <div>
+                            <p className="content-block-text page-text">
+                                Avg GPA: N/A
+                            </p>
+                            <p className="content-block-text page-text">
+                                Avg Pass Rate: N/A
+                            </p>
+                            <p className="content-block-text page-text">
+                                Avg Withdraw Rate: N/A
+                            </p>
+                            <p className="content-block-text page-text">
+                                Avg Number of Students: N/A
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </>
         );
     }
 
