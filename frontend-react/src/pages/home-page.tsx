@@ -18,6 +18,7 @@ function HomePage() {
     const [ytDict, setYTDict] = useState<object>();
     const {
         isFetched,
+        allCourses,
         setIsFetched,
         setAllYears,
         setAllTerms,
@@ -26,7 +27,8 @@ function HomePage() {
         setAllYearsTerms,
         setAllCourses,
     } = useContext(AllInfoContext);
-    const { currSubject, currYear, currTerm } = useContext(CurrInfoContext);
+    const { currCourse, currSubject, currYear, currTerm } =
+        useContext(CurrInfoContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -82,6 +84,15 @@ function HomePage() {
         });
         setCoursesArr(arr);
     }, [currSubject, currYear, currTerm, setAllCourses, ytDict]);
+
+    useEffect(() => {
+        if (currCourse === "") {
+            return;
+        }
+        setCoursesArr(() =>
+            allCourses.filter((course) => course["long_name"] == currCourse)
+        );
+    }, [currCourse, allCourses]);
 
     if (!isFetched) {
         <>
