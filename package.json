@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "@vitejs/plugin-react-swc": "^4.3.0",
         "client-sessions": "^0.8.0",
         "compression": "^1.8.1",
         "concurrently": "^8.2.2",
